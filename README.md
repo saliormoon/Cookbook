@@ -23,12 +23,14 @@ Now make a pull request and we will add your recipe as soon as possible.
 
 If you want to create a local Cookbook perform the following steps:
 
-1. Install the [Gitbook][1]:
+* Install the [Gitbook][1]:
+
 ```
 $ npm install gitbook -g
 ```
-2. Go into the recipes folder
-3. Use `gitbook build`
-4. open 'recipes/_book/index.html
+
+* Go into the recipes folder
+* Use `gitbook build`
+* open 'recipes/_book/index.html
 
 [1]: https://github.com/GitbookIO/gitbook
