@@ -2950,3 +2950,7 @@ background-color: #FFFFFF !important;
 width: 84%;
 position:fixed !important;
 }
+
+.book .book-body .page-wrapper .page-inner section.normal {
+  margin-top: 20px;
+}
