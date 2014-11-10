@@ -1,5 +1,7 @@
 ![ArangoDB-Logo](https://www.arangodb.com/logo/Arangodb_Logo_400.png)
 
+<div class="fa fa-exclamation-triangle" style="color:rgba(240,210,0,1)"> The cookbook is still in progress. <div class="fa fa-exclamation-triangle"></div></div> 
+
 In the ArangoDB cookbook you will find some recipes for specific problems regarding ArangoDB. 
 
 ##How to contribute
