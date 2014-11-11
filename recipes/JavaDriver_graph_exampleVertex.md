@@ -7,7 +7,7 @@
 **Note**: Arango 2.2 and the corresponding javaDriver is needed.
 
 
-You want to retrieve information out of a graph using an example vertex. E. g. you have a graph "myGraph" with vertices that are objects of the following class...
+You want to retrieve information out of a graph using an object<T> as example vertex, and the object contains primitive datatypes such as 'int' or 'char'. E. g. you have a graph "myGraph" with vertices that are objects of the following class...
 
 ``` java
 public class MyObject {
