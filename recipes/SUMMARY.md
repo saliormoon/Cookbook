@@ -2,7 +2,7 @@
 * [Replicating Data](ReplicatingData.md)
 * [Accessing Shapes Data](AccessingShapesData.md)
 * [Fulldepth](Fulldepth.md)
-* [Vertex in JavaDriver](JavaDriver_graph_exampleVertex.md)
+* [Vertex in JavaDriver](JavaDriverGraphExampleVertex.md)
 * [First Steps in Foxx](FoxxFirstSteps.md)
 * [Document Inheritance](ModulDocumentInheritance.md)
 * [Example Data](example-data/README.md)

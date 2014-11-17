@@ -1,11 +1,8 @@
-<a name="JavaDriver_graph_exampleVertex"></a>
 # How to use an example vertex with the java driver
 
-<a name="problem"></a>
 ## Problem
 
 **Note**: Arango 2.2 and the corresponding javaDriver is needed.
-
 
 You want to retrieve information out of a graph using an object<T> as example vertex, and the object contains primitive datatypes such as 'int' or 'char'. E. g. you have a graph "myGraph" with vertices that are objects of the following class...
 
@@ -53,7 +50,6 @@ arangoDriver.graphGetEdgesByExampleObject("myGraph", MyEdge.class, myVertexExamp
 ```
 can not be used, because primitive datatypes (like 'int') can not be set to null (all attributes that are not null will be used as filter criteria). 
 
-<a name="solution"></a>
 ## Solution
 There is a solution, but it's not that satisfying, because you need to know the attribute names of the stored documents representing the objects. If you know the attribute names, which are used to filter vertices it's possible to create a map as vertex example:  
 
@@ -71,9 +67,6 @@ MyObject myVertexExample = new MyObject(null, 42);
 CursorEntity<MyEdge> cursor = arangoDriver.graphGetEdgesByExampleObject("myGraph", MyEdge.class, myVertexExample)
 ```
 
-```
-Author: [gschwab](https://github.com/gschwab)
-Tags: #arangodb #cookbook #java #graph
-```
+**Author**: [gschwab](https://github.com/gschwab)
 
-
+**Tags**: #java #graph #driver
