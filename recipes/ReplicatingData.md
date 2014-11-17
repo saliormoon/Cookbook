@@ -1,14 +1,11 @@
-<a name="replicating_data_from_different_databases"></a>
 # Replicating data from different databases
 
-<a name="problem"></a>
 ## Problem
 
 You have two or more different databases with various data respectively collections in each one of this, but you want your data to be collected at one place.
 
 **Note**: For this solution you need Arango 2.0, 2.1 or 2.2 and you must run the script in every database you want to be collect data from.
 
-<a name="solution"></a>
 ## Solution
 
 First of all you have to start a server on endpoint:
@@ -163,7 +160,6 @@ require("internal").definePeriodic(1, 10, "org/arangodb/mysync", "execute", "");
 ```
 **Note**: At this point you can change the time the script will be executed.
 
-<a name="comment"></a>
 ## Comment
 
 The server started on endpoint will be the central node. It collects changes from the local node by replicating its data.
@@ -177,3 +173,7 @@ If you want to test your script simply add some data to your *data* collection -
 ```
 for (i = 0; i < 100; ++i) db.data.save({ value: i });
 ```
+
+**Author:** [Jan Steemann](https://github.com/jsteemann)
+
+**Tags:** #database #collection

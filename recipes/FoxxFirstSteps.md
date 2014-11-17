@@ -165,7 +165,7 @@ We can now create a todo via the interactive documentation. If you click on the 
 
 This will create a new todo and add it to the collection. If you look into the collection, you will see that the completed attribute is set to `false`, because that's what we set as a default in our model.
 
-## Get a list of all todos
+### Get a list of all todos
 
 Our initial implementation of the route to get all todos was a fake, let us fix that. We will use [underscore.js](http://underscorejs.org) to iterate over all stored todos to call the `forClient` method on them. First require underscore as `_` (`_ = require('underscore')`), then change the index action to be the following:
 
@@ -179,7 +179,7 @@ controller.get('/', function (req, res) {
 
 Try it out in the interactive documentation, you will get a list of all the todos.
 
-## Extending the representation of our model
+### Extending the representation of our model
 
 In both our list as well as the return value we don't get the key of the document. In order to delete a single item we will however need this information. Let's change the `forClient` method of our model in order to get this information. The method could look like this:
 
@@ -196,7 +196,7 @@ forClient: function () {
 
 We now get the key in both routes.
 
-## Deleting a todo item
+### Deleting a todo item
 
 We could for example define the following route to delete a todo:
 
@@ -234,3 +234,8 @@ controller.del('/:key', function (req, res) {
 * If you want to have custom methods on your repository, you can extend it in the same way you extended the Foxx.Model. [Learn more about it here](https://docs.arangodb.com/Foxx/FoxxRepository.html)
 * We will add a new recipe for authentication in the future. In the mean time check out the [foxx-sessions-example](https://github.com/arangodb/foxx-sessions-example) app.
 * We will also talk about workers and how to do work outside the request-response-cycle. Until then [check out the documentation for it](https://docs.arangodb.com/beta/Foxx/FoxxQueues.html).
+
+
+Author: [Lucas Dohmen](https://github.com/moonglum)
+
+Tags: #foxx

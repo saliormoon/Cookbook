@@ -114,4 +114,5 @@ Also only the top-level attribute of the documents will be inserted and nested o
 The procedure can be implemented as a server side action. 
 
 **Author:** [Arangodb](https://github.com/arangodb)
-**Tags:** #collection 
+
+**Tags:** #collection #database
