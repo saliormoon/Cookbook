@@ -62,3 +62,10 @@
         {{ articles(summary.chapters) }}
     </ul>
 </div>
+
+<script type="text/javascript">
+$('#clear-search').on('click', function(event){
+    event.preventDefault();
+    $('.book-search input').val("").trigger("keyup");
+});
+</script>
