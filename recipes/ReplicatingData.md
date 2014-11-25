@@ -4,7 +4,7 @@
 
 You have two or more different databases with various data respectively collections in each one of this, but you want your data to be collected at one place.
 
-**Note**: For this solution you need Arango 2.0 or higher and you must run the script in every database you want to be collect data from.
+**Note**: For this solution you need Arango 2.0, 2.1, 2.2 or 2.3 and you must run the script in every database you want to be collect data from.
 
 ## Solution
 
@@ -14,7 +14,7 @@ First of all you have to start a server on endpoint:
 arangod --server.endpoint tcp://127.0.0.1:8529
 ```
 
-Now you have to create two collections and name them *data* and *replicatinStatus*
+Now you have to create two collections and name them *data* and *replicationStatus*
 
 ```js
 db._create("data");
