@@ -40,3 +40,7 @@ su
 su - arangod
 bin/arangod --configuration /etc/arangodb/arangod.conf
 ```
+
+**Author:** [Patrick Huber](https://github.com/stackmagic)
+
+**Tags:** #build

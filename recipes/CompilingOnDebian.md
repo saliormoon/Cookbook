@@ -87,4 +87,8 @@ make -j $(nproc)
 
 *Optional*
 
-Now that you have a custom build, you probably want to run it. Have a look at [RunningCustomBuild.md](RunningCustomBuild.md)
+Now that you have a custom build, you probably want to run it. Have a look at [Running Custom Build](RunningCustomBuild.md)
+
+**Author:** [Patrick Huber](https://github.com/stackmagic)
+
+**Tags:** #debian #driver 
