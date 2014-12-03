@@ -8,3 +8,4 @@
 * [How to use Docker](Docker.md)
 * [Compiling on Debian](CompilingOnDebian.md)
 * [Running Custom Build](RunningCustomBuild.md)
+* [Compiling under Windows](CompilingUnderWindows.md)
