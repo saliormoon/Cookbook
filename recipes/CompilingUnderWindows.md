@@ -34,8 +34,8 @@ be found. One way is to execute the `vcvarsall.bat` script from the `VC` folder.
 First of all, start a `bash` from cygwin and you clone the repository
 
     https://github.com/arangodb/arangodb-windows-libraries.git
-    
-and switch into the directory `arangodb-windows-libraries`. This repositiory contains open-source libraries which
+
+and switch into the directory `arangodb-windows-libraries`. This repository contains open-source libraries which
 are needed by ArangoDB.
 
 * Google's V8
@@ -53,7 +53,7 @@ In order to build the corresponding 32bit and 64bit versions of the library, exe
     make
     make install
     make 3rdParty
-    
+
 This will create a folder `3rdParty-Windows` containing the headers and libraries.
 
 ### Building ArangoDB itself
@@ -61,7 +61,7 @@ This will create a folder `3rdParty-Windows` containing the headers and librarie
 Clone the repository
 
     https://github.com/triAGENS/ArangoDB.git
-    
+
 and copy the `3rdParty-Windows` folder into this directory `ArangoDB`.
 
 Now switch into the `ArangoDB` folder and execute
@@ -71,19 +71,19 @@ Now switch into the `ArangoDB` folder and execute
 or
 
     make pack-win64
-    
+
 in order to build the installer file for either 32bit or 64bit.
 
 ### Executables only
 
-If you do not need the installer file, you can use the cmake to build the executables. Instead of `make pack-win32`
+If you do not need the installer file, you can use the `cmake` to build the executables. Instead of `make pack-win32`
 use
 
     mkdir Build32
     cd Build32
     cmake -G "Visual Studio 12" ..
-    
-This will create a solution file in the `Build32` folder. You can now start the Visual Studio and open this
+
+This will create a solution file in the `Build32` folder. You can now start Visual Studio and open this
 solution file.
 
 Alternatively use `cmake` to build the executables.
