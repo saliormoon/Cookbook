@@ -94,7 +94,7 @@ We can now join these two collections very easily.
 Unlike SQL there is no special JOIN keyword. The optimizer ensures that the
 primary index is used in the above query.
 
-However, very often it is much more convient for the client of the query if a
+However, very often it is much more convenient for the client of the query if a
 single document would be returned, where the city information is embedded in the
 user document - as in the simple example above.  With AQL there you do not need
 to forgo this simplification.
@@ -119,7 +119,7 @@ to forgo this simplification.
       } 
     ]
 
-So you can have both: the convient representation of the result for your client
+So you can have both: the convenient representation of the result for your client
 and the flexibility of joins for your data model.
 
 ### Many-To-Many
@@ -470,6 +470,6 @@ If you need the authors and their books, simply reverse the direction.
       } 
     ]
 
-Authors: Frank Celler
+**Authors**: [Frank Celler](https://github.com/fceller)
 
-Tags: #join #aql
+**Tags**: #join #aql
