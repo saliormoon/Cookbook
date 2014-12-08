@@ -21,7 +21,7 @@ You need at least `make` from cygwin. Cygwin also offers a `cmake` do not instal
 
 Either version 2.8.12 or 3.0.2 should work. Make sure to download the 64bit version.
 
-* Visual Studio Express for Windows Desktop
+* Visual Studio Express 2013 for Windows Desktop
 
 Please note that there are different versions of Visual Studio. The `Visual Studio for Windows` will not work. You need to
 install `Visual Studio (Express) for Windows Desktop`. You must configure your path in such a way that the compiler can
@@ -35,7 +35,7 @@ First of all, start a `bash` from cygwin and you clone the repository
 
     https://github.com/arangodb/arangodb-windows-libraries.git
 
-and switch into the directory `arangodb-windows-libraries`. This repository contains open-source libraries which
+and switch into the directory `arangodb-windows-libraries`. This repository contains the open-source libraries which
 are needed by ArangoDB.
 
 * Google's V8
