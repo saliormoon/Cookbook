@@ -31,7 +31,7 @@ be found. One way is to execute the `vcvarsall.bat` script from the `VC` folder.
 
 ### Building the required libraries
 
-First of all, start a `bash` from cygwin and you clone the repository
+First of all, start a `bash` from cygwin and clone the repository
 
     https://github.com/arangodb/arangodb-windows-libraries.git
 
