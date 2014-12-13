@@ -94,7 +94,8 @@ Ready to play? Start the front-end container with the database link and initiali
 
     unix> docker run --link arangodb-guesser:db-link -p 8000:8000 -e init=1 arangodb/example-guesser
 
-Use your browser to play the game at this [address](http://127.0.0.1:8000/). The
+Use your browser to play the game at the [address http://127.0.0.1:8000/](http://127.0.0.1:8000/).
+The
 
     -e init=1
 
