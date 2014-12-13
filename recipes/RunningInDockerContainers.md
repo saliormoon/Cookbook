@@ -4,13 +4,14 @@
 
 I want to use the docker image for ArangoDB, but I have no idea where to start.
 
+Note: You need to go to switch to the docker branch.  
 ## Solution
 
 We will use the guesser game for ArangoDB from
 
     https://github.com/arangodb/guesser
 
-(branch docker) which is a simple game guessing animals or things. It learns while playing
+HEIER which is a simple game guessing animals or things. It learns while playing
 and stores the learned information in an ArangoDB instance. The game is written using the
 express framework. It has the two components
 
@@ -23,14 +24,14 @@ server to run the front-end code and one container for ArangoDB for the storage 
 ### Node Server
 
 The game is itself can be install via NPM or from github. There is an image available from
-dockerhub called arangodb/example-guesser which is based on the Dockerfile
+dockerhub called `arangodb/example-guesser` which is based on the Dockerfile
 from [github](https://raw.githubusercontent.com/arangodb/guesser/docker/docker/Dockerfile).
 
 You can either build the docker container locally or simply use the available one from
 docker hub.
 
     unix> docker run -p 8000:8000 -e nolink=1 arangodb/example-guesser
-	Starting without a database link
+    Starting without a database link
     Using DB-Server http://localhost:8529
     Guesser app server listening at http://0.0.0.0:8000
 
@@ -43,20 +44,20 @@ If you want to build the container locally, check out the guesser game from
 
     https://github.com/arangodb/example-guesser
 
-(use branch docker) switch into the `docker` subdirectory and execute `docker build .`.
+switch into the `docker` subdirectory and execute `docker build .`.
 
 ### ArangoDB
 
 ArangoDB is already available on docker, so we start an instance
 
     unix> docker run --name arangodb-guesser arangodb/arangodb
-	show all options:
-	  docker run -e help=1 arangodb
+    show all options:
+      docker run -e help=1 arangodb
 
-	starting ArangoDB in stand-alone mode
+    starting ArangoDB in stand-alone mode
 
 That's it. Note that in an productive environment you would need to attach a storage
-container to it. We ignore this here for the sake of simplictity.
+container to it. We ignore this here for the sake of simplicity.
 
 ### Guesser Game
 
@@ -74,18 +75,18 @@ points to the exposed port of the arangodb container:
 Your IP may vary. The command `arangosh ...` at the end of docker command executes the
 ArangoDB shell instead of the default node command.
 
-	Welcome to arangosh 2.3.1 [linux]. Copyright (c) ArangoDB GmbH
-	Using Google V8 3.16.14 JavaScript engine, READLINE 6.3, ICU 52.1
-
-	Pretty printing values.
-	Connected to ArangoDB 'tcp://172.17.0.17:8529' version: 2.3.1, database: '_system', username: 'root'
-
-	Type 'tutorial' for a tutorial or 'help' to see common examples
-	arangosh [_system]> 
+    Welcome to arangosh 2.3.1 [linux]. Copyright (c) ArangoDB GmbH
+    Using Google V8 3.16.14 JavaScript engine, READLINE 6.3, ICU 52.1
+    
+    Pretty printing values.
+    Connected to ArangoDB 'tcp://172.17.0.17:8529' version: 2.3.1, database: '_system', username: 'root'
+    
+    Type 'tutorial' for a tutorial or 'help' to see common examples
+    arangosh [_system]> 
 
 The important line is
 
-	Connected to ArangoDB 'tcp://172.17.0.17:8529' version: 2.3.1, database: '_system', username: 'root'
+    Connected to ArangoDB 'tcp://172.17.0.17:8529' version: 2.3.1, database: '_system', username: 'root'
 
 It tells you that the application container was able to connect to the database
 back-end. Press `Control-D` to exit.
@@ -104,6 +105,7 @@ run the front-end or if you start a second front-end server use
 
     unix> docker run --link arangodb-guesser:db-link -p 8000:8000 arangodb/example-guesser
 
-Author: [Frank Celler](https://github.com/fceller)
 
-Tags: #docker
+**Author**: [Frank Celler](https://github.com/fceller)
+
+**Tags**: #docker
