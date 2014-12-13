@@ -20,7 +20,7 @@ express framework. It has the two components
 Therefore the guesser game needs two docker containers, one container for the node.js
 server to run the front-end code and one container for ArangoDB for the storage back-end.
 
-### node server
+### Node Server
 
 The game is itself can be install via NPM or from github. There is an image available from
 dockerhub called arangodb/example-guesser which is based on the Dockerfile
