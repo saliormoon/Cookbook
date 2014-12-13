@@ -2,7 +2,7 @@
 
 ## Problem
 
-I want to use the docker image for ArangoDB, but I have no idea where to start.
+I'm looking for a head start in using the ArangoDB docker image.
 
 Note: You need to go to switch to the docker branch.  
 ## Solution
