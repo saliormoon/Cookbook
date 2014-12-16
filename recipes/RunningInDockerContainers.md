@@ -11,7 +11,7 @@ We will use the guesser game for ArangoDB from
 
     https://github.com/arangodb/guesser
 
-HEIER which is a simple game guessing animals or things. It learns while playing
+which is a simple game guessing animals or things. It learns while playing
 and stores the learned information in an ArangoDB instance. The game is written using the
 express framework. It has the two components
 
