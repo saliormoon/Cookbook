@@ -4,7 +4,6 @@
 
 I'm looking for a head start in using the ArangoDB docker image.
 
-Note: You need to go to switch to the docker branch.  
 ## Solution
 
 We will use the guesser game for ArangoDB from
@@ -13,7 +12,9 @@ We will use the guesser game for ArangoDB from
 
 which is a simple game guessing animals or things. It learns while playing
 and stores the learned information in an ArangoDB instance. The game is written using the
-express framework. It has the two components
+express framework. Note: You need to go to switch to the docker branch.  
+
+It has the two components
 
 * front-end with node.js and express
 * back-end with ArangoDB and Foxx
