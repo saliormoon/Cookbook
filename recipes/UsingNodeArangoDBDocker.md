@@ -1,4 +1,4 @@
-# ArangoDB and Docker
+# ArangoDB, NodeJS and Docker
 
 ## Problem
 
