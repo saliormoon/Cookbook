@@ -11,7 +11,7 @@ Running ArangoDB is as simple as...
 
 I've created an automated build repository on docker, so that you can easily start a docker container with the latest stable release. Thanks to frodenas, hipertracker, joaodubas, webwurst who also created dockerfiles.
 
-Please note that this recipe is a general overview. There is also a recipe explaining how to install an application consisting of a node.js application and a ArangoDB database server. 
+Please note that this recipe is a general overview. There is also a recipe explaining how to install an application consisting of a node.js application and an ArangoDB database server. 
 
 ###Usage
 
