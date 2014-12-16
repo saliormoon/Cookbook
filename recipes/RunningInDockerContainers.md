@@ -12,7 +12,7 @@ We will use the guesser game for ArangoDB from
 
 which is a simple game guessing animals or things. It learns while playing
 and stores the learned information in an ArangoDB instance. The game is written using the
-express framework. Note: You need to go to switch to the docker branch.  
+express framework. Note: You need to switch to the docker branch.  
 
 It has the two components
 
