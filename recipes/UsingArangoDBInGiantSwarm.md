@@ -36,25 +36,25 @@ file for the swarm called `arangodb.json` and fire up the application
     {
       "app_name": "guesser",
       "services": [
-	{
-	  "service_name": "guesser-game",
-	  "components": [
-	    {
-	      "component_name": "guesser-front-end",
-	      "image": "arangodb/example-guesser",
-	      "ports": [ "8000/tcp" ],
-	      "dependencies": [
-		{ "name": "guesser-back-end", "port": 8529 }
-	      ],
-	      "domains": { "guesser.gigantic.io": "8000" }
-	    },
-	    {
-	      "component_name": "guesser-back-end",
-	      "image": "arangodb/example-guesser-db",
-	      "ports": [ "8529/tcp" ]
-	    }
-	  ]
-	}
+        {
+          "service_name": "guesser-game",
+          "components": [
+            {
+              "component_name": "guesser-front-end",
+              "image": "arangodb/example-guesser",
+              "ports": [ "8000/tcp" ],
+              "dependencies": [
+                { "name": "guesser-back-end", "port": 8529 }
+              ],
+              "domains": { "guesser.gigantic.io": "8000" }
+            },
+            {
+              "component_name": "guesser-back-end",
+              "image": "arangodb/example-guesser-db",
+              "ports": [ "8529/tcp" ]
+            }
+          ]
+        }
       ]
     }
 
