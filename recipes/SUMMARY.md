@@ -5,10 +5,12 @@
 * [Vertex in JavaDriver](JavaDriverGraphExampleVertex.md)
 * [My First Foxx App](FoxxFirstSteps.md)
 * [Document Inheritance](ModulDocumentInheritance.md)
-* [How to use Docker](Docker.md)
-* [Compiling on Debian](CompilingOnDebian.md)
 * [Running Custom Build](RunningCustomBuild.md)
-* [Compiling under Windows](CompilingUnderWindows.md)
 * [Using Joins in AQL](JoinsInAQL.md)
-* [NodeJS and Docker](UsingArangoDBNodeJSDocker.md)
 * [Foxx Authentication](FoxxAuth.md)
+* Compiling
+  * [Compiling on Debian](CompilingOnDebian.md)
+  * [Compiling under Windows](CompilingUnderWindows.md)
+* Docker
+  * [How to run ArangoDB in a Docker container](RunningInDockerContainer.md)
+  * [ArangoDB, NodeJS and Docker](UsingArangoDBNodeJSDocker.md)
