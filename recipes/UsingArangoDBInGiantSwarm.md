@@ -7,7 +7,7 @@ example on how to install an application which uses two components, namely node 
 
 My colleague Max has written a guesser game with various front-ends and ArangoDB as
 backend. In order to get the feeling of being part of the giant swarm, I have started to
-set up this game in the (swarm)[http://giantswarm.io].
+set up this game in the [swarm](http://giantswarm.io).
 
 ## First Steps
 
