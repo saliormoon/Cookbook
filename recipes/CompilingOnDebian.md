@@ -2,7 +2,7 @@
 
 ## Problem
 
-You want to compile and run the devel branch, for example to test a bugfix.
+You want to compile and run the devel branch, for example to test a bugfix. My system is Debian based.
 
 ## Solution
 
