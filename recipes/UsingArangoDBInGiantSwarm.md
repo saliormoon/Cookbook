@@ -28,9 +28,9 @@ The dockerfiles used to create the images are available from github
 
 Note that you need to checkout the docker branch.
 
-## Setup the Swarm
+## Set up the Swarm
 
-Setup up your swarm environment as described in the documentation. Create a configuration
+Set up your swarm environment as described in the documentation. Create a configuration
 file for the swarm called `arangodb.json` and fire up the application
 
     {
