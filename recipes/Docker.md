@@ -1,7 +1,7 @@
-#How to run ArangoDB in Docker
+#How to run ArangoDB in a Docker container
 ##Problem
 
-How do you make ArangoDB run in Docker?
+How do you make ArangoDB run in a Docker container?
 
 ##Solution
 
