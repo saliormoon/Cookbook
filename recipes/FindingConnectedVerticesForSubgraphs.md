@@ -3,7 +3,7 @@
 ## Acknowledgments
 This problem has come up as a question on [Stackoverflow][1].
 All credits for the problem go to [sergeda][2].
-I liked the Problem so much that I decided to write this recipe about it.
+I liked the problem so much that I decided to write this recipe about it.
 
 ## Problem
 
@@ -56,9 +56,9 @@ Test Dataset creation in arangosh:
     graph.edges.save("circles/G", "crosses/F", {});
     graph.edges.save("circles/H", "crosses/F", {});
 
-Now we have created the graph as described by or problem.
+Now we have created the graph as described in the problem szenario above.
 Now we are given a set of vertices within the graph: `["circles/A","circles/B","circles/C","circles/D"]`
-For this recipe we hard-code this exact subset, in production we would replace it by a bindParameter are result of another subquery.
+For this recipe we hard-code this exact subset, in production we would replace it by a bindParameter to a result of another subquery.
 Many of ArangoDBs graph functions accept a predefined set of vertex documents as input parameters so this is already a good start.
 Next up we have to identify "connecting" vertices.
 A vertex is connecting two vertices "A" and "B" if it is a direct neighbor of "A" and a direct neighbor of "B" in the definition of our problem.
@@ -112,7 +112,7 @@ These pairs are considered distinct based on their ordering (A and B is consider
 With combinatoric knowledge we know that `n * (n-1) = counter` is the formula to identify the real amount of vertices n forming connections.
 This can be transformed into an expression we can execute in AQL `0.5 + SQRT(0.25 + LENGTH(counter))` following the Reduced quadratic equation.
 
-Now we can identiry all connecting vertices for a given subset of the graph.
+Now we can identify all connecting vertices for a given subset of the graph.
 However we are only interested in the ones of type cross.
 As we have used a different collection for them we can simply apply a restriction to `GRAPH_COMMON_NEIGHBORS` to only consider vertices from this special collection.
 The last thing to do is to put everything together:
