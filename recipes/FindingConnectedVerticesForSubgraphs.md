@@ -11,6 +11,9 @@ Assume you have large graph consisting of two types of vertices: circles and cro
 These are connected in an arbitrary way: circles to circles and circles to crosses.
 Crosses to crosses is not allowed.
 We have given a subset of the vertices (circles) and these tend to be connected via a set of intermediate vertices of type cross, however there might be multiple connecting crosses.
+
+![Example dataset][3]
+
 We want to identify these crosses and sort them by the number of links they have with the given subgraph.
 As one example mapped to the dataset on the image we give the set of vertices A, B, C and D.
 We expect to return E and F with E ordered before F as E connects more parts of the graph (4 vs. 3).
@@ -153,3 +156,4 @@ Which will yield this result on the dataset in the image:
 
 [1]: http://stackoverflow.com/questions/27520753/find-the-cross-node-for-number-of-nodes-in-arangodb/27530898?noredirect=1#comment43506796_27530898
 [2]: http://stackoverflow.com/users/2592822/sergeda
+[3]: https://www.arangodb.com/wp-content/uploads/2014/12/graph1.png
