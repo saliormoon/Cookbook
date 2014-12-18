@@ -149,7 +149,7 @@ Your game becomes a success. Well, scaling up the front-end is trivial.
     > swarm scaleup guesser/guesser-game/guesser-front-end --count=2
     Scaling up component guesser/guesser-game/guesser-front-end by 2...
 
-and now three node servers are up and running
+and now three node servers are up and running. We at ArangoDB are hard at work to make scalung up the back-end database equally easy. Stay tuned for new releases in early 2015... 
 
     TO BE CONTINUED (waiting for feedback von GiantSwarm)
 
