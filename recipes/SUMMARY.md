@@ -10,6 +10,7 @@
 * Foxx
   * [My First Foxx App](FoxxFirstSteps.md)
   * [Foxx Authentication](FoxxAuth.md)
+  * [My First FoxxGenerator App](FoxxGeneratorFirstSteps.md)
 * Compiling / Build
   * [Compiling on Debian](CompilingOnDebian.md)
   * [Compiling on Windows](CompilingUnderWindows.md)
