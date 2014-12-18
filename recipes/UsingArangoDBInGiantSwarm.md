@@ -146,12 +146,45 @@ and the front-end
 
 Your game becomes a success. Well, scaling up the front-end is trivial.
 
-    > swarm scaleup guesser/guesser-game/guesser-front-end --count=2
-    Scaling up component guesser/guesser-game/guesser-front-end by 2...
+Simply change your configuration file and recreate the application:
 
-and now three node servers are up and running. We at ArangoDB are hard at work to make scalung up the back-end database equally easy. Stay tuned for new releases in early 2015... 
+    {
+      "app_name": "guesser",
+      "services": [
+        {
+          "service_name": "guesser-game",
+          "components": [
+            {
+              "component_name": "guesser-front-end",
+              "image": "arangodb/example-guesser",
+              "ports": [ "8000/tcp" ],
+              "dependencies": [
+                { "name": "guesser-back-end", "port": 8529 }
+              ],
+              "domains": { "guesser.gigantic.io": "8000" },
+              "scaling_policy": { "min": 2, "max": 2 }
+            },
+            {
+              "component_name": "guesser-back-end",
+              "image": "arangodb/example-guesser-db",
+              "ports": [ "8529/tcp" ]
+            }
+          ]
+        }
+      ]
+    }
 
-    TO BE CONTINUED (waiting for feedback von GiantSwarm)
+The important line is
+
+    "scaling_policy": { "min": 2, "max": 2 }
+    
+It tells the swarm to use two front-end containers. In later version of the `swarm` you will be able to change the number of containers in a running application with the command:
+
+    > swarm scaleup guesser/guesser-game/guesser-front-end --count=1
+    Scaling up component guesser/guesser-game/guesser-front-end by 1...
+
+We at ArangoDB are hard at work to make scalung up the back-end database equally easy. Stay tuned for new releases in early 2015... 
+
 
 Authors: Frank Celler
 
