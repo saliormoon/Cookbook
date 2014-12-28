@@ -10,7 +10,8 @@
   * [Using Joins in AQL](JoinsInAQL.md)
 * Foxx
   * [My First Foxx App](FoxxFirstSteps.md)
-  * [Foxx Authentication](FoxxAuth.md)
+  * [Adding Authentication](FoxxAuth.md)
+  * [Adding Email Support](FoxxQueues.md) (Foxx Queues)
   * [My First FoxxGenerator App](FoxxGeneratorFirstSteps.md)
 * Compiling / Build
   * [Compiling on Debian](CompilingOnDebian.md)
