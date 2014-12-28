@@ -1,8 +1,10 @@
 # Adding Background workers to my Foxx App
 
+ArangoDB Foxx allows defining job queues that let you perform slow or expensive actions asynchronously. These queues can be used to send emails, call external APIs or perform other actions that you do not want to perform directly or want to retry on failure.   
+
 ## Problem
 
-I have an existing Foxx app (for example from the [first recipe about Foxx](https://docs.arangodb.com/cookbook/FoxxFirstSteps.html)) and I want to send out an email every time an item is created.
+I have an existing Foxx app (for example the **todo app** from the [first recipe about Foxx](https://docs.arangodb.com/cookbook/FoxxFirstSteps.html)) and I want to send out an email every time an item is created.
 
 ## Solution
 
@@ -29,7 +31,9 @@ controller.post('/', function (req, res) {
 }).bodyParam('todo', 'The Todo you want to create', Todo);
 ```
 
-And that's it! To try it out go to your app in the Applications tab and create a new todo item with the interactive documentation. You will receive an email with the title of the todo shortly after that. As we are using the queue, the user of your API doesn't need to wait until the email is sent, but gets an immediate answer.
+And that's it! To try it out open your todo app from the Applications tab in the ArangoDB web interface and create a new todo item with the interactive documentation. You will receive an email with the title of the todo shortly after that. As we are using the queue, the user of your API doesn't need to wait until the email is sent, but gets an immediate answer.
+
+Read the [Foxx Queues documentation](https://docs.arangodb.com/Foxx/FoxxQueues.html) to get familiar with handling queues in your Foxx apps.
 
 Author: [Lucas Dohmen](https://github.com/moonglum)
 
