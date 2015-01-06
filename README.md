@@ -1,4 +1,4 @@
-![ArangoDB-Logo](https://www.arangodb.com/logo/Arangodb_Logo_400.png)
+![ArangoDB-Logo](https://www.arangodb.com/logo/arangodb_logo_c400@2.png)
 
 
 The cookbook is still in progress.
