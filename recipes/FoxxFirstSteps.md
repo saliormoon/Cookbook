@@ -6,54 +6,37 @@ I want to create a simple API with [Foxx](https://foxx.arangodb.com), but I neve
 
 ## Solution
 
-### Create the folder structure for Foxx apps and start ArangoDB
+### Start up ArangoDB in development mode
 
-Create a folder `foxx_apps` somewhere where you have write access. Create a folder `databases` inside of it, and one called `_system` inside of that. Inside of this folder, create a folder for your app. Let's call it `todos`. From now on we will work in that folder. We now create a file called `manifest.json` where we will add some meta information (if you want to get more information about the manifest file, check out [the documentation](https://docs.arangodb.com/Foxx/FoxxManifest.html)):
-
-```json
-{
-  "name": "todos",
-  "version": "0.1.0",
-  "description": "My first Foxx app to save todos in ArangoDB",
-  "author": "YOUR NAME",
-  "license": "Apache 2 License"
-}
-```
-
-Now you can start ArangoDB with the following command:
+Create a folder `foxx_apps` somewhere where you have write access. Create a folder `databases` inside of it, and one called `_system` inside of that. Now you can start ArangoDB with the following command:
 
 ```
 arangod --javascript.dev-app-path /PATH/TO/foxx_apps /PATH/TO/DB
 ```
 
-In that case, `/PATH/TO/foxx_apps` is the path to the `foxx_apps` folder you created above and `/PATH/TO/DB` is the path to the folder where your database should be. If you can see the admin interface on [http://localhost:8529](http://localhost:8529) you're now ready to go. Click on 'Applications' in the navigation bar – this is the place where all your Foxx apps are. You will see an app called `todos (dev)` – the `dev` means that your app is running in development mode which features automatic reloading. We are now ready to go.
+In that case, `/PATH/TO/foxx_apps` is the path to the `foxx_apps` folder you created above and `/PATH/TO/DB` is the path to the folder where your database should be. If you can see the admin interface on [http://localhost:8529](http://localhost:8529) you're now ready to go. Click on 'Applications' in the navigation bar – this is the place where all your Foxx apps are. We are now ready to go.
 
 *Don't have ArangoDB installed yet? Check out the instructions [on our downloads page](https://www.arangodb.com/install).*
 
+### Create your app
+
+Now in the application area click on "Add Application". Now enter the required information (without any collections) and click "Generate". This will create the app. It will prompt the path to your app to you which you should open with the text editor of your choice. In the list of apps you will now find an app with the name you chose. When you click on the app you will see a page with information about your app including the documentation.
+
+We could also have added some collections when generating. This would have created the collections and the according CRUD actions. But in this recipe we want to see how to write them ourselves.
+
 ### Create the required collections
 
-In ArangoDB you need to create a collection in order to save documents. We will need a collection for our todos. We need to do that before the app is running. In Foxx we use a setup script to prepare ArangoDB for running our app, which includes creating collections. Create a folder `scripts` and a file called `setup.js` inside of it:
+In ArangoDB you need to create a collection in order to save documents. We will need a collection for our todos. We need to do that before the app is running. In Foxx we use a setup script to prepare ArangoDB for running our app, which includes creating collections. Add the following line to the `scripts/setup.js` file:
 
 ```js
-var db = require('org/arangodb').db,
-  todos = applicationContext.collectionName('todos');
-
-if (db._collection(todos) === null) {
-  db._create(todos);
-}
+createCollection('todos');
 ```
 
-We use `applicationContext.collectionName` to get a name for a collection that is specific for our apps. This allows you to install the same app twice and also prevents different apps writing into the same collection by accident. We will only create the collection, if it has not been created yet. If you want to learn more about `db`, please check out [our documentation about handling collections](https://docs.arangodb.com/Collections/README.html). In our manifest file we now need to add this setup script by adding the following line:
-
-```json
-"setup": "scripts/setup.js"
-```
-
-The setup script will be executed when the app is installed. In the development mode however, it will be called everytime we request the app. If we click on the tiny `i` on our app, we will get to interactive documentation for our app (which is empty right now, because we don't have any routes yet). This will trigger our app and therefore execute our setup script. To check if that worked, go to `collections`. You will see a collection called `dev_ideas_ideas`. Setup is done!
+If you want to learn more about `db`, please check out [our documentation about handling collections](https://docs.arangodb.com/Collections/README.html). The setup script will be executed when the app is installed. In the development mode however, it will be called every time we request the app. If we click on the tiny `i` on our app, we will get to interactive documentation for our app (which is empty right now, because we don't have any routes yet). This will trigger our app and therefore execute our setup script. To check if that worked, go to `collections`. You will see a collection called `dev_todos_todos`. Setup is done!
 
 ### Create our first route
 
-In Foxx, we use controllers to add routes to our application. Let's create a folder `controllers` and inside of that our first controller in a file `todos.js`:
+In Foxx, we use controllers to add routes to our application. Inside of the folder `controller` create your first controller in a file `todos.js`:
 
 ```js
 var Foxx = require('org/arangodb/foxx'),
