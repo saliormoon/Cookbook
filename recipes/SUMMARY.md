@@ -15,10 +15,10 @@
   * [Adding Authentication](FoxxAuth.md)
   * [Adding Email Support](FoxxQueues.md)
   * [My First FoxxGenerator App](FoxxGeneratorFirstSteps.md)
+  * [How to deploy a Foxx App](FoxxDeploy.md)
 * Compiling / Build
   * [Compiling on Debian](CompilingOnDebian.md)
   * [Compiling on Windows](CompilingUnderWindows.md)
-  * [Compiling on Windows (upto version 2.3)](CompilingUnderWindows-2.3.md)
   * [Running Custom Build](RunningCustomBuild.md)
 * Docker
   * [How to run ArangoDB in a Docker Container](RunningInDockerContainer.md)
