@@ -1,4 +1,4 @@
-# Compiling ArangoDB (from 2.4 onwards) under Windows
+# Compiling ArangoDB (upto 2.3) under Windows
 
 ## Problem
 
@@ -31,15 +31,17 @@ be found. One way is to execute the `vcvarsall.bat` script from the `VC` folder.
 
 ### Building the required libraries
 
-First of all, start a `bash` from cygwin and clone the repository using the corresponding branch (i.e. `2.4` for `ArangoDB 2.4`)
+First of all, start a `bash` from cygwin and clone the repository
 
     https://github.com/arangodb/arangodb-windows-libraries.git
 
 and switch into the directory `arangodb-windows-libraries`. This repository contains the open-source libraries which
 are needed by ArangoDB.
 
+* Google's V8
 * etcd from CoreOS
 * getopt
+* icu
 * libev
 * linenoise
 * openssl
@@ -52,7 +54,7 @@ In order to build the corresponding 32bit and 64bit versions of the library, exe
     make install
     make 3rdParty
 
-This will create a folder `WindowsLibraries` containing the headers and libraries.
+This will create a folder `3rdParty-Windows` containing the headers and libraries.
 
 ### Building ArangoDB itself
 
@@ -60,19 +62,9 @@ Clone the repository
 
     https://github.com/triAGENS/ArangoDB.git
 
-and copy the `WindowsLibraries` folder into this directory `ArangoDB`.
+and copy the `3rdParty-Windows` folder into this directory `ArangoDB`.
 
-Next you need to build Google's V8 version, that is part of ArangoDB. This version contains V8 and ICU. Switch into the directory
-
-    ArangoDB/3rdParty
-
-and execute
-
-    make -f Makefile.v8-windows
-    make -f Makefile.v8-windows install
-
-
-Now switch back into the `ArangoDB` root folder and execute
+Now switch into the `ArangoDB` folder and execute
 
     make pack-win32
 
