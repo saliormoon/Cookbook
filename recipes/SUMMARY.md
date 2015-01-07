@@ -10,8 +10,8 @@
 * AQL
   * [Using Joins in AQL](JoinsInAQL.md)
 * Foxx
-  * [My First Foxx App](FoxxFirstSteps.md)
-  * [My First Foxx App (deprecated)](FoxxFirstStepsLegacy.md)
+  * [My First Foxx App in 2.4](FoxxFirstSteps.md)
+  * [My First Foxx App until 2.4](FoxxFirstStepsLegacy.md)
   * [Adding Authentication](FoxxAuth.md)
   * [Adding Email Support](FoxxQueues.md)
   * [My First FoxxGenerator App](FoxxGeneratorFirstSteps.md)

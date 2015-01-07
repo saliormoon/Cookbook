@@ -4,6 +4,8 @@
 
 I want to create a simple API with [Foxx](https://foxx.arangodb.com), but I never created one before. Specifically I want to create simple API to organize my todo items.
 
+**Note:** For this recipe you need at Arango 2.3. or a version below. For Arango since 2.4 look at the [new My first Foxx App](https://docs.arangodb.com/FoxxFirstSteps.md).
+
 ## Solution
 
 ### Create the folder structure for Foxx apps and start ArangoDB
