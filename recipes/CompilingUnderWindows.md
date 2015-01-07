@@ -23,7 +23,7 @@ Either version 2.8.12 or 3.0.2 should work. Make sure to download the 64bit vers
 
 * Visual Studio Express 2013 for Windows Desktop
 
-Please note that there are different versions of Visual Studio. The `Visual Studio for Windows` will not work. You need to
+Please note that there are different versions of Visual Studio. The `Visual Studio for Windows` will **not work**. You need to
 install `Visual Studio (Express) for Windows Desktop`. You must configure your path in such a way that the compiler can
 be found. One way is to execute the `vcvarsall.bat` script from the `VC` folder.
 
@@ -31,12 +31,12 @@ be found. One way is to execute the `vcvarsall.bat` script from the `VC` folder.
 
 ### Building the required libraries
 
-First of all, start a `bash` from cygwin and clone the repository using the corresponding branch (i.e. `2.4` for `ArangoDB 2.4`)
+First of all, start a `bash` from cygwin and clone the repository using the corresponding branch, e.g. for ArangoDB 2.4:
 
-    https://github.com/arangodb/arangodb-windows-libraries.git
+    git clone -b 2.4 https://github.com/arangodb/arangodb-windows-libraries.git
 
 and switch into the directory `arangodb-windows-libraries`. This repository contains the open-source libraries which
-are needed by ArangoDB.
+are needed by ArangoDB:
 
 * etcd from CoreOS
 * getopt
@@ -46,7 +46,7 @@ are needed by ArangoDB.
 * regex
 * zlib
 
-In order to build the corresponding 32bit and 64bit versions of the library, execute
+In order to build the corresponding 32bit and 64bit versions of these libraries, execute
 
     make
     make install
@@ -60,7 +60,7 @@ Clone the repository
 
     https://github.com/triAGENS/ArangoDB.git
 
-and copy the `WindowsLibraries` folder into this directory `ArangoDB`.
+and copy the previously created `WindowsLibraries` folder into this directory `ArangoDB`.
 
 Next you need to build Google's V8 version, that is part of ArangoDB. This version contains V8 and ICU. Switch into the directory
 
@@ -80,7 +80,7 @@ or
 
     make pack-win64
 
-in order to build the installer file for either 32bit or 64bit.
+in order to build the installer file for either 32 bit or 64 bit.
 
 ### Executables only
 
@@ -93,6 +93,12 @@ use
 
 This will create a solution file in the `Build32` folder. You can now start Visual Studio and open this
 solution file.
+
+To build the 64 bit version, use
+
+    mkdir Build64
+    cd Build64
+    cmake -G "Visual Studio 12 Win64" ..
 
 Alternatively use `cmake` to build the executables.
 
