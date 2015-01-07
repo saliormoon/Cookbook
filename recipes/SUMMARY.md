@@ -18,6 +18,7 @@
 * Compiling / Build
   * [Compiling on Debian](CompilingOnDebian.md)
   * [Compiling on Windows](CompilingUnderWindows.md)
+  * [Compiling on Windows (upto version 2.3)](CompilingUnderWindows-2.3.md)
   * [Running Custom Build](RunningCustomBuild.md)
 * Docker
   * [How to run ArangoDB in a Docker Container](RunningInDockerContainer.md)
