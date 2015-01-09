@@ -4,7 +4,7 @@
 
 You have two or more different databases with various data respectively collections in each one of this, but you want your data to be collected at one place.
 
-**Note**: For this solution you need Arango 2.0, 2.1, 2.2 or 2.3 and you must run the script in every database you want to be collect data from.
+**Note**: For this solution you need at least Arango 2.0 and you must run the script in every database you want to be collect data from.
 
 ## Solution
 

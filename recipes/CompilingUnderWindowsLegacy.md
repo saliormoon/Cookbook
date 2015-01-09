@@ -1,8 +1,10 @@
-# Compiling ArangoDB (upto 2.3) under Windows
+# Compiling ArangoDB under Windows
 
 ## Problem
 
 I want to compile ArangoDB under Windows.
+
+**Note:** For this recipe you need Arango 2.3. or a version below. For Arango since 2.4 look at the [new Compiling ArangoDB under Windows](https://docs.arangodb.com/CompilingUnderWindows.md).
 
 ## Solution
 
@@ -90,6 +92,6 @@ Alternatively use `cmake` to build the executables.
 
     cmake --build . --config Release
 
-Author: [Frank Celler](https://github.com/fceller)
+**Author**: [Frank Celler](https://github.com/fceller)
 
-Tags: #windows
+**Tags**: #windows

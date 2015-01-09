@@ -1,4 +1,4 @@
-# Auth
+# Foxx Authentication
 
 ## Problem
 
@@ -203,6 +203,6 @@ controller.get('/', function (req, res) {
 }).onlyIfAuthenticated();
 ```
 
-Author: [Lucas Dohmen](https://github.com/moonglum)
+**Author**: [Lucas Dohmen](https://github.com/moonglum)
 
-Tags: #foxx
+**Tags**: #foxx

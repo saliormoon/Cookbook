@@ -1,4 +1,4 @@
-# Fulldepth
+# Fulldepth Graph-Traversal
 
 ## Problem
 Lets assume you have a database and some edges and vertices. Now you need the node with the most connections in fulldepth.

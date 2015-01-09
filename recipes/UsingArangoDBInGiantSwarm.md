@@ -1,5 +1,11 @@
 # ArangoDB in the GiantSwarm using Docker containers
 
+## Problem 
+
+I want to use ArangoDB in the GiantSwarm with Docker containers.
+
+## Solution
+
 GiantSwarm allows you to describe and deploy your application by providing a simple JSON
 description. The
 [current weather app](http://docs.giantswarm.io/installation/gettingstarted2/) is a good
@@ -9,9 +15,9 @@ My colleague Max has written a guesser game with various front-ends and ArangoDB
 backend. In order to get the feeling of being part of the giant swarm, I have started to
 set up this game in the [swarm](http://giantswarm.io).
 
-## First Steps
+### First Steps
 
-The guesser game constists of a front-end written as express application in node and a
+The guesser game consists of a front-end written as express application in node and a
 storage back-end using ArangoDB and a small API developed with Foxx.
 
 The front-end application is available as image
@@ -28,7 +34,7 @@ The dockerfiles used to create the images are available from github
 
 Note that you need to checkout the docker branch.
 
-## Set up the Swarm
+### Set up the Swarm
 
 Set up your swarm environment as described in the documentation. Create a configuration
 file for the swarm called `arangodb.json` and fire up the application
@@ -86,7 +92,7 @@ This will create an application called `guesser`.
 
 We see the two components of our application. Both are currently powered down.
 
-## Startup the Guesser Game
+### Startup the Guesser Game
 
 Starting your engines is now one simple command
 
@@ -142,7 +148,7 @@ and the front-end
     2014-12-17 12:38:07.391149 +0000 UTC - docker  - Using DB-Server http://172.17.0.183:8529
     2014-12-17 12:38:07.613982 +0000 UTC - docker  - Guesser app server listening at http://0.0.0.0:8000
 
-## Scaling Up
+### Scaling Up
 
 Your game becomes a success. Well, scaling up the front-end is trivial.
 
@@ -183,9 +189,8 @@ It tells the swarm to use two front-end containers. In later version of the `swa
     > swarm scaleup guesser/guesser-game/guesser-front-end --count=1
     Scaling up component guesser/guesser-game/guesser-front-end by 1...
 
-We at ArangoDB are hard at work to make scalung up the back-end database equally easy. Stay tuned for new releases in early 2015... 
+We at ArangoDB are hard at work to make scaling up the back-end database equally easy. Stay tuned for new releases in early 2015... 
 
+**Authors**: [Frank Celler](https://github.com/fceller)
 
-Authors: Frank Celler
-
-Tags: #docker, #giantswarm, #howto
+**Tags**: #docker, #giantswarm, #howto

@@ -2,7 +2,7 @@
 
 ## Problem
 
-I want to create an API with FoxxGenerator. As an example I want to use the statechart that was described in the [blog series](https://www.arangodb.com/2014/12/08/building-hypermedia-apis-foxxgenerator). How do I get started?
+I want to create an API with FoxxGenerator. As an example I want to use the statechart that was described in a [blog series](https://www.arangodb.com/2014/12/08/building-hypermedia-apis-foxxgenerator). How do I get started?
 
 ## Solution
 
@@ -59,6 +59,6 @@ arangod --javascript.dev-app-path /PATH/TO/foxx_apps /PATH/TO/DB
 
 If you now go to the app in the [admin interface](http://localhost:8529/_db/_system/_admin/aardvark/standalone.html#applications), you will see that it already created the first endpoint for you: The start state. From this point on you can follow the description in the [blogposts](https://www.arangodb.com/2014/12/08/building-hypermedia-apis-foxxgenerator) or describe your own statechart.
 
-Author: [Lucas Dohmen](https://github.com/moonglum)
+**Author**: [Lucas Dohmen](https://github.com/moonglum)
 
-Tags: #foxx #foxxgenerator
+**Tags**: #foxx #foxxgenerator

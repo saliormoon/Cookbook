@@ -1,4 +1,4 @@
-# My first Foxx App
+# Foxx app deployment
 
 ## Problem
 
@@ -10,6 +10,6 @@ Go to the folder that contains your Foxx app and zip it. Go to the web interface
 
 You will be prompted to enter the mount path of your app. After entering the mount path, your app will be deployed.
 
-Author: [Lucas Dohmen](https://github.com/moonglum)
+**Author**: [Lucas Dohmen](https://github.com/moonglum)
 
-Tags: #foxx
+**Tags**: #foxx

@@ -252,7 +252,7 @@ If you also want to query which books are written by a given author, embedding a
 in the book document is possible, but it is more efficient to use a edge collections for
 speed.
 
-Or you are publishing a proceeding, then you want to store the pages the autor has written
+Or you are publishing a proceeding, then you want to store the pages the author has written
 as well. This information can be stored in the edge document.
 
 First create the users

@@ -1,6 +1,6 @@
 # Adding Background workers to my Foxx App
 
-ArangoDB Foxx allows defining job queues that let you perform slow or expensive actions asynchronously. These queues can be used to send emails, call external APIs or perform other actions that you do not want to perform directly or want to retry on failure.   
+ArangoDB Foxx allows defining job queues that let you perform slow or expensive actions asynchronously. These queues can be used to send emails, call external APIs or perform other actions that you do not want to perform directly or want to retry on failure.
 
 ## Problem
 
@@ -35,6 +35,6 @@ And that's it! To try it out open your todo app from the Applications tab in the
 
 Read the [Foxx Queues documentation](https://docs.arangodb.com/Foxx/FoxxQueues.html) to get familiar with handling queues in your Foxx apps.
 
-Author: [Lucas Dohmen](https://github.com/moonglum)
+**Author**: [Lucas Dohmen](https://github.com/moonglum)
 
-Tags: #foxx
+**Tags**: #foxx

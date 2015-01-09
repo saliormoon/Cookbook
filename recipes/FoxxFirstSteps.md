@@ -221,6 +221,6 @@ controller.del('/:key', function (req, res) {
 * We will also talk about workers and how to do work outside the request-response-cycle. Until then [check out the documentation for it](https://docs.arangodb.com/beta/Foxx/FoxxQueues.html).
 
 
-Author: [Lucas Dohmen](https://github.com/moonglum)
+**Author**: [Lucas Dohmen](https://github.com/moonglum)
 
-Tags: #foxx
+**Tags**: #foxx

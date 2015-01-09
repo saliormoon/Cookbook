@@ -4,7 +4,7 @@
 
 I want to create a simple API with [Foxx](https://foxx.arangodb.com), but I never created one before. Specifically I want to create simple API to organize my todo items.
 
-**Note:** For this recipe you need at Arango 2.3. or a version below. For Arango since 2.4 look at the [new My first Foxx App](https://docs.arangodb.com/FoxxFirstSteps.md).
+**Note:** For this recipe you need Arango 2.3. or a version below. For Arango since 2.4 look at the [new My first Foxx App](https://docs.arangodb.com/FoxxFirstSteps.md).
 
 ## Solution
 
@@ -238,6 +238,6 @@ controller.del('/:key', function (req, res) {
 * We will also talk about workers and how to do work outside the request-response-cycle. Until then [check out the documentation for it](https://docs.arangodb.com/beta/Foxx/FoxxQueues.html).
 
 
-Author: [Lucas Dohmen](https://github.com/moonglum)
+**Author**: [Lucas Dohmen](https://github.com/moonglum)
 
-Tags: #foxx
+**Tags**: #foxx

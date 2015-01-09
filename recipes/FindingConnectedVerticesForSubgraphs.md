@@ -1,6 +1,7 @@
 # Search for vertices of special type connecting a given subgraph
 
 ## Acknowledgments
+
 This problem has come up as a question on [Stackoverflow][1].
 All credits for the problem go to [sergeda][2].
 I liked the problem so much that I decided to write this recipe about it.
@@ -56,7 +57,7 @@ Test Dataset creation in arangosh:
     graph.edges.save("circles/G", "crosses/F", {});
     graph.edges.save("circles/H", "crosses/F", {});
 
-Now we have created the graph as described in the problem szenario above.
+Now we have created the graph as described in the problem scenario above.
 Now we are given a set of vertices within the graph: `["circles/A","circles/B","circles/C","circles/D"]`
 For this recipe we hard-code this exact subset, in production we would replace it by a bindParameter to a result of another subquery.
 Many of ArangoDBs graph functions accept a predefined set of vertex documents as input parameters so this is already a good start.

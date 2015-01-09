@@ -5,7 +5,7 @@
 * [Crawling Github with Promises](CrawlingGithubPromises.md)
 * Graph-based recipes
   * [Fulldepth Graph-Traversal](Fulldepth.md)
-  * [Connected Vertices for Subgraphs](FindingConnectedVerticesForSubgraphs.md)
+  * [Vertices for Subgraphs](FindingConnectedVerticesForSubgraphs.md)
   * [Vertex in JavaDriver](JavaDriverGraphExampleVertex.md)
 * AQL
   * [Using Joins in AQL](JoinsInAQL.md)
@@ -18,9 +18,10 @@
   * [How to deploy a Foxx App](FoxxDeploy.md)
 * Compiling / Build
   * [Compiling on Debian](CompilingOnDebian.md)
-  * [Compiling on Windows](CompilingUnderWindows.md)
+  * [Compiling on Windows in 2.4](CompilingUnderWindows.md)
+  * [Compiling on Windows until 2.4](CompilingUnderWindowsLegacy.md)
   * [Running Custom Build](RunningCustomBuild.md)
 * Docker
-  * [How to run ArangoDB in a Docker Container](RunningInDockerContainer.md)
+  * [Run ArangoDB in Docker](RunningInDockerContainer.md)
   * [ArangoDB, NodeJS and Docker](UsingArangoDBNodeJSDocker.md)
-  * [ArangoDB in the GiantSwarm using Docker](UsingArangoDBInGiantSwarm.md)
+  * [In the GiantSwarm using Docker](UsingArangoDBInGiantSwarm.md)
