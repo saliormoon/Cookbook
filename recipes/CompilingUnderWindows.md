@@ -102,14 +102,14 @@ To build the 64 bit version, use
     cd Build64
     cmake -G "Visual Studio 12 Win64" ..
 
+Alternatively use `cmake` to build the executables.
+
+    cmake --build . --config Release
+
 In order to execute the binaries you need to copy the ICU datafile into the directory containing the
 executable
 
     cp WindowsLibraries/64/icudtl.dat Build64/bin/Debug/icudt52l.dat
-
-Alternatively use `cmake` to build the executables.
-
-    cmake --build . --config Release
 
 **Author**: [Frank Celler](https://github.com/fceller)
 
