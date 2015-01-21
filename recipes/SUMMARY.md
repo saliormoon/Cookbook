@@ -21,6 +21,7 @@
   * [Compiling on Windows in 2.4](CompilingUnderWindows.md)
   * [Compiling on Windows until 2.4](CompilingUnderWindowsLegacy.md)
   * [Running Custom Build](RunningCustomBuild.md)
+  * [Retrieve Documents](JavaDriverBaseDocument.md)
 * Docker
   * [Run ArangoDB in Docker](RunningInDockerContainer.md)
   * [ArangoDB, NodeJS and Docker](UsingArangoDBNodeJSDocker.md)
