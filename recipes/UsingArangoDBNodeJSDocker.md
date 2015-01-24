@@ -65,7 +65,7 @@ container to it. We ignore this here for the sake of simplicity.
 ### Guesser Game
 
 
-### Some Testing
+#### Some Testing
 
 Use the guesser game image to start the ArangoDB shell and link the ArangoDB instance to
 it.
