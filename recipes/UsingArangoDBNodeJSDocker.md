@@ -64,6 +64,9 @@ container to it. We ignore this here for the sake of simplicity.
 
 ### Guesser Game
 
+
+### Some Testing
+
 Use the guesser game image to start the ArangoDB shell and link the ArangoDB instance to
 it.
 
@@ -93,6 +96,8 @@ The important line is
 
 It tells you that the application container was able to connect to the database
 back-end. Press `Control-D` to exit.
+
+#### Start Up The Game
 
 Ready to play? Start the front-end container with the database link and initialize the database.
 
