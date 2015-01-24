@@ -47,7 +47,7 @@ If you want to build the container locally, check out the guesser game from
 
     https://github.com/arangodb/example-guesser
 
-switch into the `docker` subdirectory and execute `docker build .`.
+switch into the `docker/node` subdirectory and execute `docker build .`.
 
 ### ArangoDB
 
