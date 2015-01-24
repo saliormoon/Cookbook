@@ -32,8 +32,6 @@ The dockerfiles used to create the images are available from github
 
     https://github.com/arangodb/guesser
 
-Note that you need to checkout the docker branch.
-
 ### Set up the Swarm
 
 Set up your swarm environment as described in the documentation. Create a configuration
