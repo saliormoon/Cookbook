@@ -2,7 +2,7 @@
 
 ## Problem 
 
-I want to use ArangoDB in Mesos with Docker containers.
+I want to use ArangoDB in Mesosphere with Docker containers.
 
 ## Solution
 
