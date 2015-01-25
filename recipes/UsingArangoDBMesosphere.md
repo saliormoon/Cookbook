@@ -43,7 +43,7 @@ master.
 ### Set Up the Application
 
 For this torutial we bind the database to a fixed port on the mesos
-environment. Please not, that the
+environment. Please note, that the
 [mesosphere uses HAproxy](https://mesosphere.github.io/marathon/docs/service-discovery-load-balancing.html)
 to map the global port to the real host and port. The servers created by Mesosphere
 will have a HAproxy defined on all masters and slaves.
