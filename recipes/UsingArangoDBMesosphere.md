@@ -1,4 +1,4 @@
-# ArangoDB on Apache Mesos using Docker containers
+# ArangoDB on Mesosphere using Marathon and Dockers
 
 ## Problem 
 
