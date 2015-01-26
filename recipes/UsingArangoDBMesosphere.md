@@ -1,4 +1,4 @@
-# ArangoDB on Mesosphere using Marathon and Dockers
+# ArangoDB on Mesosphere using Marathon and Docker
 
 ## Problem 
 
@@ -42,7 +42,7 @@ master.
 
 ### Set Up the Application
 
-For this torutial we bind the database to a fixed port on the mesos
+For this tutorial we bind the database to a fixed port on the mesos
 environment. Please note, that the
 [mesosphere uses HAproxy](https://mesosphere.github.io/marathon/docs/service-discovery-load-balancing.html)
 to map the global port to the real host and port. The servers created by Mesosphere
