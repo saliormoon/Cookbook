@@ -107,52 +107,52 @@ Marathon allows to define a group of applications with dependencies between the
 components. The front-end depends on the back-end, therefore the complete group
 definitions looks like
 
-	{
-	  "id": "/guesser",
-	  "groups": [
-		{
-		  "id": "/guesser/database",
-		  "apps": [
-			 {
-			   "id": "/guesser/database/arangodb", 
-			   "container": {
-				 "docker": {
-				   "image": "arangodb/example-guesser-db",
-				   "network": "BRIDGE",
-				   "portMappings": [
-					   { "containerPort": 8529, "hostPort": 0, "servicePort": 32222, "protocol": "tcp" }
-				   ]
-				 }
-			   },
-			   "cpus": 0.2,
-			   "mem": 512.0,
-			   "instances": 1
-			 }
-		   ]
-		},
-		{
-		  "id": "/guesser/frontend",
-		  "dependencies": ["/guesser/database"],
-		  "apps": [
-			 {
-			   "id": "/guesser/frontend/node",
-			   "container": {
-				 "docker": {
-				   "image": "arangodb/example-guesser",
-				   "network": "BRIDGE",
-				   "portMappings": [
-					   { "containerPort": 8000, "hostPort": 0, "servicePort": 32221, "protocol": "tcp" }
-				   ]
-				 } 
-			   },
-			   "cpus": 0.2,
-			   "mem": 256.0,
-			   "instances": 1
-			 } 
-		  ]
-		}
-	  ]
-	}
+  {
+    "id": "/guesser",
+    "groups": [
+    {
+      "id": "/guesser/database",
+      "apps": [
+       {
+         "id": "/guesser/database/arangodb", 
+         "container": {
+         "docker": {
+           "image": "arangodb/example-guesser-db",
+           "network": "BRIDGE",
+           "portMappings": [
+             { "containerPort": 8529, "hostPort": 0, "servicePort": 32222, "protocol": "tcp" }
+           ]
+         }
+         },
+         "cpus": 0.2,
+         "mem": 512.0,
+         "instances": 1
+       }
+       ]
+    },
+    {
+      "id": "/guesser/frontend",
+      "dependencies": ["/guesser/database"],
+      "apps": [
+       {
+         "id": "/guesser/frontend/node",
+         "container": {
+         "docker": {
+           "image": "arangodb/example-guesser",
+           "network": "BRIDGE",
+           "portMappings": [
+             { "containerPort": 8000, "hostPort": 0, "servicePort": 32221, "protocol": "tcp" }
+           ]
+         } 
+         },
+         "cpus": 0.2,
+         "mem": 256.0,
+         "instances": 1
+       } 
+      ]
+    }
+    ]
+  }
 
 This starts one instance of the back-end called `/guesser/database/arangodb` and one
 instance of the front-end called `/guesser/frontend/node`. The front-end depends on
