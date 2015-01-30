@@ -69,7 +69,7 @@ export CXXFLAGS="-g -O0"
 Now, as normal user, we will clone and build ArangoDB
 
 ```bash
-git clone -b devel git://github.com/triAGENS/ArangoDB.git
+git clone -b devel git://github.com/arangodb/arangodb.git
 cd ArangoDB
 make setup
 ./configure --enable-all-in-one-v8 --enable-all-in-one-libev --enable-all-in-one-icu
