@@ -58,7 +58,7 @@ This will create a folder `WindowsLibraries` containing the headers and librarie
 
 Clone the repository
 
-    https://github.com/triAGENS/ArangoDB.git
+    https://github.com/arangodb/arangodb.git
 
 and copy the previously created `WindowsLibraries` folder into this directory `ArangoDB`.
 
