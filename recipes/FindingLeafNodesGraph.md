@@ -13,6 +13,8 @@ is visited during the traversal. It can append values to the traversal result.
 User-defined visitor functions are written in JavaScript. Once the function is written,
 it needs to be registered on the server to become usable from inside an AQL query.
 
+### Example data setup
+
 For the following, we need the example graph and data from [here](https://jsteemann.github.io/downloads/code/world-graph-setup.js).
 Please download the code from the link and store it in the filesystem using a filename
 of `world-graph-setup.js`. Then start the ArangoShell and run the code from the file:
@@ -46,6 +48,8 @@ configuration and behavior. The default visitor will put every visited vertex
 into the result, and this is not what we want. Instead, we will only return
 leaf nodes.
 
+### Registering a custom visitor function
+
 Here's a visitor function to do this. Please execute the following code in the
 ArangoShell to register the function and make it available from with AQL:
 
@@ -60,9 +64,12 @@ aqlfunctions.register("myfunctions::leafNodeVisitor", function (config, result, 
 ```
 
 That code snippet should have stored the custom visitor under a name 
-`myfunctions::leafNodeVisitor`. Now we only need to write an AQL query that uses the visitor.
+`myfunctions::leafNodeVisitor`. 
 
-Here it is:
+### Using the visitor from an AQL query
+
+Now we only need to write an AQL query that invokes the custom visitor. The following
+query is an example for this. You can execute it from the **AQL editor** in the web interface:
  
 ```
 LET params = { 
@@ -74,7 +81,7 @@ FOR result IN TRAVERSAL(v, e, "v/world", "inbound", params)
   RETURN result
 ```
 
-You can run the above query from the **AQL editor** in the web interface. 
+### Remarks
 
 Please note the following things:
 
@@ -98,6 +105,8 @@ Please note the following things:
   other node visited, the custom visitor will not return anything, so nothing will get
   append to the traversal result in that case.
 
+### Further uses
+
 The above example is using the AQL function `TRAVERSAL()`, which requires a vertex and 
 an edge collection to be specified. Custom visitors can also be used in the
 `GRAPH_TRAVERSAL()` AQL function, which does not require named collections but a named 
@@ -113,6 +122,10 @@ LET params = {
 FOR result IN GRAPH_TRAVERSAL("WorldGraph", "v/world", "inbound", params) 
   RETURN result
 ```
+
+Custom visitors can be also combined with custom filter functions to restrict results to only
+certain types of vertices, or to follow only specific edges/connections/paths in the graph.
+
 
 Author: [ArangoDB GmbH](https://www.arangodb.com)
 
