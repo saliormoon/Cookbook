@@ -10,6 +10,7 @@
 * AQL
   * [Using Joins in AQL](JoinsInAQL.md)
   * [Finding leaf nodes in a Graph](FindingLeafNodesGraph.md)
+  * [Filtering nodes in a Graph](FilteringNodesGraph.md)
   * [Counting nodes efficiently in a Graph](CountingNodesEfficientlyGraph.md)
 * Foxx
   * [My First Foxx App](FoxxFirstSteps.md)

@@ -113,6 +113,31 @@ FOR result IN GRAPH_TRAVERSAL("WorldGraph", "v/world", "inbound", params)
   RETURN result
 ```
 
+In order to produce not only a single result value but counting vertices by other criteria,
+use an object to hold multiple counter values.
+
+The following counter function (also named `myfunctions::vertexCounter`) counts the number
+of vertices visited grouped by the value of their `type` attributes:
+
+```js
+var aqlfunctions = require("org/arangodb/aql/functions");
+
+aqlfunctions.register("myfunctions::vertexCounter", function (config, result, vertex) {
+  if (result.length === 0) {
+    result.push({ });
+  }
+  var vertexType = vertex.type;
+  if (! result[0].hasOwnProperty(vertexType)) {
+    result[0][vertexType] = 1;
+  }
+  else {
+    result[0][vertexType]++;
+  }
+});
+```
+
+You can use the same AQL query as above to run the query.
+
 Custom visitors such as the counter function in this example can be combined with custom 
 filter functions, too. This allows restricting results to only certain types of vertices, 
 or following only specific edges/connections/paths in the graph.
