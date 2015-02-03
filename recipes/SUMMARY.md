@@ -12,6 +12,7 @@
   * [Finding leaf nodes in a Graph](FindingLeafNodesGraph.md)
   * [Filtering nodes in a Graph](FilteringNodesGraph.md)
   * [Counting nodes efficiently in a Graph](CountingNodesEfficientlyGraph.md)
+  * [Creating test data using AQL](CreatingTestDataAQL.md)
 * Foxx
   * [My First Foxx App](FoxxFirstSteps.md)
   * [My First Foxx App (deprecated)](FoxxFirstStepsLegacy.md)
