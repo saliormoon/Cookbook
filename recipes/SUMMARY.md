@@ -9,6 +9,7 @@
   * [Vertex in JavaDriver](JavaDriverGraphExampleVertex.md)
 * AQL
   * [Using Joins in AQL](JoinsInAQL.md)
+  * [Finding leaf nodes in a Graph](FindingLeafNodesGraph.md)
 * Foxx
   * [My First Foxx App](FoxxFirstSteps.md)
   * [My First Foxx App (deprecated)](FoxxFirstStepsLegacy.md)
