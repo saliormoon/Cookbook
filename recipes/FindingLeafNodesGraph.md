@@ -28,7 +28,7 @@ The script will create the following two collections and load some data into the
 - `v`: a collection with vertex documents
 - `e`: an edge collection containing the connections between vertices in `v`
 
-The data in the example graph connects captials to countries, countries to 
+The data in the example graph connects capitals to countries, countries to 
 continents, and all continents to a single root node. The structure looks like
 this:
 
@@ -127,6 +127,6 @@ Custom visitors can be also combined with custom filter functions to restrict re
 certain types of vertices, or to follow only specific edges/connections/paths in the graph.
 
 
-Author: [ArangoDB GmbH](https://www.arangodb.com)
+**Author:** [Jan Steemann](https://github.com/jsteemann)
 
-Tags: #graph #traversal #aql
+**Tags**: #graph #traversal #aql

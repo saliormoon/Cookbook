@@ -142,6 +142,6 @@ Custom visitors such as the counter function in this example can be combined wit
 filter functions, too. This allows restricting results to only certain types of vertices, 
 or following only specific edges/connections/paths in the graph.
 
-Author: [ArangoDB GmbH](https://www.arangodb.com)
+**Author:** [Jan Steemann](https://github.com/jsteemann)
 
-Tags: #graph #traversal #aql
+**Tags**: #graph #traversal #aql

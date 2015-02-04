@@ -26,7 +26,7 @@ of `world-graph-setup.js`. Then start the ArangoShell and run the code from the 
 require("internal").load("/path/to/file/world-graph-setup.js");
 ```
 
-The data in the example graph connects captials to countries, countries to 
+The data in the example graph connects capitals to countries, countries to 
 continents, and all continents to a single root node. The structure looks like
 this:
 
@@ -124,6 +124,6 @@ FOR result IN GRAPH_TRAVERSAL("WorldGraph", "v/world", "inbound", params)
 
 Custom filters can be combined with custom visitor functions for maximum flexibility.
 
-Author: [ArangoDB GmbH](https://www.arangodb.com)
+**Author:** [Jan Steemann](https://github.com/jsteemann)
 
-Tags: #graph #traversal #aql
+**Tags**: #graph #traversal #aql

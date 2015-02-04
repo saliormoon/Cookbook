@@ -84,6 +84,6 @@ FOR doc IN myCollection
 
 The above query will provide the number of documents per distinct `value`.
 
-Author: [ArangoDB GmbH](https://www.arangodb.com)
+**Author:** [Jan Steemann](https://github.com/jsteemann)
 
-Tags: #aql
+**Tags**: #aql
