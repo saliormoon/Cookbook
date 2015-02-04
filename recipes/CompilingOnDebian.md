@@ -72,7 +72,7 @@ Now, as normal user, we will clone and build ArangoDB
 git clone -b devel git://github.com/arangodb/arangodb.git
 cd ArangoDB
 make setup
-./configure --enable-all-in-one-v8 --enable-all-in-one-libev --enable-all-in-one-icu
+./configure 
 ```
 
 The configure summary should include a version and details for: readline, openssl, zlib, libev, v8, icu.
