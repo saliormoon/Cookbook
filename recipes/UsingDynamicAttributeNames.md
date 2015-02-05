@@ -10,7 +10,7 @@ literals require the names and numbers of attributes to be fixed at query compil
 
 ## Solution
 
-There are severval solutions to getting dynamic attribute names to work.
+There are several solutions to getting dynamic attribute names to work.
 
 ### Subquery solution
 
