@@ -10,6 +10,7 @@
 * AQL
   * [Using Joins in AQL](JoinsInAQL.md)
   * [Using Dynamic Attribute Names](UsingDynamicAttributeNames.md)
+  * [Creating test data using AQL](CreatingTestDataAQL.md)
 * Foxx
   * [My First Foxx App in 2.4](FoxxFirstSteps.md)
   * [My First Foxx App until 2.4](FoxxFirstStepsLegacy.md)
