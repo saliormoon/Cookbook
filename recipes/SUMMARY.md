@@ -9,6 +9,8 @@
   * [Vertex in JavaDriver](JavaDriverGraphExampleVertex.md)
 * AQL
   * [Using Joins in AQL](JoinsInAQL.md)
+  * [Using Dynamic Attribute Names](UsingDynamicAttributeNames.md)
+  * [Creating test data using AQL](CreatingTestDataAQL.md)
 * Foxx
   * [My First Foxx App in 2.4](FoxxFirstSteps.md)
   * [My First Foxx App until 2.4](FoxxFirstStepsLegacy.md)
@@ -25,3 +27,4 @@
   * [Run ArangoDB in Docker](RunningInDockerContainer.md)
   * [ArangoDB, NodeJS and Docker](UsingArangoDBNodeJSDocker.md)
   * [In the GiantSwarm using Docker](UsingArangoDBInGiantSwarm.md)
+  * [ArangoDB in Mesosphere](UsingArangoDBMesosphere.md)

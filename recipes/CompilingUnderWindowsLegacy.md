@@ -62,7 +62,7 @@ This will create a folder `3rdParty-Windows` containing the headers and librarie
 
 Clone the repository
 
-    https://github.com/triAGENS/ArangoDB.git
+    https://github.com/arangodb/arangodb.git
 
 and copy the `3rdParty-Windows` folder into this directory `ArangoDB`.
 
