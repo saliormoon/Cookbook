@@ -17,15 +17,15 @@ For this receipt, you need to install the following programs under Windows:
 
 * [cygwin](https://www.cygwin.com/)
 
-You need at least `make` from cygwin. Cygwin also offers a `cmake` do not install this version. <!--The unittests require the bash.-->
+You need at least `make` from cygwin. Cygwin also offers a `cmake` do not install this version. The unittests require the bash.
 
 * [cmake](http://www.cmake.org/)
 
-Either version 2.8.12 or 3.0.2 should work. Make sure to download the 64bit version.
+Either version 2.8.12, 3.0.2 or 3.1.2 should work. Attention - pitfall: the cygwin version doesn't work.
 
 * [python](http://python.org)
 
-Either version 2.x or 3.x should work - its used to run V8s GYP. Make shure you add the way to python.exe to your path environment variable; Restarting your running shells may be neccessary.
+Either version 2.x or 3.x (excluding 3.4) should work - its used to run V8s GYP. Make shure you add the way to python.exe to your path environment variable; Restarting your running shells may be neccessary.
 
 * Visual Studio Express 2013 for Windows Desktop
 
@@ -100,11 +100,12 @@ For development builds which are able to run the unit tests run <!--(adjust the 
     export BOOST_ROOT='c:\Program Files\boost_1_56_0\'
     export BOOST_LIBRARYDIR='c:\Program Files\boost_1_56_0\lib64-msvc-12.0'
     BOOSTROOT='c:\Program Files\boost_1_56_0'
-BOOST_INCLUDE='c:\Program Files\boost_1_56_0\'
-BOOST_LIBRARYDIR='c:\Program Files\boost_1_56_0\lib64-msvc-12.0'
-BOOST_ROOT='c:\Program Files\boost_1_56_0\'
-CMAKE_INCLUDE_PATHE='c:\Program Files\boost_1_56_0\'
+    BOOST_INCLUDE='c:\Program Files\boost_1_56_0\'
+    BOOST_LIBRARYDIR='c:\Program Files\boost_1_56_0\lib64-msvc-12.0'
+    BOOST_ROOT='c:\Program Files\boost_1_56_0\'
+    CMAKE_INCLUDE_PATHE='c:\Program Files\boost_1_56_0\'
 -->
+
     make pack-win64-relative
 
 Since most of the scripts assume they're running on a unix system, some directories are treated as mandatory and thus have to be created on the drive where you checked out your source:
