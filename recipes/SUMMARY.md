@@ -10,6 +10,9 @@
 * AQL
   * [Using Joins in AQL](JoinsInAQL.md)
   * [Using Dynamic Attribute Names](UsingDynamicAttributeNames.md)
+  * [Finding leaf nodes in a Graph](FindingLeafNodesGraph.md)
+  * [Filtering nodes in a Graph](FilteringNodesGraph.md)
+  * [Counting nodes efficiently](CountingNodesEfficientlyGraph.md)
   * [Creating test data using AQL](CreatingTestDataAQL.md)
 * Foxx
   * [My First Foxx App in 2.4](FoxxFirstSteps.md)
