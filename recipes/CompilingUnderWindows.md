@@ -13,11 +13,11 @@ is a bit more demanding.
 
 ### Ingredients
 
-For this receipt, you need to install the following programs under Windows:
+For this recipe you need to install the following programs under Windows:
 
 * [cygwin](https://www.cygwin.com/)
 
-You need at least `make` from cygwin. Cygwin also offers a `cmake` do not install this version. The unittests require the bash.
+You need at least `make` from cygwin. Cygwin also offers a `cmake`. Do **not** install this version. The unit tests require the bash.
 
 * [cmake](http://www.cmake.org/)
 
@@ -25,7 +25,7 @@ Either version 2.8.12, 3.0.2 or 3.1.2 should work. Attention - pitfall: the cygw
 
 * [python](http://python.org)
 
-Either version 2.x or 3.x (excluding 3.4) should work - its used to run V8s GYP. Make shure you add the way to python.exe to your path environment variable; Restarting your running shells may be neccessary.
+Either version 2.x or 3.x (excluding 3.4) should work - it's used to run V8s GYP. Make sure you add python.exe to your path environment variable; Restarting your running shell may be necessary.
 
 * Visual Studio Express 2013 for Windows Desktop
 
