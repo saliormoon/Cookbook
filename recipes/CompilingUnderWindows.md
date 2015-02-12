@@ -41,6 +41,8 @@ be found. One way is to execute the `vcvarsall.bat` script from the `VC` folder.
 
 * [Nullsoft Scriptable Install System](http://nsis.sourceforge.net/Download)
 
+* [Ruby](https://www.ruby-lang.org/en/downloads/) (for the unittests, if you intend to run them)
+
 ### Building the required libraries
 
 First of all, start a `bash` from cygwin and clone the repository using the corresponding branch, e.g. for ArangoDB 2.4:
@@ -95,8 +97,11 @@ or
 in order to build the installer file for either 32 bit or 64 bit.
 
 ## Development builds
-For development builds which are able to run the unit tests run <!--(adjust the boost directory to your situation):
-
+For development builds which are able to run the unit tests run
+<!--
+(adjust the boost directory to your situation):
+-->
+<!--
     export BOOST_ROOT='c:\Program Files\boost_1_56_0\'
     export BOOST_LIBRARYDIR='c:\Program Files\boost_1_56_0\lib64-msvc-12.0'
     BOOSTROOT='c:\Program Files\boost_1_56_0'
@@ -111,6 +116,21 @@ For development builds which are able to run the unit tests run <!--(adjust the 
 Since most of the scripts assume they're running on a unix system, some directories are treated as mandatory and thus have to be created on the drive where you checked out your source:
 
   mkdir -p /cygdrive/c/var/tmp/
+
+You probably already downloaded and installed [Ruby](https://www.ruby-lang.org/en/downloads/). Now we need to install the httparty and rspec gems. In order to use gem, you need to [Install certificates](https://gist.github.com/fnichol/867550). Once you did that you can run:
+
+    gem install httparty rspec
+
+The *bin/rspec.bat* created by gem is not sufficient for being run by the unittesting facility; replace it with something like this:
+
+    @ECHO OFF
+    IF NOT "%~f0" == "~f0" GOTO :WinNT
+    @"C:\Program Files (x86)\Rub21-x64\bin\ruby.exe" "C:/Program Files (x86)/Ruby21-x64/bin/rspec" %1 %2 %3 %4 %5 %6 %7 %8 %9
+    GOTO :EOF
+    :WinNT
+    @"C:\Program Files (x86)\Ruby21-x64\bin\ruby.exe" "C:/Program Files (x86)/Ruby21-x64/bin/rspec" %*
+
+
   
 You can then run the unittests like that:
 
