@@ -7,7 +7,7 @@
   * [Fulldepth Graph-Traversal](Fulldepth.md)
   * [Vertices for Subgraphs](FindingConnectedVerticesForSubgraphs.md)
   * [Vertex in JavaDriver](JavaDriverGraphExampleVertex.md)
-  * [Using a custom visitor from node.js](UsingCustomVisitorFromNodeJs.md)
+  * [Using a custom visitor](UsingCustomVisitorFromNodeJs.md)
 * AQL
   * [Using Joins in AQL](JoinsInAQL.md)
   * [Using Dynamic Attribute Names](UsingDynamicAttributeNames.md)
