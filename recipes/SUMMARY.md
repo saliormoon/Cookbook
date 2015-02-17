@@ -3,6 +3,7 @@
 * [Modelling Document Inheritance](ModulDocumentInheritance.md)
 * [Accessing Shapes Data](AccessingShapesData.md)
 * [Crawling Github with Promises](CrawlingGithubPromises.md)
+* [Populating an autocomplete textbox](PopulatingAnAutocompleteTextbox.md)
 * Graph-based recipes
   * [Fulldepth Graph-Traversal](Fulldepth.md)
   * [Vertices for Subgraphs](FindingConnectedVerticesForSubgraphs.md)
