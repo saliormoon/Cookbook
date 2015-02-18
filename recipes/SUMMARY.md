@@ -1,4 +1,5 @@
 # Summary
+* [Using authentication](UsingAuthentication.md)
 * [Replicating Data](ReplicatingData.md)
 * [Modelling Document Inheritance](ModulDocumentInheritance.md)
 * [Accessing Shapes Data](AccessingShapesData.md)
@@ -23,6 +24,7 @@
   * [Adding Email Support](FoxxQueues.md)
   * [My First FoxxGenerator App](FoxxGeneratorFirstSteps.md)
   * [How to deploy a Foxx App](FoxxDeploy.md)
+  * [Foxx app accessible from the Web](MakingFoxxAppAccessible.md)
 * Compiling / Build
   * [Compiling on Debian](CompilingOnDebian.md)
   * [Compiling on Windows in 2.4](CompilingUnderWindows.md)
