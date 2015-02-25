@@ -40,7 +40,7 @@ controller.post('/register', function(req, res) {
     username: username,
     password: password
   });
-}).bodyParam('credentials', 'Username and Password', Credentials);
+}).bodyParam('credentials', {description: 'Username and Password', type: Credentials});
 ```
 
 Now we need to have a place to store users. In order to do that, we will use the functionality of two other foxx applications by requiring them. We're loading the exported APIs of the built-in user and auth apps (we will see what that means in a minute). Like the built-in sessions app, a copy of the user and auth apps are automatically mounted at these mount points by ArangoDB. So all we do in our controller is the following:
@@ -169,7 +169,7 @@ controller.post('/login', function (req, res) {
   res.json({
     msg: 'Welcome ' + user.get('user')
   });
-}).bodyParam('credentials', 'Username and Password', Credentials)
+}).bodyParam('credentials', {description: 'Username and Password', type: Credentials})
   .errorResponse(NotLoggedIn, 401, 'Login failed');
 ```
 
