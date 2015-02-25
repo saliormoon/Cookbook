@@ -43,7 +43,7 @@ controller.post('/register', function(req, res) {
 }).bodyParam('credentials', 'Username and Password', Credentials);
 ```
 
-Now we need to have a place to store users. In order to do that, we will use the functionality of two other foxx applications by first requiring them and then injecting them. We're loading the exported APIs of the built-in user and auth apps (we will see what that means in a minute). Like the built-in sessions app, a copy of the user and auth apps are automatically mounted at these mount points by ArangoDB. So all we do in our controller is the following:
+Now we need to have a place to store users. In order to do that, we will use the functionality of two other foxx applications by requiring them. We're loading the exported APIs of the built-in user and auth apps (we will see what that means in a minute). Like the built-in sessions app, a copy of the user and auth apps are automatically mounted at these mount points by ArangoDB. So all we do in our controller is the following:
 
 ```js
 var auth = Foxx.requireApp('/_system/simple-auth').auth,
@@ -161,7 +161,7 @@ Let's use this in a new login route:
 ```js
 var login = require('./util/auth').login;
 
-controller.post('/login', function (req, res, injected) {
+controller.post('/login', function (req, res) {
   var credentials = req.params('credentials'),
     user = login(credentials, req.session);
 
