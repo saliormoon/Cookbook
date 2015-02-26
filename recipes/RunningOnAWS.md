@@ -5,7 +5,7 @@ How do you make ArangoDB run on [Amazons Web Service][1] (AWS)?
 
 First of all go the [ArangoDB marketplace][2] and click on **Continue**
 
-![ArangoDB marketplace](assets/RunningOnAWS/marketplace.png)
+![AWS marketplace](assets/RunningOnAWS/marketplace.png)
 
 Now log in with your AWS Account or create a new one.
 
