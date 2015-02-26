@@ -20,7 +20,8 @@
 * Foxx
   * [My First Foxx App in 2.4](FoxxFirstSteps.md)
   * [My First Foxx App until 2.4](FoxxFirstStepsLegacy.md)
-  * [Adding Authentication](FoxxAuth.md)
+  * [Adding Authentication in 2.4](FoxxAuth.md)
+  * [Adding Authentication in 2.5](FoxxAuth.md)
   * [Adding Email Support](FoxxQueues.md)
   * [My First FoxxGenerator App](FoxxGeneratorFirstSteps.md)
   * [How to deploy a Foxx App](FoxxDeploy.md)

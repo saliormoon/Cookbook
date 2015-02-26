@@ -13,7 +13,7 @@ is a bit more demanding.
 
 ### Ingredients
 
-For this receipt, you need to install the following programs under Windows:
+For this recipe, you need to install the following programs under Windows:
 
 * [cygwin](https://www.cygwin.com/)
 
