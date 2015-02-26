@@ -135,7 +135,7 @@ controller.post('/', function (req, res) {
   var todo = req.params('todo');
   todos.save(todo);
   res.json(todo.forClient());
-}).bodyParam('todo', 'The Todo you want to create', Todo);
+}).bodyParam('todo', {description: 'The Todo you want to create', type: Todo});
 ```
 
 
