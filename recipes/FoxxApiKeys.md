@@ -7,7 +7,7 @@
 I have collected some data that I would like to make available via an API.
 But I want to restrict the API calls by issuing API keys to my users.
 Also I would like to offer several plans for API keys, one for free users and one for premium users.
-The premium users should be allowed to access the same API more often then free users.
+The premium users should be allowed to access the same API more often than free users.
 
 ## Solution
 
@@ -33,7 +33,7 @@ exports.Repository = Weather;
 ```
 
 But now lets focus on the main part of this recipe, the controller.
-The first api-key free implementation is the following `controller.js`:
+The first API-key free implementation is the following `controller.js`:
 
 ```js
 "use strict";
@@ -62,18 +62,18 @@ controller.get("/week/:zip", function(req, res) {
 }).pathParam("zip", {type: joi.number().integer().min(10000).max(99999);
 ```
 
-With this controller everyone can access my weather API and can call infinitly many calls to each of the routes.
+With this controller everyone can access my weather API and can call infinitely many calls to each of the routes.
 But I want to restrict it such that there is a free account and a paid premium account.
 I want to restrict a free plan to request the weather for a zipcode only five times per day.
 A premium user should be allowed to access the weather two times per hour.
 
-In order to achieve this i can make use of the Foxx API keys app available in the ArangoDB store, I will install it at the mountpoint /api
+In order to achieve this I can make use of the Foxx API keys App available in the ArangoDB store, I will install it at the mountpoint /api
 
 ```
 unix>foxx-manager install foxx-api-keys /api
 ```
 
-This gives me a basic adminstration tool to create my plans for API keys and issue new ones.
+This gives me a basic administration tool to create my plans for API keys and issue new ones.
 I can either do this via the shipped web interface or via API calls.
 I have prepared two plans "Simple" and "Premium" according to my definition before. There I have defined a bucket named `request` which will be refilled at the given rate and which should take away tokens whenever the API key is used:
 
@@ -91,13 +91,13 @@ Now I get an overview of all issued keys and can send them to my users:
 But how to restrict my API now?
 
 That is just a few lines of code.
-First of all I have to include the foxx-api-keys app mounted at /api:
+First of all I have to include the Foxx-API-keys App mounted at /api:
 
 ```js
 let apiKeys = Foxx.requireApp('/api').apiKeys;
 ```
 
-Then have to extend my controller and attach an additional function I can call on all my routes to setup the restriction:
+Then I have to extend my controller and attach an additional function I can call on all my routes to setup the restriction:
 
 ```js
 controller.extend({
@@ -106,7 +106,7 @@ controller.extend({
 
 ```
 
-This simple command allows me to call a function `countCall(bucket, amount)` which will take a way `amount` many tokens from the `bucket` and will return with an http 400 if either no valid API key is submitted or the `bucket` does not contain enough tokens.
+This simple command allows me to call a function `countCall(bucket, amount)` which will take away `amount` many tokens from the `bucket` and will return with an http 400 if either no valid API key is submitted or the `bucket` does not contain enough tokens.
 The parameter `amount` is optional and will default to `1`.
 **Note** I can also use `amount = 0` to only validate the API key but make the route free of charge.
 Now I can extend my routes in the following way:
@@ -123,13 +123,13 @@ controller.get("/day/:zip", function(req, res) {
 .countCall("request");
 ```
 
-What happend now to my route?
+What happened now to my route?
 
 1. It expects an additional query parameter "apiKey", if that one is invalid or not given the route will return with a 400 - Bad request
 2. If the apiKey is valid (contained in the list of API keys) it is checked if the bucket `request` of this user has enough tokens left. If not the route will return with a 400 - Bad request
-3. If the route has not yet returned my own code will be evaluated.
+3. If the route has not yet returned my own code will be evaluated
 
-Now lets fire some commands against my api:
+Now lets fire some commands against my API:
 
 No API key:
 ```
@@ -182,7 +182,7 @@ Content-Length: 64
 {"error":"The apikey has issued too many requests of this type"}
 ```
 
-Problem solved, my API is restricted by the API keys I issue via foxx-api-keys app.
+Problem solved, my API is restricted by the API keys I issue via Foxx-API-keys app.
 
 Full controller code:
 
@@ -223,8 +223,8 @@ controller.get("/week/:zip", function(req, res) {
 
 **Notes:**
 * You can define several buckets for the same plan, f.e. a bucket for read and a bucket for write requests
-* The api-key-app is neither restricted to the mountpoint `/api` nor to the database `_system`, this is just an example used here.
-* The api-key-app does not work across databases. You need to have it mounted in the same databases as your secured API.
+* The API-key-app is neither restricted to the mountpoint `/api` nor to the database `_system`, this is just an example used here.
+* The API-key-app does not work across databases. You need to have it mounted in the same databases as your secured API.
 
 **Author**: [Michael Hackstein](https://github.com/mchacki)
 
