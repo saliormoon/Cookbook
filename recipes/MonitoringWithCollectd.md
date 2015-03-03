@@ -1,8 +1,8 @@
-* Monitoring ArangoDB using collectd
+#Monitoring ArangoDB using collectd
 
 ##Problem
 
-The Aardvark webinterface shows a nice summary of the current state; I want to see similar numbers in my monitoring system so I can analyze the system usage post mortem or send alarms on failure.
+The ArangoDB web interface shows a nice summary of the current state. I want to see similar numbers in my monitoring system so I can analyze the system usage post mortem or send alarms on failure.
 
 ## Solution
 
@@ -12,30 +12,31 @@ The Aardvark webinterface shows a nice summary of the current state; I want to s
 
 For this recipe you need to install the following tools:
 
-  * [collectd >= 5.4.2](https://collectd.org/) The aggregation Daemon
-  * [kcollectd](https://www.forwiss.uni-passau.de/~berberic/Linux/kcollectd.html) for inspecting the data
+* [collectd >= 5.4.2](https://collectd.org/) The aggregation Daemon
+* [kcollectd](https://www.forwiss.uni-passau.de/~berberic/Linux/kcollectd.html) for inspecting the data
 
 ### Configuring collectd
 
-For aggregating the values, we will use the [cURL-JSON plugin](https://collectd.org/wiki/index.php/Plugin:cURL-JSON). We will store the values using the [RoundRobinDatabase writer](https://collectd.org/wiki/index.php/RRD) which kcollectd can later on present to you.
+For aggregating the values we will use the [cURL-JSON plug-in](https://collectd.org/wiki/index.php/Plugin:cURL-JSON). We will store the values using the [Round-Robin-Database writer](https://collectd.org/wiki/index.php/RRD)(RRD) which `kcollectd` can later on present to you.
 
-We assume your collectd is comes from your Distribution, and reads its config from /etc/collectd/collectd.conf; Since this file tends to become pretty unreadable quick, we use the include mechanism:
+We assume your `collectd` comes from your distribution and reads its config from `/etc/collectd/collectd.conf`. Since this file tends to become pretty unreadable quickly, we use the `include` mechanism:
 
     <Include "/etc/collectd/collectd.conf.d">
       Filter "*.conf"
     </Include>
 
-This way we can make each metric group one compact set config files; It consists of 3 components:
-* Loading the plugin
+This way we can make each metric group on compact set config files. It consists of three components:
+
+* loading the plug-in
 * adding metrics to the TypesDB
-* The configuration for the plugin itself
+* the configuration for the plug-in itself
 
-#### rrdtool
-We will use the [Round Robin Database](http://oss.oetiker.ch/rrdtool/) as storage backend for now. It creates its own tiny database files which can take values for a specific time range and are fixed in file size. Later on you may choose more advanced writer-plugins, which may do network distribution of your metrics or integrate the above mentioned Graphite, or your already established monitoring, etc.
+### rrdtool
+We will use the [Round-Robin-Database](http://oss.oetiker.ch/rrdtool/) as storage backend for now. It creates its own database files of fixed size for each specific time range. Later you may choose more advanced writer-plug-ins, which may do network distribution of your metrics or integrate the above mentioned Graphite or your already established monitoring, etc.
 
-For the RRD We will go pretty much with defaults here:
+For the RRD we will go pretty much with defaults:
 
-    # Load the plugin:
+    # Load the plug-in:
     LoadPlugin rrdtool
     <Plugin rrdtool>
        DataDir "/var/lib/collectd/rrd"
@@ -44,7 +45,7 @@ For the RRD We will go pretty much with defaults here:
     #  WritesPerSecond 30
     #  CreateFilesAsync false
     #  RandomTimeout 0
-    #  
+    #
     # The following settings are rather advanced
     # and should usually not be touched:
     #   StepSize 10
@@ -54,10 +55,10 @@ For the RRD We will go pretty much with defaults here:
     #   XFF 0.1
     </Plugin>
 
-#### cURL JSON
-Collectd comes with a wide range of Metric aggregation plugins; Many tools today use [JSON](http://json.org) as data formating grammer; so does ArangoDB. Therefore a plugin offering to fetch json documents via HTTP is the perfect match as integration interface:
+### cURL JSON
+`Collectd` comes with a wide range of metric aggregation plug-ins. Many tools today use [JSON](http://json.org) as data formating grammar; so does ArangoDB. Therefore a plug-in offering to fetch JSON documents via HTTP is the perfect match as an integration interface:
 
-    # Load the plugin:
+    # Load the plug-in:
     LoadPlugin curl_json
     # we need to use our own types to generate individual names for our gauges:
     TypesDB "/etc/collectd/collectd.conf.d/arangodb_types.db"
@@ -175,7 +176,7 @@ Collectd comes with a wide range of Metric aggregation plugins; Many tools today
       </URL>
     </Plugin>
 
-To circumvent the shortcomming of the curl_json plugin to only take the last path element as name for the metric, we need to give them a name using our own types.db file in /etc/collectd/collectd.conf.d/arangodb_types.db: 
+To circumvent the shortcoming of the curl_JSON plug-in to only take the last path element as name for the metric, we need to give them a name using our own `types.db` file in `/etc/collectd/collectd.conf.d/arangodb_types.db`:
 
     totalTimeDistributionPercent_values		value:GAUGE:U:U
     totalTimeDistributionPercent_cuts		value:GAUGE:U:U
@@ -188,8 +189,8 @@ To circumvent the shortcomming of the curl_json plugin to only take the last pat
     bytesReceivedDistributionPercent_values		value:GAUGE:U:U
     bytesReceivedDistributionPercent_cuts		value:GAUGE:U:U
 
-#### Rolling your own
-You may want to also monitor your own metrics from ArangoDB So here is a simple example how to use the config:
+### Rolling your own
+You may want to monitor your own metrics from ArangoDB. Here is a simple example how to use the `config`:
 
     {
      "testArray":[1,2],
@@ -198,7 +199,7 @@ You may want to also monitor your own metrics from ArangoDB So here is a simple 
      "testSubLevelHit":{"oneMoreLevel":6}
     }
 
-This config snippet will parse the JSON above:
+This `config` snippet will parse the JSON above:
 
     <Key "testArray/0">
       Type "gauge"
@@ -226,9 +227,9 @@ This config snippet will parse the JSON above:
     </Key
 
 
-## get it Served
+### Get it served
 
-We now (re)start collectd so it picks up our configuration:
+Now we will (re)start `collectd` so it picks up our configuration:
 
     /etc/init.d/collectd start
 
@@ -238,14 +239,18 @@ We will inspect the syslog to revalidate nothing went wrong:
     Mar  3 13:59:52 localhost systemd[1]: Started LSB: manage the statistics collection daemon.
     Mar  3 13:59:52 localhost collectd[11283]: Initialization complete, entering read-loop.
 
-Collectd adds the hostname to the directory address; so we now should have files like these:
+`Collectd` adds the hostname to the directory address, so now we should have files like these:
 
      -rw-r--r-- 1 root root 154888 Mar  2 16:53 /var/lib/collectd/rrd/localhost/curl_json-default/gauge-numberOfThreads15M.rrd
 
-Now we start kcollectd to view the values in this rrd file:
+Now we start `kcollectd` to view the values in the RRD file:
 
-![Kcollectd screenshot](KCollectdJson.png)
+![Kcollectd screenshot](assets/MonitoringWithCollectd/KCollectdJson.png)
 
-Since we only just started putting values in, we need to choose 'last hour' and zoom in a little more to inspect the values.
+Since we started putting values in just now, we need to choose 'last hour' and zoom in a little more to inspect the values.
 
-Finished with this dish, wait for more metrics to come in other recepies.
+Finished with this dish, wait for more metrics to come in other recipes.
+
+**Author:** [Wilfried Goesgens](https://github.com/dothebart)
+
+**Tags:** #json #monitoring
