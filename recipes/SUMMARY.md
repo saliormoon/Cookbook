@@ -37,4 +37,4 @@
   * [Run ArangoDB in Docker](RunningInDockerContainer.md)
   * [ArangoDB, NodeJS and Docker](UsingArangoDBNodeJSDocker.md)
   * [In the GiantSwarm using Docker](UsingArangoDBInGiantSwarm.md)
-  * [ArangoDB in Mesosphere](UsingArangoDBMesosphere.md)
+  * [ArangoDB in Mesos](UsingArangoDBMesophere.md)
