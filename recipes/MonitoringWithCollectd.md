@@ -190,6 +190,7 @@ To circumvent the shortcomming of the curl_json plugin to only take the last pat
 
 #### Rolling your own
 You may want to also monitor your own metrics from ArangoDB So here is a simple example how to use the config:
+
     {
      "testArray":[1,2],
      "testArrayInbetween":[{"blarg":3},{"blub":4}],
@@ -197,7 +198,8 @@ You may want to also monitor your own metrics from ArangoDB So here is a simple 
      "testSubLevelHit":{"oneMoreLevel":6}
     }
 
-This config snippet will parse the above:
+This config snippet will parse the JSON above:
+
     <Key "testArray/0">
       Type "gauge"
       # Expect: 1
