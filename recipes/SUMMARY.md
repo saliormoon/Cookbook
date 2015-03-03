@@ -5,6 +5,7 @@
 * [Accessing Shapes Data](AccessingShapesData.md)
 * [Crawling Github with Promises](CrawlingGithubPromises.md)
 * [Populating an autocomplete textbox](PopulatingAnAutocompleteTextbox.md)
+* [Monitoring with Collectd](MonitoringWithCollectd.md)
 * Graph-based recipes
   * [Fulldepth Graph-Traversal](Fulldepth.md)
   * [Vertices for Subgraphs](FindingConnectedVerticesForSubgraphs.md)
@@ -26,7 +27,6 @@
   * [My First FoxxGenerator App](FoxxGeneratorFirstSteps.md)
   * [How to deploy a Foxx App](FoxxDeploy.md)
   * [Foxx app accessible from the Web](MakingFoxxAppAccessible.md)
-  * [Add API keys to a Foxx App](FoxxApiKeys.md)
 * Compiling / Build
   * [Compiling on Debian](CompilingOnDebian.md)
   * [Compiling on Windows in 2.4](CompilingUnderWindows.md)
