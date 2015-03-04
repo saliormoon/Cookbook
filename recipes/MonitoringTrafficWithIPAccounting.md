@@ -12,7 +12,7 @@ As we already run [Collectd](http://collectd.org) as our metric-hub, we want to 
 
 For this receipie you need to install the following tools:
 
-  * [collectd >= 5.4.2](https://collectd.org/) The aggregation Daemon
+  * [collectd](https://collectd.org/) The aggregation Daemon
   * [kcollectd](https://www.forwiss.uni-passau.de/~berberic/Linux/kcollectd.html) for inspecting the data
   * [iptables](http://en.wikipedia.org/wiki/Iptables) (should come with your Linux distribution)
   * [ferm](http://ferm.foo-projects.org/download/2.2/ferm.html#basic_iptables_match_keywords) for compact firewall code.
@@ -33,7 +33,7 @@ to get you set up. So you know you've got two DB-Servers, one Coordinator, one a
 
 We can now check which ports they occupied:
 
-netstat -aplnt |grep arango
+    netstat -aplnt |grep arango
     tcp        0      0 127.0.0.1:7001          0.0.0.0:*               LISTEN      21406/etcd-arango
     tcp        0      0 127.0.0.1:4001          0.0.0.0:*               LISTEN      21406/etcd-arango
     tcp        0      0 127.0.0.1:8530          0.0.0.0:*               LISTEN      21416/arangod   
@@ -160,9 +160,9 @@ We now use the iptables commandline utility directly to review the status our cu
 
 
 You can see nicely the Accounting sub-chain with our comments. These should be pretty straight forward to match.
-We also see the pkts and bytes columns. They contain the current value of these counters of your system.
+We also see the **pkts** and **bytes** columns. They contain the current value of these counters of your system.
 
-Read more about (linux firewalling)[http://lartc.org] and (ferm configuration)[http://ferm.foo-projects.org/download/2.2/ferm.html] to be shure you do the right thing [tm].
+Read more about [linux firewalling](http://lartc.org) and [ferm configuration](http://ferm.foo-projects.org/download/2.2/ferm.html) to be shure you do the right thing [tm].
 
 ### Configuring Collectd to pick up these values
 Since your system now generates these numbers, we want to configure collectd with its [iptables plugin](https://collectd.org/wiki/index.php/Plugin:IPTables) to aggregate them.
