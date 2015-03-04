@@ -3723,11 +3723,17 @@ div.example_show_button {
   right: 10px !important;
 }
 
-.book .book-summary ul.summary li.active>a,.book .book-summary ul.summary li a:hover {
+.book .book-summary ul.summary li.active {
   color: #000 !important;
   background: #80A54D !important;
   text-decoration: none;
 }
+
+.book .book-summary ul.summary li.active>a,.book .book-summary ul.summary li a:hover {
+  color: #000 !important;
+  text-decoration: none;
+}
+
 
 .book .book-body .page-wrapper .page-inner section.normal .deprecated {
   background-color: rgba(240,240,0,0.4);
