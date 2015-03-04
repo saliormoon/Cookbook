@@ -10,13 +10,13 @@ As we already run [Collectd](http://collectd.org) as our metric-hub, we want to 
 
 ###Ingedients
 
-For this receipie you need to install the following tools:
+For this recipe you need to install the following tools:
 
   * [collectd](https://collectd.org/) The aggregation Daemon
   * [kcollectd](https://www.forwiss.uni-passau.de/~berberic/Linux/kcollectd.html) for inspecting the data
   * [iptables](http://en.wikipedia.org/wiki/Iptables) (should come with your Linux distribution)
   * [ferm](http://ferm.foo-projects.org/download/2.2/ferm.html#basic_iptables_match_keywords) for compact firewall code.
-  * we base on [Monitoring with Collecd recipy](MonitoringWithCollectd.html) for understanding the basics about collectd.
+  * we base on [Monitoring with Collecd recipe](MonitoringWithCollectd.html) for understanding the basics about collectd.
 
 ### Getting the state and the Ports of your cluster
 Now we need to find out the current configuration of our cluster; for the time being we assume you simply issued

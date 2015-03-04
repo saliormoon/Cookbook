@@ -2,17 +2,17 @@
 
 ## Problem
 
-[Collectd offers a pleathora of plugins](https://collectd.org/wiki/index.php/Table_of_Plugins); here is a tiny abstract of others that may be interesting to use with ArangoDB
+Aside of the values which ArangoDB already offers for monitoring, other system metrics may be relevant for continuously operating ArangoDB be it a single intsance or a cluster setup. [Collectd offers a pleathora of plugins](https://collectd.org/wiki/index.php/Table_of_Plugins) lets have a look at some of them which may be usefull for us.
 
 
 ###Ingedients
 
-For this receipie you need to install the following tools:
+For this recipe you need to install the following tools:
 
   * [collectd](https://collectd.org/) The metrics aggregation Daemon
-  * we base on [Monitoring with Collecd recipy](MonitoringWithCollectd.html) for understanding the basics about collectd.
+  * we base on [Monitoring with Collecd recipe](MonitoringWithCollectd.html) for understanding the basics about collectd.
 
-###Diskusage
+###Disk usage
 You may want to monitor ArangoDB doesn't run out of disk space. The [df Plugin](https://collectd.org/wiki/index.php/Plugin:DF) can aggregate these values for you.
 
 First we need to find out which disks are used by your arango. By default you need to find **/var/lib/arango** in the mountpoints; Since nowadays many virtual filesystems are also mounted on a typical *nix system we want to sort the output of mount:
