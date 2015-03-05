@@ -75,7 +75,7 @@ unix>foxx-manager install foxx-api-keys /api
 
 This gives me a basic adminstration tool to create my plans for API keys and issue new ones.
 I can either do this via the shipped web interface or via API calls.
-I have prepared two plans "Simple" and "Premium" according to my definition before. There I have defined a bucket named `request` which will be refilled at the given rate and which should take away tokens whenever the API key is used:
+I have prepared two plans "Free" and "Premium" according to my definition before. There I have defined a bucket named `request` which will be refilled at the given rate and which should take away tokens whenever the API key is used:
 
 ![Free Plan](assets/FoxxApiKeys/FreePlan.png)
 ![Premium Plan](assets/FoxxApiKeys/PremiumPlan.png)
