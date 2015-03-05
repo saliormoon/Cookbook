@@ -8,7 +8,7 @@ We run a cluster and want to know whether the traffic is unbalanced or something
 
 As we already run [Collectd](http://collectd.org) as our metric-hub, we want to utilize it to also give us these figures. A very cheap way to generate these values are the counters in the IPTables firewall of our system.
 
-###Ingedients
+###Ingredients
 
 For this recipe you need to install the following tools:
 
