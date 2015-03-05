@@ -26,6 +26,7 @@
   * [My First FoxxGenerator App](FoxxGeneratorFirstSteps.md)
   * [How to deploy a Foxx App](FoxxDeploy.md)
   * [Foxx app accessible from the Web](MakingFoxxAppAccessible.md)
+  * [API Key Management](FoxxApiKeys.md)
 * ArangoDB Setup / Administration
   * Compiling / Build
     * [Compile on Debian](CompilingOnDebian.md)

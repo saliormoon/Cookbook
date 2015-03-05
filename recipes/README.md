@@ -1,7 +1,7 @@
 # Cookbook
 
-This cookbook is filled with recipes to help you understand the [multi-purpose database ArangoDB][1] better
-and to help you with specific problems. 
+This cookbook is filled with recipes to help you understand the [multi-model database ArangoDB][1] better
+and to help you with specific problems.
 
 You can participate and [write your own recipes][2]. You only need to write a recipe in markdown and make a [pull request to our repository][2]. 
 
