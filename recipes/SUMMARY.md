@@ -43,3 +43,4 @@
     * [Monitoring with Collectd](MonitoringWithCollectd.md)
     * [Collectd - Network usage](MonitoringTrafficWithIPAccounting.md)
     * [Collectd - More Metrics](MonitoringOtherRelevantMetrics.md)
+    * [Collectd - Monitoring Foxx-Apps](MonitoringFoxxApps.md)
