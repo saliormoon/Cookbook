@@ -43,6 +43,8 @@ be found. One way is to execute the `vcvarsall.bat` script from the `VC` folder.
 
 * [Ruby](https://www.ruby-lang.org/en/downloads/) (for the unittests, if you intend to run them)
 
+* [procdump](https://technet.microsoft.com/en-us/sysinternals/dd996900.aspx) (for the unittests; run once to accept the eula)
+
 ### Building the required libraries
 
 First of all, start a `bash` from cygwin and clone the repository using the corresponding branch, e.g. for ArangoDB 2.4:
