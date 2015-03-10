@@ -4,6 +4,7 @@
 
 Aside of the values which ArangoDB already offers for monitoring, other system metrics may be relevant for continuously operating ArangoDB. be it a single instance or a cluster setup. [Collectd offers a pleathora of plugins](https://collectd.org/wiki/index.php/Table_of_Plugins) - lets have a look at some of them which may be useful for us.
 
+##Solution
 ###Ingedients
 
 For this recipe you need to install the following tools:
