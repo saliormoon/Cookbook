@@ -9,7 +9,7 @@
   * [Fulldepth Graph-Traversal](Fulldepth.md)
   * [Vertices for Subgraphs](FindingConnectedVerticesForSubgraphs.md)
   * [Vertex in JavaDriver](JavaDriverGraphExampleVertex.md)
-  * [Using a custom visitor from node.js](UsingCustomVisitorFromNodeJs.md)
+  * [Using a custom visitor](UsingCustomVisitorFromNodeJs.md)
 * AQL
   * [Using Joins in AQL](JoinsInAQL.md)
   * [Using Dynamic Attribute Names](UsingDynamicAttributeNames.md)
@@ -19,19 +19,28 @@
   * [Creating test data using AQL](CreatingTestDataAQL.md)
 * Foxx
   * [My First Foxx App in 2.4](FoxxFirstSteps.md)
-  * [My First Foxx App until 2.4](FoxxFirstStepsLegacy.md)
-  * [Adding Authentication](FoxxAuth.md)
+  * [My First Foxx App &lt; 2.4](FoxxFirstStepsLegacy.md)
+  * [Adding Authentication in 2.4](FoxxAuth.md)
+  * [Adding Authentication in 2.5](FoxxAuth.md)
   * [Adding Email Support](FoxxQueues.md)
   * [My First FoxxGenerator App](FoxxGeneratorFirstSteps.md)
   * [How to deploy a Foxx App](FoxxDeploy.md)
-  * [Make a Foxx app accessible from the Internet](MakingFoxxAppAccessible.md)
-* Compiling / Build
-  * [Compiling on Debian](CompilingOnDebian.md)
-  * [Compiling on Windows in 2.4](CompilingUnderWindows.md)
-  * [Compiling on Windows until 2.4](CompilingUnderWindowsLegacy.md)
-  * [Running Custom Build](RunningCustomBuild.md)
-* Docker
-  * [Run ArangoDB in Docker](RunningInDockerContainer.md)
-  * [ArangoDB, NodeJS and Docker](UsingArangoDBNodeJSDocker.md)
-  * [In the GiantSwarm using Docker](UsingArangoDBInGiantSwarm.md)
-  * [ArangoDB in Mesosphere](UsingArangoDBMesosphere.md)
+  * [Foxx app accessible from the Web](MakingFoxxAppAccessible.md)
+  * [API Key Management](FoxxApiKeys.md)
+* ArangoDB Setup / Administration
+  * Compiling / Build
+    * [Compile on Debian](CompilingOnDebian.md)
+    * [Compile on Windows in 2.4](CompilingUnderWindows.md)
+    * [Compile on Windows &lt; 2.4](CompilingUnderWindowsLegacy.md)
+    * [Running Custom Build](RunningCustomBuild.md)
+    * [Running On AWS](RunningOnAWS.md)
+  * Docker
+    * [Run ArangoDB](RunningInDockerContainer.md)
+    * [ArangoDB and NodeJS](UsingArangoDBNodeJSDocker.md)
+    * [In the GiantSwarm](UsingArangoDBInGiantSwarm.md)
+    * [ArangoDB in Mesos](UsingArangoDBMesosphere.md)
+  * Monitoring
+    * [Monitoring with Collectd](MonitoringWithCollectd.md)
+    * [Collectd - Network usage](MonitoringTrafficWithIPAccounting.md)
+    * [Collectd - More Metrics](MonitoringOtherRelevantMetrics.md)
+    * [Collectd - Monitoring Foxx-Apps](MonitoringFoxxApps.md)

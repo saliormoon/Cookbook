@@ -1,13 +1,13 @@
-# ArangoDB on Mesosphere using Marathon and Docker
+# ArangoDB on Apache Mesos using Marathon and Docker
 
 ## Problem 
 
-I want to use ArangoDB in Mesosphere with Docker containers.
+I want to use ArangoDB in Apache Mesos with Docker containers.
 
 ## Solution
 
 Mesos in its newest version makes it very easy to use ArangoDB, because
-[Mesosphere](https://mesosphere.com/2014/11/10/docker-on-mesos-with-marathon/)
+[Mesos](https://mesosphere.com/docs/tutorials/launch-docker-container-on-mesosphere/)
 has added support for docker containers. Together with Marathon to start the
 front-end and back-end parts of an application, installation is straight
 forward.
@@ -42,7 +42,7 @@ master.
 
 ### Set Up the Application
 
-For this tutorial we bind the database to a fixed port on the mesos
+For this tutorial we bind the database to a fixed port on the Mesos
 environment. Please note, that the
 [mesosphere uses HAproxy](https://mesosphere.github.io/marathon/docs/service-discovery-load-balancing.html)
 to map the global port to the real host and port. The servers created by Mesosphere
@@ -168,15 +168,15 @@ on the mesos master.
 If you now switch to the Marathon console on port `8080`, you should see apps, namely
 `/guesser/database/arangodb` and `/guesser/frontend/node`.
 
-![Marathon Console](UsingArangoDBMesosphere1.png)
+![Marathon Console](assets/UsingArangoDBMesosphere/UsingArangoDBMesosphere1.png)
 
 If you access port `32222`, you should see the ArangoDB console.
 
-![ArangoDB Console](UsingArangoDBMesosphere2.png)
+![ArangoDB Console](assets/UsingArangoDBMesosphere/UsingArangoDBMesosphere2.png)
  
 And finally, on port `32211`, you can play the guesser game.
 
-![Guesser Game](UsingArangoDBMesosphere3.png)
+![Guesser Game](assets/UsingArangoDBMesosphere/UsingArangoDBMesosphere3.png)
 
 ### Scaling Up
 
