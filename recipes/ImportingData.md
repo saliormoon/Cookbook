@@ -27,8 +27,8 @@ There are two supported input formats for importing JSON-encoded data into Arang
 Here's an example for the *line-by-line format* looks like this:
 
 ```js
-{"author":"Frank Celler","email":"f.celler@triagens.de","time":"2011-10-26 08:42:49 +0200","sha":"c413859392a45873936cbe40797970f8eed93ff9","message":"first commit","user":"f.celler"}
-{"author":"Frank Celler","email":"f.celler@triagens.de","time":"2011-10-26 21:32:36 +0200","sha":"10bb77b8cc839201ff59a778f0c740994083c96e","message":"initial release","user":"f.celler"}
+{"author":"Frank Celler","time":"2011-10-26 08:42:49 +0200","sha":"c413859392a45873936cbe40797970f8eed93ff9","message":"first commit","user":"f.celler"}
+{"author":"Frank Celler","time":"2011-10-26 21:32:36 +0200","sha":"10bb77b8cc839201ff59a778f0c740994083c96e","message":"initial release","user":"f.celler"}
 ...
 ```
 
@@ -38,7 +38,6 @@ Here's an example for the same data in *array format*:
 [
   {
     "author": "Frank Celler",
-    "email": "f.celler@triagens.de",
     "time": "2011-10-26 08:42:49 +0200",
     "sha": "c413859392a45873936cbe40797970f8eed93ff9",
     "message": "first commit",
@@ -46,7 +45,6 @@ Here's an example for the same data in *array format*:
   },
   {
     "author": "Frank Celler",
-    "email": "f.celler@triagens.de",
     "time": "2011-10-26 21:32:36 +0200",
     "sha": "10bb77b8cc839201ff59a778f0c740994083c96e",
     "message": "initial release",
@@ -148,9 +146,9 @@ zeros will only work when putting the numbers into strings.
 Here is an example CSV file:
 
 ```plain
-"author","email","time","sha","message"
-"Frank Celler","f.celler@triagens.de","2011-10-26 08:42:49 +0200","c413859392a45873936cbe40797970f8eed93ff9","first commit"
-"Frank Celler","f.celler@triagens.de","2011-10-26 21:32:36 +0200","10bb77b8cc839201ff59a778f0c740994083c96e","initial release"
+"author","time","sha","message"
+"Frank Celler","2011-10-26 08:42:49 +0200","c413859392a45873936cbe40797970f8eed93ff9","first commit"
+"Frank Celler","2011-10-26 21:32:36 +0200","10bb77b8cc839201ff59a778f0c740994083c96e","initial release"
 ...
 ```
 
