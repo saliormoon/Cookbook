@@ -12,7 +12,7 @@ The short answer is: go to
 
 type in "ArangoDB", select the version you require and press `Create Virtual Machine".
 
-![Azure Portal](assets/UsingArangoDBAzrue/vmdepot-arangodb.png)
+![VMDepot](assets/UsingArangoDBAzure/vmdepot-arangodb.png)
 
 Follow the instruction given there and within minutes you have a running ArangoDB
 instance in Microsoft Azure. You will receive an email as soon as your machine
