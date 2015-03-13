@@ -33,9 +33,10 @@
     * [Compile on Debian](CompilingOnDebian.md)
     * [Compile on Windows in 2.4](CompilingUnderWindows.md)
     * [Compile on Windows &lt; 2.4](CompilingUnderWindowsLegacy.md)
+    * [Running Azure](UsingArangoDBAzure.md)
     * [Running Custom Build](RunningCustomBuild.md)
     * [Running On AWS](RunningOnAWS.md)
-  * Docker
+  * Docker / DCOS
     * [Run ArangoDB](RunningInDockerContainer.md)
     * [ArangoDB and NodeJS](UsingArangoDBNodeJSDocker.md)
     * [In the GiantSwarm](UsingArangoDBInGiantSwarm.md)
