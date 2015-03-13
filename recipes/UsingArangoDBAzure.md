@@ -1,10 +1,8 @@
-# ArangoDB in Microsft Azure
-
-## Problem
+# ArangoDB in Microsoft Azure
 
 I want to use ArangoDB in Microsoft Azure
 
-## Solution
+## How to
 
 The short answer is: go to
 
@@ -27,7 +25,7 @@ your browser to
 http://myarangodb.cloudapp.net:8529
 ```
 
-Please note that for security reason the default instance is password protected.
+Please note that for security reasons the default instance is password protected.
 
 However, the password for "root" is empty. So, please log in and change the
 password as soon as possible.
