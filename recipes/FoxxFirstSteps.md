@@ -218,7 +218,7 @@ controller.del('/:key', function (req, res) {
 
 * If you want to have custom methods on your repository, you can extend it in the same way you extended the Foxx.Model. [Learn more about it here](https://docs.arangodb.com/Foxx/FoxxRepository.html)
 * We will add a new recipe for authentication in the future. In the mean time check out the [foxx-sessions-example](https://github.com/arangodb/foxx-sessions-example) app.
-* We will also talk about workers and how to do work outside the request-response-cycle. Until then [check out the documentation for it](https://docs.arangodb.com/beta/Foxx/FoxxQueues.html).
+* We will also talk about workers and how to do work outside the request-response-cycle. Until then [check out the documentation for it](https://docs.arangodb.com/Foxx/Develop/Queues.html).
 
 
 **Author**: [Lucas Dohmen](https://github.com/moonglum)
