@@ -1,19 +1,19 @@
-# ArangoDB in the GiantSwarm using Docker containers
+# ArangoDB in the Giant Swarm using Docker containers
 
 ## Problem 
 
-I want to use ArangoDB in the GiantSwarm with Docker containers.
+I want to use ArangoDB in the Giant Swarm with Docker containers.
 
 ## Solution
 
-GiantSwarm allows you to describe and deploy your application by providing a simple JSON
+Giant Swarm allows you to describe and deploy your application by providing a simple JSON
 description. The
-[current weather app](http://docs.giantswarm.io/installation/gettingstarted2/) is a good
-example on how to install an application which uses two components, namely node and redis.
+[current weather app](http://docs.giantswarm.io/guides/your-first-application/nodejs/) is a good
+example on how to install an application which uses two components, namely `node` and `redis`.
 
 My colleague Max has written a guesser game with various front-ends and ArangoDB as
-backend. In order to get the feeling of being part of the giant swarm, I have started to
-set up this game in the [swarm](http://giantswarm.io).
+backend. In order to get the feeling of being part of the Giant Swarm, I have started to
+set up this game in the [swarm](https://giantswarm.io).
 
 ### First Steps
 
@@ -46,16 +46,16 @@ file for the swarm called `arangodb.json` and fire up the application
             {
               "component_name": "guesser-front-end",
               "image": "arangodb/example-guesser",
-              "ports": [ "8000/tcp" ],
+              "ports": [ 8000 ],
               "dependencies": [
                 { "name": "guesser-back-end", "port": 8529 }
               ],
-              "domains": { "guesser.gigantic.io": "8000" }
+              "domains": { "guesser.gigantic.io": 8000 }
             },
             {
               "component_name": "guesser-back-end",
               "image": "arangodb/example-guesser-db",
-              "ports": [ "8529/tcp" ]
+              "ports": [ 8529 ]
             }
           ]
         }
@@ -68,14 +68,14 @@ docker images are downloaded from the standard docker repository.
 
 The line
 
-    "domains": { "guesser.gigantic.io": "8000" }
+    "domains": { "guesser.gigantic.io": 8000 }
 
 exposes the internal port 8000 to the external port on port 80 for the host
 `guesser.gigantic.io`.
 
-In order to tell GiantSwarm about your application, execute
+In order to tell Giant Swarm about your application, execute
 
-    unix> swarm create guesser.json 
+    unix> swarm create arangodb.json 
     Creating 'arangodb' in the 'fceller/dev' environment...
     App created successfully!    
 
@@ -96,7 +96,7 @@ Starting your engines is now one simple command
 
     unix> swarm start guesser
     Starting application guesser...
-    Application arangodb is up
+    Application guesser is up
 
 Now the application is up
     
@@ -161,17 +161,17 @@ Simply change your configuration file and recreate the application:
             {
               "component_name": "guesser-front-end",
               "image": "arangodb/example-guesser",
-              "ports": [ "8000/tcp" ],
+              "ports": [ 8000 ],
               "dependencies": [
                 { "name": "guesser-back-end", "port": 8529 }
               ],
-              "domains": { "guesser.gigantic.io": "8000" },
+              "domains": { "guesser.gigantic.io": 8000 },
               "scaling_policy": { "min": 2, "max": 2 }
             },
             {
               "component_name": "guesser-back-end",
               "image": "arangodb/example-guesser-db",
-              "ports": [ "8529/tcp" ]
+              "ports": [ 8529 ]
             }
           ]
         }
