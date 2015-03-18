@@ -26,6 +26,7 @@
 * Use Cases, Examples
   * [Crawling Github with Promises](CrawlingGithubPromises.md)
   * [Populating an autocomplete Textbox](PopulatingAnAutocompleteTextbox.md)
+  * [Using ArangoDB with Sails.js](UsingArangoDBWithSailsJS.md)
 * ArangoDB Setup / Administration
   * [Using Authentication](UsingAuthentication.md)
   * [Importing Data](ImportingData.md)
