@@ -18,6 +18,7 @@
   * [My first Foxx App &lt; 2.4](FoxxFirstStepsLegacy.md)
   * [Adding Authentication in 2.5](FoxxAuth.md)
   * [Adding Authentication &lt; 2.5](FoxxAuthLegacy.md)
+  * [Making requests to external services](MakingRequests.md)
   * [Adding Email Support](FoxxQueues.md)
   * [My first FoxxGenerator App](FoxxGeneratorFirstSteps.md)
   * [How to deploy a Foxx App](FoxxDeploy.md)
