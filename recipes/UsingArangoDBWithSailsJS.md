@@ -1,12 +1,6 @@
-# Using ArangoDB with Sails.js
+# How to use ArangoDB with Sails.js
 
-## Problem
-
-I want to use ArangoDB with the [Sails.js](http://sailsjs.org) framework.
-
-## Solution
-
-First install Sails.js using NPM:
+First install the [Sails.js](http://sailsjs.org) framework using NPM:
 
 ```
 npm install -g sails
