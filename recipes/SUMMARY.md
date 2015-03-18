@@ -19,6 +19,7 @@
   * [Adding Authentication in 2.5](FoxxAuth.md)
   * [Adding Authentication &lt; 2.5](FoxxAuthLegacy.md)
   * [Adding Email Support](FoxxQueues.md)
+  * [Custom job types for Foxx Queues](FoxxCustomQueueJobs.md)
   * [My first FoxxGenerator App](FoxxGeneratorFirstSteps.md)
   * [How to deploy a Foxx App](FoxxDeploy.md)
   * [Foxx app accessible from the Web](MakingFoxxAppAccessible.md)
