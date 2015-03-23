@@ -33,12 +33,13 @@
   * [Using Authentication](UsingAuthentication.md)
   * [Importing Data](ImportingData.md)
   * [Replicating Data](ReplicatingData.md)
+  * [XCopy Install Windows](XCopyInstallWindows.md)
   * Compiling / Build
     * [Compile on Debian](CompilingOnDebian.md)
     * [Compile on Windows in 2.4](CompilingUnderWindows.md)
     * [Compile on Windows &lt; 2.4](CompilingUnderWindowsLegacy.md)
     * [Running Custom Build](RunningCustomBuild.md)
-  * Cloud, DCOS and Docker
+* Cloud, DCOS and Docker
     * [Running on AWS](RunningOnAWS.md)
     * [Running on Azure](UsingArangoDBAzure.md)
     * [Docker ArangoDB](RunningInDockerContainer.md)
