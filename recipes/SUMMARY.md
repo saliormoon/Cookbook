@@ -25,6 +25,7 @@
   * [How to deploy a Foxx App](FoxxDeploy.md)
   * [Apps accessible from the Web](MakingFoxxAppAccessible.md)
   * [API-Key Management](FoxxApiKeys.md)
+  * [Binary http documents](FoxxBinaryHttpPost.md)
 * Use Cases, Examples
   * [Crawling Github with Promises](CrawlingGithubPromises.md)
   * [Using ArangoDB with Sails.js](UsingArangoDBWithSailsJS.md)
