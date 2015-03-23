@@ -16,17 +16,19 @@
 * Foxx Framework
   * [My first Foxx App in 2.4](FoxxFirstSteps.md)
   * [My first Foxx App &lt; 2.4](FoxxFirstStepsLegacy.md)
-  * [Adding Authentication in 2.4](FoxxAuth.md)
   * [Adding Authentication in 2.5](FoxxAuth.md)
+  * [Adding Authentication &lt; 2.5](FoxxAuthLegacy.md)
+  * [Using external APIs](MakingRequests.md)
   * [Adding Email Support](FoxxQueues.md)
+  * [Custom job types for Queues](FoxxCustomQueueJobs.md)
   * [My first FoxxGenerator App](FoxxGeneratorFirstSteps.md)
   * [How to deploy a Foxx App](FoxxDeploy.md)
-  * [Foxx app accessible from the Web](MakingFoxxAppAccessible.md)
+  * [Apps accessible from the Web](MakingFoxxAppAccessible.md)
   * [API-Key Management](FoxxApiKeys.md)
 * Use Cases, Examples
   * [Crawling Github with Promises](CrawlingGithubPromises.md)
-  * [Populating an autocomplete Textbox](PopulatingAnAutocompleteTextbox.md)
   * [Using ArangoDB with Sails.js](UsingArangoDBWithSailsJS.md)
+  * [Populating a Textbox](PopulatingAnAutocompleteTextbox.md)
 * ArangoDB Setup / Administration
   * [Using Authentication](UsingAuthentication.md)
   * [Importing Data](ImportingData.md)
@@ -47,4 +49,4 @@
     * [Monitoring with Collectd](MonitoringWithCollectd.md)
     * [Collectd - Network usage](MonitoringTrafficWithIPAccounting.md)
     * [Collectd - more Metrics](MonitoringOtherRelevantMetrics.md)
-    * [Collectd - Monitoring Foxx-Apps](MonitoringFoxxApps.md)
+    * [Collectd - Monitoring Foxx](MonitoringFoxxApps.md)
