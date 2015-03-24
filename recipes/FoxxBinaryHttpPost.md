@@ -1,11 +1,11 @@
-# uploading binary data to remote locations from Foxx
+# Uploading binary data to remote locations from Foxx
 
 ## Problem
 
-My foxx should handle binary data, and upload it to another service
+My Foxx should handle binary data and upload it to another service.
 
 ## Solution
-Arangodb can handle binary data using the buffer class. However, these don't mix well with strings. Therefore we have to construct the mime document by hand using buffers. We will choose the buffer to be loaded from a binary file. [http bin](http://httpbin.org) will help us to revalidate all we did was along the lines of the RFC.
+ArangoDB can handle binary data using the buffer class. However, these don't mix well with strings. Therefore we have to construct the mime document by hand using buffers. We will choose the buffer to be loaded from a binary file. [http bin](http://httpbin.org) will help us to revalidate all we did along the lines of the RFC.
 
 ```js
 var request = require("org/arangodb/request")
@@ -36,7 +36,7 @@ var resp = request(opts);
 console.log(resp);
 ```
 
-Since we realy want to know whats going on on the wire, we'll use [sniffing](http://www.tcpdump.org/) to get whats going on on the wire. You can use the nice UI program [Wireshark](http://wireshark.org), we will use the simple [ngrep](http://ngrep.sourceforge.net/) to output the traffic on the console to us:
+Since we really want to know whats going on on the wire, we'll use [sniffing](http://www.tcpdump.org/). You can use the nice user interface program [Wireshark](http://wireshark.org). We will use the simple [ngrep](http://ngrep.sourceforge.net/) to output the traffic on the console to us:
 
 ```
 ngrep -Wbyline host httpbin.org > /tmp/log
@@ -70,24 +70,24 @@ Access-Control-Allow-Origin: *.
 Access-Control-Allow-Credentials: true.
 .
 {
-  "args": {}, 
-  "data": "", 
+  "args": {},
+  "data": "",
   "files": {
     "upload": "data:application/octet-stream;base64,AA.....///w=="
-  }, 
-  "form": {}, 
+  },
+  "form": {},
   "headers": {
-    "Accept-Encoding": "deflate", 
-    "Content-Length": "205020", 
+    "Accept-Encoding": "deflate",
+    "Content-Length": "205020",
     "Content-Type": "m
 ##
 T 54.175.219.8:80 -> 192.168.1.2:45487 [AP]
-ultipart/form-data; boundary=1234MyMimeBoundary", 
-    "Host": "httpbin.org", 
+ultipart/form-data; boundary=1234MyMimeBoundary",
+    "Host": "httpbin.org",
     "User-Agent": "ArangoDB"
-  }, 
-  "json": null, 
-  "origin": "80.152.136.67", 
+  },
+  "json": null,
+  "origin": "80.152.136.67",
   "url": "http://httpbin.org/post"
 }
 
@@ -95,4 +95,8 @@ ultipart/form-data; boundary=1234MyMimeBoundary",
 592 received, 0 dropped
 ```
 
-Here we see the http request in all its beauty - everything went well - our Mime implementation is proven to work.
+Here we see the HTTP request in all its beauty - everything went well - our mime implementation is proven to work.
+
+**Author:** [Wilfried Goesgens](https://github.com/dothebart)
+
+**Tags:**  #foxx
