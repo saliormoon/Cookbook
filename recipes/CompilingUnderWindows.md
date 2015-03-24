@@ -4,7 +4,7 @@
 
 I want to compile ArangoDB under Windows.
 
-**Note:** For this recipe you need at least Arango 2.4. For Arango version before 2.4 look at the [old Compiling ArangoDB under Windows](https://docs.arangodb.com/CompilingUnderWindowsLegacy.md).
+**Note:** For this recipe you need at least Arango 2.4. For Arango version before 2.4 look at the [old Compiling ArangoDB under Windows](CompilingUnderWindowsLegacy.md).
 
 ## Solution
 
@@ -23,7 +23,7 @@ You need at least `make` from cygwin. Cygwin also offers a `cmake`. Do **not** i
 
 Either version 2.8.12, 3.0.2 or 3.1.2 should work. Attention - pitfall: the cygwin version doesn't work.
 
-* [python](http://python.org)
+* [python](http://wwww.python.org)
 
 Either version 2.x or 3.x (excluding 3.4) should work - it's used to run V8s GYP. Make sure you add python.exe to your path environment variable; Restarting your running shell may be necessary.
 

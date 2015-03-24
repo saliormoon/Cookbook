@@ -35,7 +35,7 @@ Now it takes a while to open all its databases, load system facilities, bootstra
 INFO ArangoDB (version 2.5.1 [windows]) is ready for business. Have fun!
 ```
 
-Now you can open the administrative webinterface in your browser using [http://127.0.0.1:8529/](http://127.0.0.1:8529/).
+Now you can open the administrative webinterface in your browser using http://127.0.0.1:8529/.
 
 #### Installing as service
 If you don't want to run `arangod` from a cmd-shell each time installing it as a system service is the right thing to do.

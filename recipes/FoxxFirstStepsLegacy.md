@@ -4,13 +4,13 @@
 
 I want to create a simple API with [Foxx](https://foxx.arangodb.com), but I never created one before. Specifically I want to create simple API to organize my todo items.
 
-**Note:** For this recipe you need Arango 2.3. or a version below. For Arango since 2.4 look at the [new My first Foxx App](https://docs.arangodb.com/FoxxFirstSteps.md).
+**Note:** For this recipe you need Arango 2.3. or a version below. For Arango since 2.4 look at the [new My first Foxx App](https://docs.arangodb.com/2.3/FoxxFirstSteps.md).
 
 ## Solution
 
 ### Create the folder structure for Foxx apps and start ArangoDB
 
-Create a folder `foxx_apps` somewhere where you have write access. Create a folder `databases` inside of it, and one called `_system` inside of that. Inside of this folder, create a folder for your app. Let's call it `todos`. From now on we will work in that folder. We now create a file called `manifest.json` where we will add some meta information (if you want to get more information about the manifest file, check out [the documentation](https://docs.arangodb.com/Foxx/FoxxManifest.html)):
+Create a folder `foxx_apps` somewhere where you have write access. Create a folder `databases` inside of it, and one called `_system` inside of that. Inside of this folder, create a folder for your app. Let's call it `todos`. From now on we will work in that folder. We now create a file called `manifest.json` where we will add some meta information (if you want to get more information about the manifest file, check out [in the documentation](https://docs.arangodb.com/2.3/Foxx/FoxxManifest.html)):
 
 ```json
 {
@@ -97,11 +97,11 @@ controller.get('/', function (req, res) {
 });
 ```
 
-If you go to the interactive documentation again, you will now see the description you just added. Great! If you want more information about controllers, see [the documentation](https://docs.arangodb.com/Foxx/FoxxController.html).
+If you go to the interactive documentation again, you will now see the description you just added. Great! If you want more information about controllers, see [the documentation](https://docs.arangodb.com/2.3/Foxx/FoxxController.html).
 
 ### Add a model that describes our todo items
 
-We now need to define how we want a single todo item looks like. Foxx uses this information for both the documentation as well as for validating inputs. In a file called `todo.js` in the folder `models` you put the following [Foxx Model](https://docs.arangodb.com/Foxx/FoxxModel.html) prototype:
+We now need to define how we want a single todo item looks like. Foxx uses this information for both the documentation as well as for validating inputs. In a file called `todo.js` in the folder `models` you put the following [Foxx Model](https://docs.arangodb.com/2.3/Foxx/FoxxModel.html) prototype:
 
 ```js
 var Foxx = require('org/arangodb/foxx'),
@@ -233,9 +233,9 @@ controller.del('/:key', function (req, res) {
 
 ## Comment
 
-* If you want to have custom methods on your repository, you can extend it in the same way you extended the Foxx.Model. [Learn more about it here](https://docs.arangodb.com/Foxx/FoxxRepository.html)
+* If you want to have custom methods on your repository, you can extend it in the same way you extended the Foxx.Model. [Learn more about it here](https://docs.arangodb.com/2.3/Foxx/FoxxRepository.html)
 * We will add a new recipe for authentication in the future. In the mean time check out the [foxx-sessions-example](https://github.com/arangodb/foxx-sessions-example) app.
-* We will also talk about workers and how to do work outside the request-response-cycle. Until then [check out the documentation for it](https://docs.arangodb.com/Foxx/Develop/Queues.html).
+* We will also talk about workers and how to do work outside the request-response-cycle. Until then [check out the documentation for it](https://docs.arangodb.com/2.3/Foxx/Develop/Queues.html).
 
 
 **Author**: [Lucas Dohmen](https://github.com/moonglum)

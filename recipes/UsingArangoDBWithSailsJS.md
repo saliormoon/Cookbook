@@ -53,7 +53,7 @@ Now you can boot your application with:
 sails lift
 ```
 
-You can now access now access [http://localhost:1337/todos](http://localhost:1337/todos) and see an empty list of todos. And then create a todo by visiting [localhost:1337/todos/create?name=john](localhost:1337/todos/create?name=john). This will create the according document (that has an attribute `name` with the value `john`) in the todos collection of the selected database. You will also see the document when you visit [http://localhost:1337/todos](http://localhost:1337/todos) again.
+You can now access `http://localhost:1337/todos` and see an empty list of todos. And then create a todo by visiting `localhost:1337/todos/create?name=john`. This will create the according document (that has an attribute `name` with the value `john`) in the todos collection of the selected database. You will also see the document when you visit `http://localhost:1337/todos` again.
 
 **Author**: [Lucas Dohmen](https://github.com/moonglum)
 

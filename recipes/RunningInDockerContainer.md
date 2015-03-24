@@ -88,7 +88,7 @@ A good explanation about persistence and docker container can be found here:
 
 **Tags:** #docker #howto
 
-[1]: http://www.tech-d.net/2014/11/03/docker-indepth-volumes/
+[1]: http://container42.com/2014/11/03/docker-indepth-volumes/
 [2]: https://medium.com/@ramangupta/why-docker-data-containers-are-good-589b3c6c749e
 [3]: https://registry.hub.docker.com/u/tianon/true/
 [4]: https://registry.hub.docker.com/u/progrium/busybox/
