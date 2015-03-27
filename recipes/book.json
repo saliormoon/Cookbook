@@ -1,14 +1,7 @@
 {
+  "gitbook": ">=2.0.0",
+  "title": "ArangoDB Cookbook",
+  "language": "en",
   "theme": "./localtheme",
-  "plugins":["-mathjax"],
-  "pdf": {
-    "fontSize": 12,
-    "toc": true,
-    "margin": {
-      "right": 60,
-      "left": 60,
-      "top": 35,
-      "bottom": 35
-    }
-  }
+  "plugins":["-mathjax"]
 }
