@@ -22,7 +22,7 @@ Let's start by loading an assertion library:
 var expect = require('chai').expect;
 ```
 
-A recent version of [chai](http://chaijs.com) comes pre-installed with ArangoDB 2.6 and higher. Also, when your tests are executed, Mocha will automagically provide the functions `describe`, `it`, as well as a few other helpers, so you don't need to worry about requiring them yourself.
+A recent version of [chai](http://chaijs.com) comes pre-installed with ArangoDB 2.6 and higher. Also, when your tests are executed, Mocha will automatically provide the functions `describe`, `it`, as well as a few other helpers, so you don't need to worry about requiring them yourself.
 
 We want our Foxx app to provide a JavaScript API to other Foxx apps for creating To Do list items rather than use the controllers the Foxx generator created for us. You can delete the "controllers" folder if you want, but remember to also remove the corresponding entry from the manifest.
 
@@ -135,6 +135,6 @@ e.g.:
 $ foxx-manager tests /todo '{"reporter": "spec"}'
 ```
 
-**Author:** Alan Plum
+**Author:** [Alan Plum](https://github.com/pluma)
 
 **Tags:** #foxx #tdd

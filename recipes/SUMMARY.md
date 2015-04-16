@@ -26,6 +26,7 @@
   * [Apps accessible from the Web](MakingFoxxAppAccessible.md)
   * [API-Key Management](FoxxApiKeys.md)
   * [Binary HTTP documents](FoxxBinaryHttpPost.md)
+  * [Foxx Testing](FoxxTesting.md)
 * Use Cases, Examples
   * [Crawling Github with Promises](CrawlingGithubPromises.md)
   * [Using ArangoDB with Sails.js](UsingArangoDBWithSailsJS.md)
