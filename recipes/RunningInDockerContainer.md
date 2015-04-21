@@ -53,7 +53,7 @@ You can map the container's volumes to a directory on the host, so that the data
     unix> mkdir /tmp/arangodb
     unix> docker run -p 8529:8529 -d \
               -v /tmp/arangodb:/data \
-              arangodb
+              arangodb/arangodb
 
 This will use the `/tmp/arangodb` directory of the host as database directory for ArangoDB inside the container.
 
@@ -63,7 +63,7 @@ Alternatively you can create a container holding the data.
 
 And use this data container in your ArangoDB container.
 
-    unix> docker run --volumes-from arangodb-persist -p 8529:8529 arangodb
+    unix> docker run --volumes-from arangodb-persist -p 8529:8529 arangodb/arangodb
 
 If want to save a few bytes for you can alternatively use [tianon/true][3] or [progrium/busybox][4] for creating the volume only containers. For example
 
