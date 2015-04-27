@@ -31,6 +31,7 @@
   * [Crawling Github with Promises](CrawlingGithubPromises.md)
   * [Using ArangoDB with Sails.js](UsingArangoDBWithSailsJS.md)
   * [Populating a Textbox](PopulatingAnAutocompleteTextbox.md)
+  * [Exporting Data](ExportingData.md)
 * ArangoDB Setup / Administration
   * [Using Authentication](UsingAuthentication.md)
   * [Importing Data](ImportingData.md)
