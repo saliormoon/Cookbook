@@ -4,7 +4,7 @@
 
 I want to add authentication to my existing Foxx app: Users need to be able to register, log in and log out. I also want to be able to restrict access to certain routes in my app.
 
-**Note:** For this recipe you need at least Arango 2.5. For Arango 2.4 look at the [old Foxx Authentication](FoxxAuthLegacy.md).
+**Note:** For this recipe you need at least ArangoDB 2.5. For ArangoDB 2.4 look at the [old Foxx Authentication](FoxxAuthLegacy.md).
 
 ## Solution
 

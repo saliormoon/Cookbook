@@ -14,10 +14,10 @@
   * [Vertex example with Java](JavaDriverGraphExampleVertex.md)
   * [Using a custom Visitor](UsingCustomVisitorFromNodeJs.md)
 * Foxx Framework
-  * [My first Foxx App in 2.4](FoxxFirstSteps.md)
-  * [My first Foxx App &lt; 2.4](FoxxFirstStepsLegacy.md)
-  * [Adding Authentication in 2.5](FoxxAuth.md)
-  * [Adding Authentication &lt; 2.5](FoxxAuthLegacy.md)
+  * [My first Foxx App](FoxxFirstSteps.md)
+  * [My first Foxx App pre-2.4](FoxxFirstStepsLegacy.md)
+  * [Adding Authentication](FoxxAuth.md)
+  * [Adding Authentication pre-2.5](FoxxAuthLegacy.md)
   * [Using external APIs](MakingRequests.md)
   * [Adding Email Support](FoxxQueues.md)
   * [Custom job types for Queues](FoxxCustomQueueJobs.md)
@@ -38,8 +38,8 @@
   * [XCopy Install Windows](XCopyInstallWindows.md)
   * Compiling / Build
     * [Compile on Debian](CompilingOnDebian.md)
-    * [Compile on Windows in 2.4](CompilingUnderWindows.md)
-    * [Compile on Windows &lt; 2.4](CompilingUnderWindowsLegacy.md)
+    * [Compile on Windows](CompilingUnderWindows.md)
+    * [Compile on Windows pre-2.4](CompilingUnderWindowsLegacy.md)
     * [Running Custom Build](RunningCustomBuild.md)
 * Cloud, DCOS and Docker
     * [Running on AWS](RunningOnAWS.md)
