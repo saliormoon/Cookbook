@@ -2,12 +2,12 @@
 
 In this recipe we will learn how to use the [export API][1] to extract data and process it with PHP. At the end of the recipe you can download the complete PHP script.
 
-**Note**: The following recipe is written an ArangoDB server with version 2.6 or higher. You can also use the `devel` branch.
+**Note**: The following recipe is written using an ArangoDB server with version 2.6 or higher. You can also use the `devel` branch, since version 2.6 hasn't been an official release yet.
 
 ##Howto
 ###Importing example data
 
-First of all we need some data in an ArangoDB collection. For this example we will use a collection named `users` which you can [find here][2]. This way you can get the data into ArangoDB:
+First of all we need some data in an ArangoDB collection. For this example we will use a collection named `users` which we will populate with 100.000 [example documents][2]. This way you can get the data into ArangoDB:
 
 ```bash
 # download data file
@@ -72,8 +72,6 @@ try {
 ```
 
 After running the script you should see `Connected!` in the bash if successful.
-
-**Note**: The `TODO` in the code will be replaced in the next step.
 
 ###Extracting the data
 
@@ -283,7 +281,13 @@ curl
 The HTTP response will contatin a `result` attribute that contains the actual documents. The attribute `hasMore` will indicate if there are more documents for the client to fetch.
 The HTTP will also contain an attribute `id` if set to _true_.
 
-With the `id` you can send follow-up requests.
+With the `id` you can send follow-up requests like this:
+
+```bash
+curl
+  -X PUT
+  http://localhost:8529/_api/export/13979338067709
+```
 
 
 **Authors:** [Thomas Schmidts](https://github.com/13abylon) and [Jan Steemann](https://github.com/jsteemann)
