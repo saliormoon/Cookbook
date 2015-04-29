@@ -31,6 +31,7 @@
   * [Crawling Github with Promises](CrawlingGithubPromises.md)
   * [Using ArangoDB with Sails.js](UsingArangoDBWithSailsJS.md)
   * [Populating a Textbox](PopulatingAnAutocompleteTextbox.md)
+  * [Exporting Data](ExportingData.md)
 * ArangoDB Setup / Administration
   * [Using Authentication](UsingAuthentication.md)
   * [Importing Data](ImportingData.md)
@@ -48,7 +49,7 @@
     * [Docker with NodeJS App](UsingArangoDBNodeJSDocker.md)
     * [In the GiantSwarm](UsingArangoDBInGiantSwarm.md)
     * [ArangoDB in Mesos](UsingArangoDBMesosphere.md)
-  * Monitoring
+* Monitoring
     * [Monitoring with Collectd](MonitoringWithCollectd.md)
     * [Collectd - Network usage](MonitoringTrafficWithIPAccounting.md)
     * [Collectd - more Metrics](MonitoringOtherRelevantMetrics.md)
