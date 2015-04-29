@@ -49,7 +49,7 @@
     * [Docker with NodeJS App](UsingArangoDBNodeJSDocker.md)
     * [In the GiantSwarm](UsingArangoDBInGiantSwarm.md)
     * [ArangoDB in Mesos](UsingArangoDBMesosphere.md)
-  * Monitoring
+* Monitoring
     * [Monitoring with Collectd](MonitoringWithCollectd.md)
     * [Collectd - Network usage](MonitoringTrafficWithIPAccounting.md)
     * [Collectd - more Metrics](MonitoringOtherRelevantMetrics.md)
