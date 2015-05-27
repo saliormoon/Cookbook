@@ -3,5 +3,11 @@
   "title": "ArangoDB Cookbook",
   "language": "en",
   "theme": "./localtheme",
-  "plugins":["-mathjax"]
+  "plugins": ["piwik"],
+  "pluginsConfig": {
+      "piwik": {
+          "URL": "www.arangodb.com/piwik/",
+      "siteId": 12
+      }
+  }
 }
