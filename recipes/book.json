@@ -2,12 +2,14 @@
   "gitbook": ">=2.0.0",
   "title": "ArangoDB Cookbook",
   "language": "en",
-  "theme": "./localtheme",
-  "plugins": ["piwik"],
+  "plugins":["addcssjs"],
+  "styles": {
+    "website": "styles/website.css"
+  },
   "pluginsConfig": {
-      "piwik": {
-          "URL": "www.arangodb.com/piwik/",
-      "siteId": 12
-      }
+    "addcssjs": {
+      "js": ["styles/header.js"],
+      "css": ["styles/header.css"]
+    }
   }
 }
