@@ -23,7 +23,7 @@ You need at least `make` from cygwin. Cygwin also offers a `cmake`. Do **not** i
 
 Either version 2.8.12, 3.0.2 or 3.1.2 should work. Attention - pitfall: the cygwin version doesn't work.
 
-* [python](http://wwww.python.org)
+* [python](http://www.python.org)
 
 Either version 2.x or 3.x (excluding 3.4) should work - it's used to run V8s GYP. Make sure you add python.exe to your path environment variable; Restarting your running shell may be necessary.
 
