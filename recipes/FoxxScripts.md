@@ -56,8 +56,6 @@ We can now install the new Foxx app and mount it alongside our existing app. Mak
 
 To run the script, pick the "webhook" script from the scripts icon in the toolbar and enter the payload for the webhook as JSON, e.g. `{"message": "Hello from Foxx!"}`. Once you submit the payload, the script will execute immediately and you will be shown the response body or error returned by the script.
 
-## Comment
-
 **Author**: [Alan Plum](https://github.com/pluma)
 
 **Tags**: #foxx
