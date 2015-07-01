@@ -81,8 +81,6 @@ controller.post('/', function (req, res) {
 
 And that's a wrap!
 
-## Comment
-
 **Author**: [Alan Plum](https://github.com/pluma)
 
 **Tags**: #foxx
