@@ -66,8 +66,6 @@ controller
 
 Once you've updated the mounted app from the ArangoDB web interface, find the dependencies icon in the toolbar and set the "Gitter" dependency to the mount path of the Gitter app (e.g. `/gitter`). Once the app has been configured and all of its dependencies have been set up correctly, you should now see notifications from your app in Gitter.
 
-## Comment
-
 **Author**: [Alan Plum](https://github.com/pluma)
 
 **Tags**: #foxx
