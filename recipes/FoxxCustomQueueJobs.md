@@ -1,63 +1,48 @@
 # Creating a custom job type for Foxx Queues
 
-By combining our knowledge about [background workers](https://docs.arangodb.com/cookbook/FoxxQueues.html) and [making requests](https://docs.arangodb.com/cookbook/MakingRequests.html) we can integrate with third-party web applications by writing our own Foxx Queue job types.
+By combining our knowledge about [background workers](https://docs.arangodb.com/cookbook/FoxxQueues.html) and [Foxx scripts](https://docs.arangodb.com/cookbook/FoxxScripts.html) we can turn our scripts into our own job types for Foxx Queues.
+
+**Note:** For this recipe you need at least Arango 2.6. An older version of this recipe is available [for Arango 2.4 and 2.5](https://docs.arangodb.com/cookbook/FoxxCustomQueueJobsLegacy.md).
 
 ## Problem
 
-I have an existing Foxx app (for example the **todo app** from the [first recipe about Foxx](https://docs.arangodb.com/cookbook/FoxxFirstSteps.html)) and want to send a message to my [Gitter chat](https://gitter.im) whenever an item is added.
+I have an existing Foxx app (for example the **todo app** from the [first recipe about Foxx](https://docs.arangodb.com/cookbook/FoxxFirstSteps.html)) and an existing Foxx script (for example the **Gitter webhook** from the [recipe about Foxx scripts](https://docs.arangodb.com/cookbook/FoxxScripts.html)) and want to invoke the script whenever an item is added.
 
 ## Solution
 
-Go to [Gitter](https://gitter.im) and sign up for a free account there. Create a room and click on "Configure your integrations" in the side bar and select "Custom". Note down the URL (it should look something like this: `https://webhooks.gitter.im/e/b4dc0ff33b4b3`).
-
-We may want to be able to send messages to Gitter in other apps too, so let's create a new Foxx app we call `notify-gitter`. We'll only add a single JavaScript file containing an export called `webhook` and we want to allow configuring our Foxx app with the webhook URL, so our manifest should look similar to this:
+A job type in ArangoDB 2.6 and above consists of at least two properties: the name of a script and the mount point of the app that provides that script. This means you can use any script provided by any app as a job type, but let's save our future selves some effort and make the Gitter app export those properties for us. First open its `manifest.json` and add an "exports" section:
 
 ```json
 {
-  "name": "notify-gitter",
-  "version": "1.0.0",
-  "exports": {
-    "webhook": "webhook.js"
-  },
-  "configuration": {
-    "url": {
-      "description": "Gitter webhook URL.",
-      "type": "string",
-      "default": "https://webhooks.gitter.im/e/123"
-    }
+  // ...
+  "exports": "exports.js"
+}
+```
+
+Next create the `exports.js` file. We want developers using our app to be able to just import it and get a job type they can use directly. We know our script is called "webhook" because that's what we called it in the manifest but the mount path can not be known before the app is actually mounted. Luckily we can access an app's own mount point using `applicationContext.mount`. The code is easy enough:
+
+```js
+'use strict';
+module.exports = {
+  mount: applicationContext.mount,
+  name: 'webhook'
+};
+```
+
+Update the mounted Gitter app (or mount it if it hasn't been mounted yet) and the exports will become available. This is all you need to do to make the Gitter app available to other apps as a job type.
+
+The next steps should be familiar: open the todo app and add the Gitter app as a dependency in its `manifest.json` file:
+
+```json
+{
+  // ...
+  "dependencies": {
+    "gitter": "notify-gitter:^1.0.0"
   }
 }
 ```
 
-We'll create a new job type called `notify.gitter`. The implementation in our `webhook.js` is relatively straightforward:
-
-```js
-'use strict';
-var queues = require('org/arangodb/foxx').queues;
-var request = require('org/arangodb/request');
-
-queues.registerJobType('notify.gitter', {
-  execute: function (data) {
-    var response = request.post(applicationContext.configuration.url, {
-      form: data
-    });
-    if (response.status >= 400) {
-      return response.body;
-    } else {
-      throw new Error(
-        'Server returned error code ' +
-        response.status +
-        ' with message: ' +
-        response.body
-      );
-    }
-  }
-});
-```
-
-We can now install the new Foxx app and mount it alongside our existing app. Make sure to swap out the default webhook URL with the one you received from Gitter before you proceed. Once the app has been configured correctly, we can use the new job type like any other job type available from the Foxx app registry.
-
-First create a new queue:
+The dependency is now available via the alias `applicationContext.dependencies.gitter` in your code. So let's use it. First create a new queue:
 
 ```js
 var queue = Foxx.queues.create('todo-gitter', 1)
@@ -66,20 +51,20 @@ var queue = Foxx.queues.create('todo-gitter', 1)
 Then use the queue in your controller:
 
 ```js
-controller.post('/', function (req, res) {
+controller
+.post('/', function (req, res) {
   var todo = req.params('todo');
   todos.save(todo);
   res.json(todo.forClient());
 
-  queue.push('notify.gitter', {
+  queue.push(applicationContext.dependencies.gitter, {
     message: '**New Todo added**: ' + todo.get('title')
   });
-}).bodyParam('todo', {description: 'The Todo you want to create', type: Todo});
+})
+.bodyParam('todo', {description: 'The Todo you want to create', type: Todo});
 ```
 
-And that's a wrap!
-
-## Comment
+Once you've updated the mounted app from the ArangoDB web interface, find the dependencies icon in the toolbar and set the "Gitter" dependency to the mount path of the Gitter app (e.g. `/gitter`). Once the app has been configured and all of its dependencies have been set up correctly, you should now see notifications from your app in Gitter.
 
 **Author**: [Alan Plum](https://github.com/pluma)
 
