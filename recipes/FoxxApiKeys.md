@@ -29,7 +29,7 @@ let Weather = Foxx.Repository.extend({
     return result;
   }
 });
-exports.Repository = Weather;
+module.exports = Weather;
 ```
 
 But now lets focus on the main part of this recipe, the controller.
@@ -39,7 +39,7 @@ The first API-key free implementation is the following `controller.js`:
 "use strict";
 let Foxx = require("org/arangodb/foxx");
 let Controller = new Foxx.Controller(applicationContext);
-let Weather = require("./repo").Repository;
+let Weather = require("./repo";
 let weather = new Weather(applicationContext.collection("weather"));
 let joi = require("joi");
 
@@ -190,7 +190,7 @@ Full controller code:
 "use strict";
 let Foxx = require("org/arangodb/foxx");
 let Controller = new Foxx.Controller(applicationContext);
-let Weather = require("./repo").Repository;
+let Weather = require("./repo");
 let weather = new Weather(applicationContext.collection("weather"));
 let joi = require("joi");
 let apiKeys = Foxx.requireApp('/api').apiKeys;

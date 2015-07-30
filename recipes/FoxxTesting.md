@@ -90,8 +90,8 @@ If everything went right, you should see that the test we came up with failed be
 
 ```js
 'use strict';
-var ToDo = require('./models/todo').Model;
-var ToDoRepository = require('./repositories/todo').Repository;
+var ToDo = require('./models/todo');
+var ToDoRepository = require('./repositories/todo');
 var todos = new ToDoRepository(
   applicationContext.collection('todo'),
   {model: ToDo}
