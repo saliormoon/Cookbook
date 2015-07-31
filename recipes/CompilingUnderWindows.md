@@ -4,7 +4,7 @@
 
 I want to compile ArangoDB under Windows.
 
-**Note:** For this recipe you need at least ArangoDB 2.4. For ArangoDB version before 2.4 look at the [old Compiling ArangoDB under Windows](CompilingUnderWindowsLegacy.md).
+**Note:** For this recipe you need at least ArangoDB 2.4; it also works for 2.5 and 2.6. For ArangoDB version before 2.4 look at the [old Compiling ArangoDB under Windows](CompilingUnderWindowsLegacy.md).
 
 ## Solution
 
@@ -45,11 +45,13 @@ be found. One way is to execute the `vcvarsall.bat` script from the `VC` folder.
 
 * [procdump](https://technet.microsoft.com/en-us/sysinternals/dd996900.aspx) (for the unittests; run once to accept the eula)
 
+* [GitLink](https://github.com/GitTools/GitLink) to adjust the pdb files to github
+
 ### Building the required libraries
 
-First of all, start a `bash` from cygwin and clone the repository using the corresponding branch, e.g. for ArangoDB 2.4:
+First of all, start a `bash` from cygwin and clone the repository using the corresponding branch, e.g. for ArangoDB 2.6:
 
-    git clone -b 2.4 https://github.com/arangodb/arangodb-windows-libraries.git
+    git clone -b 2.6 https://github.com/arangodb/arangodb-windows-libraries.git
 
 and switch into the directory `arangodb-windows-libraries`. This repository contains the open-source libraries which
 are needed by ArangoDB:
