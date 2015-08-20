@@ -9,6 +9,8 @@
   * [Counting Nodes efficiently](CountingNodesEfficientlyGraph.md)
   * [Creating Test-data using AQL](CreatingTestDataAQL.md)
   * [Diffing Documents](DiffingDocuments.md)
+  * [Avoiding Parameter Injection](AvoidingInjection.md)
+  * [Multiline Query Strings](MultilineQueryStrings.md)
 * Graph-based Recipes
   * [Fulldepth Graph-Traversal](Fulldepth.md)
   * [Vertices for Subgraphs](FindingConnectedVerticesForSubgraphs.md)
