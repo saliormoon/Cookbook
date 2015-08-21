@@ -103,7 +103,7 @@ FOR doc IN collection
 
 In the above query, `@what` is a bind parameter. In order to execute this query,
 a value for bind parameter `@what` must be specified. Otherwise query execution will
-fail with error 1551 (*no value specified for declared bind paramter*). If a value
+fail with error 1551 (*no value specified for declared bind parameter*). If a value
 for `@what` gets specified, the query can be executed. However, the query string
 and the bind parameter values (i.e. the contents of the `@what` bind parameter) will
 be handled separately. What's in the bind parameter will always be treated as a value,
