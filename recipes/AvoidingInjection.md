@@ -17,7 +17,7 @@ provided by database software or querying mechanisms.
 
 ## Parameter injection examples
 
-Assembling query strings with simple string concatentation looks trivial,
+Assembling query strings with simple string concatenation looks trivial,
 but is potentially unsafe. Let's start with a simple query that's fed with some
 dynamic input value, let's say from a web form. A client application or a Foxx
 route happily picks up the input value, and puts it into a query:
