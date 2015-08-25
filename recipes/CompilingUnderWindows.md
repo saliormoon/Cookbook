@@ -19,6 +19,29 @@ For this recipe you need to install the following programs under Windows:
 
 You need at least `make` from cygwin. Cygwin also offers a `cmake`. Do **not** install this version. The unit tests require the bash.
 
+an edit has been made to this post; click to load
+up vote 1 down vote
+	
+You should also issue these commands to generate user informations for the cygwin commands:
+
+    mkpasswd > /etc/passwd
+    mkgroup > /etc/group
+
+Turning ACL off (noacl) for all mounts in cygwin fixes permissions troubles that may appear in the build:
+
+    # /etc/fstab
+    #
+    #    This file is read once by the first process in a Cygwin process tree.
+    #    To pick up changes, restart all Cygwin processes.  For a description
+    #    see https://cygwin.com/cygwin-ug-net/using.html#mount-table
+    
+    # noacl = Ignore Access Control List and let Windows handle permissions
+    C:/cygwin64/bin  /usr/bin   ntfs      binary,auto,noacl           0  0
+    C:/cygwin64/lib  /usr/lib   ntfs      binary,auto,noacl           0  0
+    C:/cygwin64      /          ntfs      override,binary,auto,noacl  0  0
+    none             /cygdrive  cygdrive  binary,posix=0,user,noacl   0  0
+
+
 * [cmake](http://www.cmake.org/)
 
 Either version 2.8.12, 3.0.2 or 3.1.2 should work. Attention - pitfall: the cygwin version doesn't work.
@@ -46,6 +69,8 @@ be found. One way is to execute the `vcvarsall.bat` script from the `VC` folder.
 * [procdump](https://technet.microsoft.com/en-us/sysinternals/dd996900.aspx) (for the unittests; run once to accept the eula)
 
 * [GitLink](https://github.com/GitTools/GitLink) to adjust the pdb files to github
+
+* [WinDbg](https://msdn.microsoft.com/de-de/windows/hardware/gg454513.aspx) (in the section "Standalone Debugging Tools for Windows (WinDbg)") to get automated backraces during unittest runs; Hint: Add its install path to the PATH environment.
 
 ### Building the required libraries
 
