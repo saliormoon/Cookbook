@@ -4,7 +4,7 @@
 
 I want to create a simple API with [Foxx](https://foxx.arangodb.com), but I never created one before. Specifically I want to create simple API to organize my todo items.
 
-**Note:** For this recipe you need Arango 2.3. or a version below. For Arango since 2.4 look at the [new My first Foxx App](https://docs.arangodb.com/Users/Foxx/Nutshell/index.html).
+**Note:** For this recipe you need Arango 2.3. or a version below. For Arango since 2.4 look at the [new My first Foxx App](https://docs.arangodb.com/Foxx/Nutshell/index.html).
 
 ## Solution
 
@@ -45,7 +45,7 @@ if (db._collection(todos) === null) {
 }
 ```
 
-We use `applicationContext.collectionName` to get a name for a collection that is specific for our apps. This allows you to install the same app twice and also prevents different apps writing into the same collection by accident. We will only create the collection, if it has not been created yet. If you want to learn more about `db`, please check out [our documentation about handling collections](https://docs.arangodb.com/Collections/README.html). In our manifest file we now need to add this setup script by adding the following line:
+We use `applicationContext.collectionName` to get a name for a collection that is specific for our apps. This allows you to install the same app twice and also prevents different apps writing into the same collection by accident. We will only create the collection, if it has not been created yet. If you want to learn more about `db`, please check out [our documentation about handling collections](https://docs.arangodb.com/Collections/index.html). In our manifest file we now need to add this setup script by adding the following line:
 
 ```json
 "setup": "scripts/setup.js"
