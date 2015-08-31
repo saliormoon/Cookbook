@@ -4,11 +4,11 @@
 
 The new [ArangoDB Javascript driver][1] no longer imposes any promises implementation. It follows the standard callback pattern with a callback using `err` and `res`. 
 
-But what if we want to use a promise library - in this case the most popular one [promises][3]? Lets give it a try and build a **github crawler** with the new Javascript driver and promises. 
+But what if we want to use a promise library - in this case the most popular one [promises][2]? Lets give it a try and build a **github crawler** with the new Javascript driver and promises. 
 
 ## Solution
 
-The following source code can be found on [github][4].
+The following source code can be found on [github][3].
 
 ### Pagination with Promises made easy
 
@@ -72,7 +72,7 @@ I've decided to stick to the sequence `reject` (aka `err`) followed by `resolve`
 
 ### Queues, Queues, Queues
 
-I've only needed a very simple job queue, so [queue-it][5] is a good choice. It provides a very simple API for handling job queues:
+I've only needed a very simple job queue, so [queue-it][4] is a good choice. It provides a very simple API for handling job queues:
 
     POST /queue/job
     POST /queue/worker
@@ -127,7 +127,7 @@ Please note that the action function is executed on the server and not in the no
 
 ### Riding the Beast
 
-Start an ArangoDB instance (i.e. inside a [docker container][6]) and install the simple queue.
+Start an ArangoDB instance (i.e. inside a [docker container][5]) and install the simple queue.
 
     foxx-manager install queue-it /queue
     
@@ -157,10 +157,9 @@ Please keep in mind that this is just an experiment. There is no good error hand
 
 **Sources used in this example:**
 
-*   ArangoJS <https://github.com/arangodb/arangojs>
-*   Node Github <https://github.com/ajaxorg/node-github>
-*   npm promises <https://www.npmjs.com/package/promises>
-*   ArangoDB Foxx queue-it <https://github.com/arangodb/queue-it>
+*   [ArangoJS][1]
+*   [npm promises][2]
+*   [ArangoDB Foxx queue-it][4]
 
 The source code of this example is available from Github: <https://github.com/fceller/Foxxmender>
 
@@ -169,8 +168,7 @@ The source code of this example is available from Github: <https://github.com/fc
 **Tags**: #foxx #javascript #API #nodejs #driver
 
 [1]: https://github.com/arangodb/arangojs
-[2]: https://github.com/ajaxorg/node-github
-[3]: https://www.npmjs.com/package/promises
-[4]: https://github.com/fceller/Foxxmender
-[5]: https://github.com/arangodb/queue-it
-[6]: https://docs.arangodb.com/cookbook/RunningInDockerContainer.html
+[2]: https://www.npmjs.com/package/promises
+[3]: https://github.com/fceller/Foxxmender
+[4]: https://github.com/arangodb/queue-it
+[5]: RunningInDockerContainer.html

@@ -34,7 +34,7 @@ In ArangoDB you need to create a collection in order to save documents. We will 
 createCollection('todos');
 ```
 
-If you want to learn more about `db`, please check out [our documentation about handling collections](https://docs.arangodb.com/Collections/README.html). The setup script will be executed when the app is installed. In the development mode however, it will be called every time we request the app. If we click on the tiny `i` on our app, we will get to interactive documentation for our app (which is empty right now, because we don't have any routes yet). This will trigger our app and therefore execute our setup script. To check if that worked, go to `collections`. You will see a collection called `dev_todos_todos`. Setup is done!
+If you want to learn more about `db`, please check out [our documentation about handling collections](https://docs.arangodb.com/Collections/index.html). The setup script will be executed when the app is installed. In the development mode however, it will be called every time we request the app. If we click on the tiny `i` on our app, we will get to interactive documentation for our app (which is empty right now, because we don't have any routes yet). This will trigger our app and therefore execute our setup script. To check if that worked, go to `collections`. You will see a collection called `dev_todos_todos`. Setup is done!
 
 ### Create our first route
 

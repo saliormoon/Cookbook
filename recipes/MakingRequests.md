@@ -4,7 +4,7 @@ As of version 2.5, ArangoDB provides a familiar API for making HTTP requests to 
 
 ## Problem
 
-I have an existing Foxx app with authentication (such as the **auth app** from the [recipe for Foxx authentication](https://docs.arangodb.com/cookbook/FoxxAuth.html)) and want to use an external web service to authenticate my users instead.
+I have an existing Foxx app with authentication (such as the **auth app** from the [recipe for Foxx authentication](FoxxAuth.html)) and want to use an external web service to authenticate my users instead.
 
 ## Solution
 

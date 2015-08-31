@@ -1,12 +1,12 @@
 # Creating a custom job type for Foxx Queues
 
-By combining our knowledge about [background workers](https://docs.arangodb.com/cookbook/FoxxQueuesLegacy.html) and [making requests](https://docs.arangodb.com/cookbook/MakingRequests.html) we can integrate with third-party web applications by writing our own Foxx Queue job types.
+By combining our knowledge about [background workers](FoxxQueuesLegacy.html) and [making requests](MakingRequests.html) we can integrate with third-party web applications by writing our own Foxx Queue job types.
 
-**Note:** For this recipe you need Arango 2.4 or 2.5. An updated version of this recipe is available [for Arango 2.6 and above](https://docs.arangodb.com/cookbook/FoxxCustomQueueJobs.md).
+**Note:** For this recipe you need Arango 2.4 or 2.5. An updated version of this recipe is available [for Arango 2.6 and above](FoxxCustomQueueJobs.html).
 
 ## Problem
 
-I have an existing Foxx app (for example the **todo app** from the [first recipe about Foxx](https://docs.arangodb.com/cookbook/FoxxFirstSteps.html)) and want to send a message to my [Gitter chat](https://gitter.im) whenever an item is added.
+I have an existing Foxx app (for example the **todo app** from the [first recipe about Foxx](FoxxFirstSteps.html)) and want to send a message to my [Gitter chat](https://gitter.im) whenever an item is added.
 
 ## Solution
 

@@ -1,6 +1,6 @@
 # Creating a Foxx script
 
-Based on our knowledge of [making requests](https://docs.arangodb.com/cookbook/MakingRequests.html) we can integrate with third-party web applications by writing our own Foxx scripts.
+Based on our knowledge of [making requests](MakingRequests.html) we can integrate with third-party web applications by writing our own Foxx scripts.
 
 ## Problem
 

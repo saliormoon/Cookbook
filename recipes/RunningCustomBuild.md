@@ -6,7 +6,7 @@ You've already built a custom version of ArangoDB and want to run it. Possibly i
 
 ## Solution
 
-First, you need to build your own version of ArangoDB. If you haven't done so already, have a look at any of the "Compiling*.md" recipes.
+First, you need to build your own version of ArangoDB. If you haven't done so already, have a look at any of the [Compiling](Compiling.md) recipes.
 
 This recipe assumes you're in the root directory of the ArangoDB distribution and compiling has successfully finished.
 
@@ -28,7 +28,7 @@ bin/arangod \
 
 This part shows how to run your custom build with the config and data from a pre-existing stable installation.
 
-**BEWARE** ArangoDB's developers may change the db file format and after running with a changed file format, there may be no way back. Alternatively you can run your build in isolation and [dump](https://docs.arangodb.com/Arangodump/README.html) and [restore](https://docs.arangodb.com/Arangorestore/README.html) the data from the stable to your custom build.
+**BEWARE** ArangoDB's developers may change the db file format and after running with a changed file format, there may be no way back. Alternatively you can run your build in isolation and [dump](https://docs.arangodb.com/Arangodump/index.html) and [restore](https://docs.arangodb.com/Arangorestore/index.html) the data from the stable to your custom build.
 
 When running like this, you must run the db as the arangod user (the default installed by the package) in order to have write access to the log, database directory etc. Running as root will likely mess up the file permissions - good luck fixing that!
 

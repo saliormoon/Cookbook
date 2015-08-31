@@ -1,12 +1,12 @@
 # Creating a custom job type for Foxx Queues
 
-By combining our knowledge about [background workers](https://docs.arangodb.com/cookbook/FoxxQueues.html) and [Foxx scripts](https://docs.arangodb.com/cookbook/FoxxScripts.html) we can turn our scripts into our own job types for Foxx Queues.
+By combining our knowledge about [background workers](FoxxQueues.html) and [Foxx scripts](FoxxScripts.html) we can turn our scripts into our own job types for Foxx Queues.
 
-**Note:** For this recipe you need at least Arango 2.6. An older version of this recipe is available [for Arango 2.4 and 2.5](https://docs.arangodb.com/cookbook/FoxxCustomQueueJobsLegacy.md).
+**Note:** For this recipe you need at least Arango 2.6. An older version of this recipe is available [for Arango 2.4 and 2.5](FoxxCustomQueueJobsLegacy.html).
 
 ## Problem
 
-I have an existing Foxx app (for example the **todo app** from the [first recipe about Foxx](https://docs.arangodb.com/cookbook/FoxxFirstSteps.html)) and an existing Foxx script (for example the **Gitter webhook** from the [recipe about Foxx scripts](https://docs.arangodb.com/cookbook/FoxxScripts.html)) and want to invoke the script whenever an item is added.
+I have an existing Foxx app (for example the **todo app** from the [first recipe about Foxx](FoxxFirstSteps.html)) and an existing Foxx script (for example the **Gitter webhook** from the [recipe about Foxx scripts](FoxxScripts.html)) and want to invoke the script whenever an item is added.
 
 ## Solution
 

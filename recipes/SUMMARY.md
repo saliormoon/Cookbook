@@ -15,6 +15,7 @@
   * [Fulldepth Graph-Traversal](Fulldepth.md)
   * [Vertices for Subgraphs](FindingConnectedVerticesForSubgraphs.md)
   * [Vertex example with Java](JavaDriverGraphExampleVertex.md)
+  * [Accessing base docuemnts with Java](JavaDriverBaseDocument.md)
   * [Using a custom Visitor](UsingCustomVisitorFromNodeJs.md)
 * Foxx Framework
   * [My first Foxx App](FoxxFirstSteps.md)
@@ -23,6 +24,8 @@
   * [Adding Authentication pre-2.5](FoxxAuthLegacy.md)
   * [Using external APIs](MakingRequests.md)
   * [Background jobs](FoxxQueues.md)
+  * [legacy background jobs](FoxxQueuesLegacy.md)
+  * [legacy custom Background jobs](FoxxCustomQueueJobsLegacy.md)
   * [Creating a Foxx script](FoxxScripts.md)
   * [Custom job types for Queues](FoxxCustomQueueJobs.md)
   * [My first FoxxGenerator App](FoxxGeneratorFirstSteps.md)
@@ -41,7 +44,7 @@
   * [Importing Data](ImportingData.md)
   * [Replicating Data](ReplicatingData.md)
   * [XCopy Install Windows](XCopyInstallWindows.md)
-  * Compiling / Build
+  * [Compiling / Build](Compiling.md)
     * [Compile on Debian](CompilingOnDebian.md)
     * [Compile on Windows](CompilingUnderWindows.md)
     * [Compile on Windows pre-2.4](CompilingUnderWindowsLegacy.md)

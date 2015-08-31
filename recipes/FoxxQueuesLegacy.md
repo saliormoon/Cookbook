@@ -2,11 +2,11 @@
 
 ArangoDB Foxx allows defining job queues that let you perform slow or expensive actions asynchronously. These queues can be used to send emails, call external APIs or perform other actions that you do not want to perform directly or want to retry on failure.
 
-**Note:** For this recipe you need Arango 2.4 or 2.5. An updated version of this recipe is available [for Arango 2.6 and above](https://docs.arangodb.com/cookbook/FoxxQueues.md).
+**Note:** For this recipe you need Arango 2.4 or 2.5. An updated version of this recipe is available [for Arango 2.6 and above](FoxxQueues.html).
 
 ## Problem
 
-I have an existing Foxx app (for example the **todo app** from the [first recipe about Foxx](https://docs.arangodb.com/cookbook/FoxxFirstSteps.html)) and I want to send out an email every time an item is created.
+I have an existing Foxx app (for example the **todo app** from the [first recipe about Foxx](FoxxFirstSteps.html)) and I want to send out an email every time an item is created.
 
 ## Solution
 
