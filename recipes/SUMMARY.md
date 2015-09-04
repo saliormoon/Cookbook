@@ -51,6 +51,7 @@
     * [Running Custom Build](RunningCustomBuild.md)
 * Cloud, DCOS and Docker
     * [Running on AWS](RunningOnAWS.md)
+    * [Update on AWS](UpdateArangoDBOnAWS.md)
     * [Running on Azure](UsingArangoDBAzure.md)
     * [Docker ArangoDB](RunningInDockerContainer.md)
     * [Docker with NodeJS App](UsingArangoDBNodeJSDocker.md)
