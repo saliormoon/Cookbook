@@ -1,11 +1,12 @@
-#Running on AWS
+#Running ArangoDB on AWS
 
-##Problem
-How do you make ArangoDB run on [Amazons Web Service][1] (AWS)?
+ArangoDB is available as AMI on the [AWS Marketplace][1]. 
 
-##Solution
+(If you've already a running ArangoDB image on AWS and need an update, please have a look at [Updating ArangoDB on AWS](UpdateArangoDBOnAWS)).
 
-First of all go the [ArangoDB marketplace][2] and click on **Continue**
+Here is a quick guide how to start:
+
+First of all go the [ArangoDB marketplace][2], select the lastest version and click on **Continue**
 
 ![AWS marketplace](assets/RunningOnAWS/marketplace.png)
 
@@ -32,5 +33,5 @@ Now you can launch your ArangoDB instance in [your Software library][3]. Click o
 **Tags** : #aws, #amazon, #howto
 
 [1]: https://aws.amazon.com/de/
-[2]: https://aws.amazon.com/marketplace/pp/B00RNJ092K/
+[2]: https://aws.amazon.com/marketplace/search/results/ref=dtl_navgno_search_box?page=1&searchTerms=arangodb
 [3]: https://aws.amazon.com/marketplace/library
