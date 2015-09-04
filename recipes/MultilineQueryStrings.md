@@ -75,9 +75,13 @@ the string concatenation.
 
 There are a few things to note regarding template strings:
 
-* ES6 template strings will treat the `$` sign as a special character, so care must be 
-  taken when this character itself is used inside an AQL query string. It does not matter 
-  if a `$` sign is used in a bind parameter though.
+* ES6 template strings can be used to inject JavaScript values into the string dynamically.
+  Substitutions start with the character sequence `${`. Care must be taken if this sequence
+  itself is used inside the AQL query string (currently this would be invalid AQL, but this
+  may change in future ArangoDB versions). Additionally, any values injected into the query
+  string using parameter substitutions will not be escaped correctly automatically, so again
+  special care must be taken when using this method to keep queries safe from parameter 
+  injection.
 
 * a multi-line template string will actually contain newline characters. This is not necessarily
   the case when doing string concatenation. In the string concatenation example, we used 
@@ -88,6 +92,30 @@ There are a few things to note regarding template strings:
 Please note that when using ES6 template strings for your queries, you should still use
 bind parameters (as done above with `@what`) and not insert user input values into the
 query string without sanitation.
+
+Since ArangoDB 2.7, there is a convenience function `aqlQuery` which can be used to safely
+and easily build an AQL query with substitutions from arbitrary JavaScript values and
+expressions. It can be invoked like this:
+
+```js
+var what = "some input value";
+var query = aqlQuery`FOR doc IN collection 
+                     FILTER doc.value == ${what} 
+                     RETURN doc`; 
+```
+
+The template string variant that uses `aqlQuery` is both convenient and safe. Internally, it
+will turn the substituted values into bind parameters. The query string and the bind parameter
+values will be returned separately, so the result of `query` above will be something like:
+
+```js 
+{ 
+  "query" : "FOR doc IN collection FILTER doc.value == @value0 RETURN doc", 
+  "bindVars" : { 
+    "value0" : "some input value" 
+  } 
+}
+```
 
 ### Query builder
 
