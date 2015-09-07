@@ -72,8 +72,56 @@ be found. One way is to execute the `vcvarsall.bat` script from the `VC` folder.
 
 * [WinDbg](https://msdn.microsoft.com/de-de/windows/hardware/gg454513.aspx) (in the section "Standalone Debugging Tools for Windows (WinDbg)") to get automated backraces during unittest runs; Hint: Add its install path to the PATH environment.
 
-### Building the required libraries
+Enable native symlinks for Cygwin and git
+=========================================
 
+Cygwin will create proprietary files as placeholders by default instead of
+actually symlinking files. The placeholders later tell Cygwin where to resolve
+paths to. It does not intercept every access to the placeholders however, so
+that 3rd party scripts break. Windows Vista and above support real symlinks,
+and Cygwin can be configured to make use of it:
+
+    # use actual symlinks to prevent documentation build errors
+    # (requires elevated rights!)
+    export CYGWIN="winsymlinks:native"
+
+Note that you must run Cygwin as administrator or change the Windows group
+policies to allow user accounts to create symlinks (gpedit.msc if available).
+
+BTW: You can create symlinks manually on Windows like:
+
+    mklink /H target/file.ext source/file.ext
+    mklink /D target/path source/path
+    mklink /J target/path source/path/for/junction
+
+And in Cygwin:
+
+  ln -s source target
+
+
+
+Use bundled Python and other executables
+========================================
+
+To use the bundled python 2.6, even if there's another python installation on
+your machine, use the following shell command in the Cygwin environment to
+extend the environment path (non-permanent):
+
+    export PATH=absolute/path/to/python_26:$PATH
+
+Note that the build scripts aren't compatible with Python 3.x!
+
+Add more paths if needed to make commands like `ebook-convert` available:
+
+    export PATH="/cygdrive/c/Program Files/Calibre2:absolute/path/to/python_26:$PATH"
+
+Colons are used to separate individual paths (`path1:path2`). `$PATH` contains
+the current environment paths, and must be used at the end of the export command
+to not take precedence over the newly added paths.
+
+
+Building the required libraries
+===============================
 First of all, start a `bash` from cygwin and clone the repository using the corresponding branch, e.g. for ArangoDB 2.6:
 
     git clone -b 2.6 https://github.com/arangodb/arangodb-windows-libraries.git
@@ -192,6 +240,12 @@ executable
 
     cp WindowsLibraries/64/icudtl.dat Build64/bin/Debug/icudt52l.dat
 
+
 **Author**: [Frank Celler](https://github.com/fceller)
+**Author**: [Wilfried Goesgens](https://github.com/dothebart)
+**Author**: [CoDEmanX](https://github.com/CoDEmanX)
 
 **Tags**: #windows
+
+
+
