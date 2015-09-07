@@ -211,7 +211,7 @@ The *bin/rspec.bat* created by gem is not sufficient for being run by the unitte
   
 You can then run the unittests like that:
 
-  bash ./scripts/run_cygwin.sh scripts/unittest.js all '{"skipBoost":true,"skipGeo":true}'
+  bash ./scripts/unittest all --skipBoost true --skipGeo true
 
 ### Executables only
 
