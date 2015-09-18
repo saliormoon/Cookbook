@@ -50,10 +50,16 @@ More information on the dependencies is available in the official documentation:
 Login again and install them.
 
 ```bash
-sudo aptitude install git-core build-essential autoconf automake libssl-dev golang-go libreadline-dev
+sudo aptitude install git-core \
+    build-essential \
+    autoconf automake \
+    libssl-dev libreadline-dev libboost-test-dev \
+    cmake \
+    python2.7 \
+    golang-go 
 ```
 
-### Build ArangoDB
+### Build ArangoDB - autoconf way
 
 *Mandatory*
 
@@ -88,6 +94,30 @@ make -j $(nproc)
 *Optional*
 
 Now that you have a custom build, you probably want to run it. Have a look at [Running Custom Build](RunningCustomBuild.md)
+
+## Build ArangoDB - cmake way for ARM-targets
+The cmake way will work on ARM systems, plus you will end up with `.deb` packages.
+
+First we need to compile the dependencies:
+
+```bash
+cd 3rdParty
+
+make -f Makefile.v8
+make -f Makefile.libev-arm
+make -f Makefile.zlib-arm
+make -f Makefile.v8-arm install
+```
+
+then continue with the main package building:
+
+```bash
+
+make pack-arm
+```
+
+If you want to fiddle with the process, visit `GNUmakefile` and search for `pack-arm` to find its invocation of cmake.
+
 
 **Author:** [Patrick Huber](https://github.com/stackmagic)
 
