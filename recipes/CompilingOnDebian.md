@@ -56,7 +56,7 @@ sudo aptitude install git-core \
     libssl-dev libreadline-dev libboost-test-dev \
     cmake \
     python2.7 \
-    golang-go 
+    golang-go
 ```
 
 ### Build ArangoDB - autoconf way
@@ -78,7 +78,7 @@ Now, as normal user, we will clone and build ArangoDB
 git clone -b devel git://github.com/arangodb/arangodb.git
 cd ArangoDB
 make setup
-./configure 
+./configure
 ```
 
 The configure summary should include a version and details for: readline, openssl, zlib, libev, v8, icu.
@@ -98,21 +98,22 @@ Now that you have a custom build, you probably want to run it. Have a look at [R
 ## Build ArangoDB - cmake way for ARM-targets
 The cmake way will work on ARM systems, plus you will end up with `.deb` packages.
 
-First we need to compile the dependencies:
+First we need to compile the dependencies (V8, libev...) via the traditional configure / make style:
 
 ```bash
-cd 3rdParty
+./configure
+make
+```
 
-make -f Makefile.v8
-make -f Makefile.libev-arm
-make -f Makefile.zlib-arm
-make -f Makefile.v8-arm install
+Once we got all the dependencies compiled we can continue using them for subsequent builds:
+
+```bash
+cd 3rdParty; make -f Makefile.v8-arm install
 ```
 
 then continue with the main package building:
 
 ```bash
-
 make pack-arm
 ```
 
@@ -121,4 +122,4 @@ If you want to fiddle with the process, visit `GNUmakefile` and search for `pack
 
 **Author:** [Patrick Huber](https://github.com/stackmagic)
 
-**Tags:** #debian #driver 
+**Tags:** #debian #driver
