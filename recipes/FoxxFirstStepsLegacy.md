@@ -121,7 +121,7 @@ exports.Model = Todo;
 
 Now we can use the model in our post route to create new items. We want to store the model in the database – in order to do that we create a Repository. A repository has the responsibility to store models in a collection as well as giving a nice interface for searching for those models as well as updating or deleting them. To create a repository you have to provide the collection it should use as well as the model used for the documents in the collection. We create a standard repository in the following snippet. Our post action receives a Todo as its body. We provide a name for it as well as a short description. In the body of the function we then get the parameter `todo` which is an instance of our Todo model. We then save this model into our database. This will also add some meta data to the model (the ID, key and revision from ArangoDB). We then send a response back to the client.
 
-```
+```js
 var Foxx = require('org/arangodb/foxx'),
   Todo = require('models/todo').Model,
   todosCollection = applicationContext.collection("todos"),

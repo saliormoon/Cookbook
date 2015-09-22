@@ -155,9 +155,10 @@ Afterwards change the URL of the central node in the script to the one you chose
 
 Now register the script as a recurring action:
 
-```
+```js
 require("internal").definePeriodic(1, 10, "org/arangodb/mysync", "execute", "");
 ```
+
 **Note**: At this point you can change the time the script will be executed.
 
 ## Comment
@@ -170,7 +171,7 @@ After that the transferred data will be removed from the *data* collection.
 
 If you want to test your script simply add some data to your *data* collection - e.g.: 
 
-```
+```js
 for (i = 0; i < 100; ++i) db.data.save({ value: i });
 ```
 

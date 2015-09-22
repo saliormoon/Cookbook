@@ -16,6 +16,7 @@ The main reason is efficiency. The general traversal framework is very versatile
 can be used for different tasks. By default, it will copy the vertex data and the full
 path information for each visited vertex into the result. This can easily get very big
 for bigger graphs.
+
 If all we want is to count nodes, we can be much more efficient by employing a custom
 visitor function.
 
@@ -78,7 +79,7 @@ Please note the following things:
 * the AQL query will use two collections as in the example graph. They are named `v` and 
   `e`. The vertices are connected via inbound edges. The traversal will start at the
   node with id `v/world` as specified. To use other collections, a different start vertex
-  or outbound connections, please adjust the part of the query following `TRAVERSAL(...`.
+  or outbound connections, please adjust the `TRAVERSAL(...)` call.
 
 * the visitor function name (`visitor` attribute of the configuration) in the example
   is `myfunctions::vertexCounter`. Adjust as required!

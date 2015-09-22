@@ -6,7 +6,7 @@ Documents in a collection may have different shapes associated with them. There 
 ## Solution
 There are two possible ways to do this. 
 
-*I) The fast way with some random samplings:*
+*A) The fast way with some random samplings:*
 
 1. Ask for a random document (`db.<collection>.any()`) and note its top-level attribute names
 2. Repeat this for at least 10 times. After that repeat it only if you think it's worth it. 
@@ -68,7 +68,7 @@ function attributes(collection) {
 } 
 ```
 
-*II) The way to find all top-level attributes*
+*B) The way to find all top-level attributes*
 
 If you don't mind to make some extra inserts and you don't care about deletion or updates of documents you can use the following:
 
@@ -101,13 +101,15 @@ function insert(collection, document) {
 
 ## Comment
 
-*I) The fast way with some random samplings:*
+*A) The fast way with some random samplings:*
+
 You get some random sampling with bounded complexity. 
 If you have a variety of attributes you should repeat the procedure more than 10 times.
 
 The procedure can be implemented as a server side action. 
 
-*II) The way to find all top-level attributes*
+*B) The way to find all top-level attributes*:
+
 This procedure will not care about updates or deletions of documents.
 Also only the top-level attribute of the documents will be inserted and nested one ignored. 
 
