@@ -52,7 +52,7 @@ For this recipe you need to install the following programs under Windows:
 
 * [Visual Studio Express 2013 for Windows Desktop](https://www.microsoft.com/en-us/download/details.aspx?id=44914)
 
-  More recent versions, such as [Visual Studio Community 2015](https://www.visualstudio.com/) may also work.
+  More recent versions, such as [Visual Studio Community 2015](https://www.visualstudio.com/) don't work yet.
 
   Please note that there are different versions of Visual Studio. The `Visual Studio for Windows`
   will **not work**. You need to install `Visual Studio (Express) for Windows Desktop`. You must
