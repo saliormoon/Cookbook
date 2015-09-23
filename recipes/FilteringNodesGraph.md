@@ -93,7 +93,7 @@ FOR result IN TRAVERSAL(v, e, "v/world", "inbound", params)
 ```
 
 As we can see, only vertices of type `country` have been returned. This is because the filter
-returned `"exclude" for everything but vertices of type `"country"`. `"exclude"` means that the
+returned `"exclude"` for everything but vertices of type `"country"`. `"exclude"` means that the
 visitor will not be called for the vertex. As the default functionality of a visitor is to put the
 visited vertex into the result, it is now clear why the result does only contain nodes of type
 `"country"`.

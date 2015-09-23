@@ -29,33 +29,35 @@ Therefore we have to identify and rank all possible storages for a given subgrap
 
 Test Dataset creation in arangosh:
 
-    var graph_module = require("org/arangodb/general-graph");
-    var graph = graph_module("myGraph", [graph_module._relation("edges", "circles", ["circles", "crosses"])]);
+```js
+var graph_module = require("org/arangodb/general-graph");
+var graph = graph_module("myGraph", [graph_module._relation("edges", "circles", ["circles", "crosses"])]);
 
-    // Add circle circles
-    graph.circles.save({"_key": "A"});
-    graph.circles.save({"_key": "B"});
-    graph.circles.save({"_key": "C"});
-    graph.circles.save({"_key": "D"});
-    graph.circles.save({"_key": "G"});
-    graph.circles.save({"_key": "H"});
+// Add circle circles
+graph.circles.save({"_key": "A"});
+graph.circles.save({"_key": "B"});
+graph.circles.save({"_key": "C"});
+graph.circles.save({"_key": "D"});
+graph.circles.save({"_key": "G"});
+graph.circles.save({"_key": "H"});
 
-    // Add crosses
-    graph.crosses.save({"_key": "E"});
-    graph.crosses.save({"_key": "F"});
+// Add crosses
+graph.crosses.save({"_key": "E"});
+graph.crosses.save({"_key": "F"});
 
-    // Add relevant edges
-    graph.edges.save("circles/A", "crosses/E", {});
-    graph.edges.save("circles/B", "crosses/E", {});
-    graph.edges.save("circles/C", "crosses/E", {});
-    graph.edges.save("circles/D", "crosses/E", {});
-    graph.edges.save("circles/B", "crosses/F", {});
-    graph.edges.save("circles/C", "crosses/F", {});
-    graph.edges.save("circles/D", "crosses/F", {});
+// Add relevant edges
+graph.edges.save("circles/A", "crosses/E", {});
+graph.edges.save("circles/B", "crosses/E", {});
+graph.edges.save("circles/C", "crosses/E", {});
+graph.edges.save("circles/D", "crosses/E", {});
+graph.edges.save("circles/B", "crosses/F", {});
+graph.edges.save("circles/C", "crosses/F", {});
+graph.edges.save("circles/D", "crosses/F", {});
 
-    // Add irrelevant edges to make sure they are ignored
-    graph.edges.save("circles/G", "crosses/F", {});
-    graph.edges.save("circles/H", "crosses/F", {});
+// Add irrelevant edges to make sure they are ignored
+graph.edges.save("circles/G", "crosses/F", {});
+graph.edges.save("circles/H", "crosses/F", {});
+```
 
 Now we have created the graph as described in the problem scenario above.
 Now we are given a set of vertices within the graph: `["circles/A","circles/B","circles/C","circles/D"]`
@@ -68,45 +70,47 @@ We can simply drop in the set of vertices for both comparison sets in this funct
 This will form all distinct vertex pairs in our graph and list all neighbors they have in common.
 This leads us to an intermediate result (taking only A and all its distinct pairs):
 
-    [
-      {
-        "nodes/A": {
-          "nodes/B": [
-            {
-              "_id": "crosses/E",
-              "_rev": "220352236897",
-              "_key": "E"
-            }
-          ],
-            "nodes/C": [
-            {
-              "_id": "crosses/E",
-              "_rev": "220352236897",
-              "_key": "E"
-            }
-          ],
-            "nodes/D": [
-            {
-              "_id": "crosses/E",
-              "_rev": "220352236897",
-              "_key": "E"
-            }
-          ]
+```json
+[
+  {
+    "nodes/A": {
+      "nodes/B": [
+        {
+          "_id": "crosses/E",
+          "_rev": "220352236897",
+          "_key": "E"
         }
-      }
-    ]
+      ],
+        "nodes/C": [
+        {
+          "_id": "crosses/E",
+          "_rev": "220352236897",
+          "_key": "E"
+        }
+      ],
+        "nodes/D": [
+        {
+          "_id": "crosses/E",
+          "_rev": "220352236897",
+          "_key": "E"
+        }
+      ]
+    }
+  }
+]
+```
 
 Now we are only interested in the "_key" value of the inner most element.
 We can extract this value by iterating over all internal VALUES two times:
 
-    for f in VALUES(n)
-      for s in VALUES(f)
-        for candidate in s 
-        return s._key
+    FOR f IN VALUES(n)
+      FOR s IN VALUES(f)
+        FOR candidate IN s 
+        RETURN s._key
 
 This will give us a list of all common neighbors, but we only want to count them using collect.
 
-    collect crosses = candidate._key into counter
+    COLLECT crosses = candidate._key INTO counter
 
 This will now count for each connecting node how many pairs it connects.
 These pairs are considered distinct based on their ordering (A and B is considered a different pair as B and A).
@@ -118,36 +122,38 @@ However we are only interested in the ones of type cross.
 As we have used a different collection for them we can simply apply a restriction to `GRAPH_COMMON_NEIGHBORS` to only consider vertices from this special collection.
 The last thing to do is to put everything together:
 
-    FOR x in (
+    FOR x IN (
       (
-         let circles = ["circles/A","circles/B","circles/C","circles/D"]
-         let condition = {"vertexCollectionRestriction": "crosses"}
-         for n in GRAPH_COMMON_NEIGHBORS("myGraph",circles, circles, condition, condition)
-           for f in VALUES(n)
-             for s in VALUES(f)
-               for candidate in s 
-                 collect crosses = candidate._key into counter
-                 return {
+         LET circles = ["circles/A", "circles/B", "circles/C", "circles/D"]
+         LET condition = {"vertexCollectionRestriction": "crosses"}
+         FOR n IN GRAPH_COMMON_NEIGHBORS("myGraph",circles, circles, condition, condition)
+           FOR f IN VALUES(n)
+             FOR s IN VALUES(f)
+               FOR candidate IN s 
+                 COLLECT crosses = candidate._key INTO counter
+                 RETURN {
                    crosses: crosses,
                    connections: 0.5 + SQRT(0.25 + LENGTH(counter))
                  }
         )
       )
-    sort x.connections DESC
-    return x
+    SORT x.connections DESC
+    RETURN x
 
 Which will yield this result on the dataset in the image:
 
-    [
-      {
-        "crosses": "E",
-        "connections": 4
-      },
-      {
-        "crosses": "F",
-        "connections": 3
-      }
-    ]
+```json
+[
+  {
+    "crosses": "E",
+    "connections": 4
+  },
+  {
+    "crosses": "F",
+    "connections": 3
+  }
+]
+```
 
 ## Comment
 

@@ -20,7 +20,7 @@ from them.
 
 Let's assume we want to process the following input documents:
 
-```js
+```json
 { "name" : "test", "gender" : "f", "status" : "active", "type" : "user" }
 { "name" : "dummy", "gender" : "m", "status" : "inactive", "type" : "unknown", "magicFlag" : 23 }
 ```
@@ -84,7 +84,7 @@ of its members.
 
 To prove this is working, here is the above query's result:
 
-```js
+```json
 [
   {
     "name": "test",
@@ -122,7 +122,7 @@ FOR doc IN documents
 
 That will give us document-specific attribute names like this:
 
-```js
+```json
 [
   {
     "test-name": "test",
@@ -170,7 +170,7 @@ FOR doc IN documents
 
 This will return:
 
-```
+```json
 [
   {
     "user": {

@@ -17,17 +17,17 @@ For this recipe, you need to install the following programs under Windows:
 
 * [cygwin](https://www.cygwin.com/)
 
-You need at least `make` from cygwin. Cygwin also offers a `cmake` do not install this version. 
+  You need at least `make` from cygwin. Cygwin also offers a `cmake` do not install this version. 
 
 * [cmake](http://www.cmake.org/)
 
-Either version 2.8.12 or 3.0.2 should work. Make sure to download the 64bit version.
+  Either version 2.8.12 or 3.0.2 should work. Make sure to download the 64bit version.
 
-* Visual Studio Express 2013 for Windows Desktop
+* [Visual Studio Express 2013 for Windows Desktop](https://www.microsoft.com/en-us/download/details.aspx?id=44914)
 
-Please note that there are different versions of Visual Studio. The `Visual Studio for Windows` will not work. You need to
-install `Visual Studio (Express) for Windows Desktop`. You must configure your path in such a way that the compiler can
-be found. One way is to execute the `vcvarsall.bat` script from the `VC` folder.
+  Please note that there are different versions of Visual Studio. The `Visual Studio for Windows` will not work.
+  You need to install `Visual Studio (Express) for Windows Desktop`. You must configure your path in such a way
+  that the compiler can be found. One way is to execute the `vcvarsall.bat` script from the `VC` folder.
 
 * [Nullsoft Scriptable Install System](http://nsis.sourceforge.net/Download)
 

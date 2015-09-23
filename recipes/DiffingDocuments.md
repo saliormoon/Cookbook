@@ -71,7 +71,7 @@ The above query will return a document with three attributes:
 
 For the two example documents it will return:
 
-```
+```json
 [
  {
    "missing" : [
@@ -107,7 +107,7 @@ That output format was the first that came to my mind. It is of course possible 
 
 Following is a version of the same query that can be invoked from JavaScript easily. It passes the two documents as bind parameters and calls `db._query`. The query is now an one-liner (less readable but easier to copy&paste):
 
-```
+```js
 bindVariables = {
   doc1 : { "foo" : "bar", "a" : 1, "b" : 2 },
   doc2 : { "foo" : "baz", "a" : 2, "c" : 3 }

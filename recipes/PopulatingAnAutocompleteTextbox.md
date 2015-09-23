@@ -47,7 +47,8 @@ that will create a collection named `completions` and load some initial data int
 example app provides autocompletion for US city names, and the setup script populates the
 collection with about 10K city names.
 
-The setup script also [creates a skiplist index on the lookup attribute](https://github.com/jsteemann/autocomplete/blob/master/scripts/setup.js#L10561), so this attribute can be used for efficient filtering and sorting later.
+The setup script also [creates a skiplist index on the lookup attribute](https://github.com/jsteemann/autocomplete/blob/master/scripts/setup.js#L10561),
+so this attribute can be used for efficient filtering and sorting later.
 The `lookup` attribute contains the city names already lower-cased, and the original 
 (*pretty*) names are stored in attribute `pretty`. This attribute will be returned to
 users.

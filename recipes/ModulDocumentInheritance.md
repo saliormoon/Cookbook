@@ -10,10 +10,12 @@ Lets assume you have three document collections: "subclass", "class" and "superc
 
 You can create them via arangosh or foxx:
 
-    var graph_module = require("com/arangodb/general-graph");
-    var g = graph_module._create("inheritance");
-    g._extendEdgeDefinitions(graph_module. _directedRelation("sub_extends_class", ["subclass"], ["class"]));
-    g._extendEdgeDefinitions(graph_module. _directedRelation("class_extends_super", ["class"], ["superclass"]));
+```js
+var graph_module = require("com/arangodb/general-graph");
+var g = graph_module._create("inheritance");
+g._extendEdgeDefinitions(graph_module. _directedRelation("sub_extends_class", ["subclass"], ["class"]));
+g._extendEdgeDefinitions(graph_module. _directedRelation("class_extends_super", ["class"], ["superclass"]));
+```
 
 This makes sure when using the graph interface that the inheritance looks like:
 
@@ -24,30 +26,34 @@ This makes sure when using the graph interface that the inheritance looks like:
 To make sure everything works as expected you should use the built-in traversal in combination with Foxx. This allows you to add the inheritance security layer easily.
 To use traversals in foxx simply add the following line before defining routes:
 
-    var traversal = require("org/arangodb/graph/traversal");
-    var Traverser = traversal.Traverser;
+```js
+var traversal = require("org/arangodb/graph/traversal");
+var Traverser = traversal.Traverser;
+```
 
 Also you can add the following endpoint in Foxx:
 
-    var readerConfig = {
-      datasource: traversal.graphDatasourceFactory("inheritance"),
-      expander: traversal.outboundExpander,                                                      // Go upwards in the tree
-      visitor: function (config, result, vertex, path) {
-        for (key in vertex) {
-          if (vertex.hasOwnProperty(key) && !result.hasOwnProperty(key)) {
-            result[key] = vertex[key]                                                                         // Store only attributes that have not yet been found
-          }
-        }
+```js
+var readerConfig = {
+  datasource: traversal.graphDatasourceFactory("inheritance"),
+  expander: traversal.outboundExpander, // Go upwards in the tree
+  visitor: function (config, result, vertex, path) {
+    for (key in vertex) {
+      if (vertex.hasOwnProperty(key) && !result.hasOwnProperty(key)) {
+        result[key] = vertex[key] // Store only attributes that have not yet been found
       }
-    };  
-    
-    controller.get("load/:collection/:key", function(req, res) {
-      var result = {};
-      var id = res.params("collection") + "/" + res.params("key");
-      var traverser = new Traverser(readerConfig);
-      traverser.traverse(result, g.getVertex(id));
-      res.json(result);
-    }); 
+    }
+  }
+};  
+
+controller.get("load/:collection/:key", function(req, res) {
+  var result = {};
+  var id = res.params("collection") + "/" + res.params("key");
+  var traverser = new Traverser(readerConfig);
+  traverser.traverse(result, g.getVertex(id));
+  res.json(result);
+});
+```
 
 This will make sure to iterate the complete inheritance tree upwards to the root element and will return all values on the path
 were the first instance of this value is kept
