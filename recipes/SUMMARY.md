@@ -17,6 +17,7 @@
   * [Vertex example with Java](JavaDriverGraphExampleVertex.md)
   * [Accessing base docuemnts with Java](JavaDriverBaseDocument.md)
   * [Using a custom Visitor](UsingCustomVisitorFromNodeJs.md)
+  * [Example AQL Queries for Graphs](GraphExampleActorsAndMovies.md)
 * Foxx Framework
   * [My first Foxx App](FoxxFirstSteps.md)
   * [My first Foxx App pre-2.4](FoxxFirstStepsLegacy.md)
