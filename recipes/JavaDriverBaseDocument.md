@@ -41,6 +41,13 @@ To retrieve a document is similar to the known procedure, except that you use `_
 DocumentEntity<BaseDocument> myObject = driver.getDocument(myDocument.getDocumentHandle(), BaseDocument.class);
 ```
 
+## Other resources
+More documentation about the ArangoDB java driver is available:
+ - [Arango DB Java in ten minutes](https://www.arangodb.com/tutorial-java/)
+ - [java driver Readme at Github](https://github.com/arangodb/arangodb-java-driver)
+ - [Example source in java](https://github.com/arangodb/arangodb-java-driver/tree/master/src/test/java/com/arangodb/example)
+ - [Unittests](https://github.com/arangodb/arangodb-java-driver/tree/master/src/test/java/com/arangodb)
+
 **Author**: [gschwab](https://github.com/gschwab)
 
 **Tags**: #java #driver
