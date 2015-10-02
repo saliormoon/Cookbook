@@ -39,12 +39,32 @@ else
     cat > book.json <<EOF
 {
   "gitbook": ">=2.0.0",
-  "plugins": ["addcssjs"],
+  "title": "ArangoDB Cookbook",
+  "author": "ArangoDB GmbH",
+  "description": "Cookbook for ArangoDB solutions - the multi-model NoSQL database",
+  "plugins": ["toggle-chapters","piwik","addcssjs"],
   "pluginsConfig": {
+      "piwik": {
+          "URL": "www.arangodb.com/piwik/",
+      "siteId": 12
+      },
       "addcssjs": {
           "js": ["styles/header.js"],
-          "css": ["styles/header.css"]
+          "css": ["styles/header.css"] 
       }
+  },
+  "pdf": {
+    "fontSize": 12,
+    "toc": true,
+    "margin": {
+      "right": 60,
+      "left": 60,
+      "top": 35,
+      "bottom": 35
+    }
+  },
+  "styles": {
+    "website": "styles/website.css"
   }
 }
 EOF
@@ -65,3 +85,6 @@ if test "`cat /tmp/mdlinks.txt | wc -l`" -gt 0; then
     cat /tmp/mdlinks.txt
     exit 3
 fi
+
+
+sed -i -e "s;VERSION_NUMBER;;" cookbook/styles/header.css cookbook/styles/header.js
