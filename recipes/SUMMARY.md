@@ -15,7 +15,7 @@
   * [Fulldepth Graph-Traversal](Fulldepth.md)
   * [Vertices for Subgraphs](FindingConnectedVerticesForSubgraphs.md)
   * [Vertex example with Java](JavaDriverGraphExampleVertex.md)
-  * [Accessing base docuemnts with Java](JavaDriverBaseDocument.md)
+  * [Accessing base documents with Java](JavaDriverBaseDocument.md)
   * [Using a custom Visitor](UsingCustomVisitorFromNodeJs.md)
   * [Example AQL Queries for Graphs](GraphExampleActorsAndMovies.md)
 * Foxx Framework
