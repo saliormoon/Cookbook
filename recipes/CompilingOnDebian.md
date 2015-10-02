@@ -98,6 +98,14 @@ Now that you have a custom build, you probably want to run it. Have a look at [R
 ## Build ArangoDB - cmake way for ARM-targets
 The cmake way will work on ARM systems, plus you will end up with `.deb` packages.
 
+You should configure your system to use the gold-ld, since its using far less resources:
+
+```bash
+cd /usr/bin
+rm ld
+ln -s ld.gold ld
+```
+
 First we need to compile the dependencies (V8, libev...) via the traditional configure / make style:
 
 ```bash
