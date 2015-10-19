@@ -28,7 +28,7 @@ bin/arangod \
 
 This part shows how to run your custom build with the config and data from a pre-existing stable installation.
 
-**BEWARE** ArangoDB's developers may change the db file format and after running with a changed file format, there may be no way back. Alternatively you can run your build in isolation and [dump](https://docs.arangodb.com/Arangodump/index.html) and [restore](https://docs.arangodb.com/Arangorestore/index.html) the data from the stable to your custom build.
+**BEWARE** ArangoDB's developers may change the db file format and after running with a changed file format, there may be no way back. Alternatively you can run your build in isolation and [dump](https://docs.arangodb.com/HttpBulkImports/Arangodump.html) and [restore](https://docs.arangodb.com/HttpBulkImports/Arangorestore.html) the data from the stable to your custom build.
 
 When running like this, you must run the db as the arangod user (the default installed by the package) in order to have write access to the log, database directory etc. Running as root will likely mess up the file permissions - good luck fixing that!
 
