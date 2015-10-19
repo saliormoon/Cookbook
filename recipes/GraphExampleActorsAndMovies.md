@@ -3,7 +3,7 @@
 ## Acknowledgments
 
 On [Stackoverflow][1] the user [Vincz][2] asked for some example queries based on graphs.
-So credits for this questions go to him. The datasets and queries have been taken from the guys of [neo4j] (http://neo4j.com/docs/stable/cypherdoc-movie-database.html). Credits and thanks to them.
+So credits for this questions go to him. The datasets and queries have been taken from the guys of [neo4j](http://neo4j.com/docs/stable/cypherdoc-movie-database.html). Credits and thanks to them.
 As I also think this examples are yet missing I decided to write this recipe.
 
 ## Problem
