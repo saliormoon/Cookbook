@@ -31,7 +31,8 @@ Test Dataset creation in arangosh:
 
 ```js
 var graph_module = require("org/arangodb/general-graph");
-var graph = graph_module("myGraph", [graph_module._relation("edges", "circles", ["circles", "crosses"])]);
+var graph = graph_module._create("myGraph", [
+    graph_module._relation("edges", "circles", ["circles", "crosses"])]);
 
 // Add circle circles
 graph.circles.save({"_key": "A"});
