@@ -142,11 +142,11 @@ Assume that authors are stored in one collection and books in a second. If all
 you are every interest in is "which are the authors of a book" than you can
 easily model this as a list attribute in users.
 
-If you want to store more information, for example which author wrote which page in a conference proceeding, or if you also want to know "which books were writing by which author", you can use edge collections. This is very similar to the "join table" from the relational world.
+If you want to store more information, for example which author wrote which page in a conference proceeding, or if you also want to know "which books were written by which author", you can use edge collections. This is very similar to the "join table" from the relational world.
 
 #### Embedded Lists
 
-If you only want to store the authors of a book, you can embedded them as list in the book document.  There is no need for a separate collection.
+If you only want to store the authors of a book, you can embed them as list in the book document.  There is no need for a separate collection.
 
 ```json
 arangosh [_system]> db.authors.toArray()
@@ -390,7 +390,7 @@ arangosh [_system]> db._query("FOR b IN books RETURN { book: b, authors: NEIGHBO
 ]
 ```
 
-Or if you want to hiding the information stored in the edge.
+Or if you want to hide the information stored in the edge.
 
 ```json
 arangosh [_system]> db._query("FOR b IN books RETURN { book: b, authors: NEIGHBORS(books, written, b._id, 'inbound')[*].vertex }").toArray();
