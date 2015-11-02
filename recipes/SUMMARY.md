@@ -60,6 +60,7 @@
     * [ArangoDB in Mesos](UsingArangoDBMesosphere.md)
 * Monitoring
     * [Monitoring with Collectd](MonitoringWithCollectd.md)
+    * [Collectd - Replication Slaves](MonitoringSlaveStatus.md)
     * [Collectd - Network usage](MonitoringTrafficWithIPAccounting.md)
     * [Collectd - more Metrics](MonitoringOtherRelevantMetrics.md)
     * [Collectd - Monitoring Foxx](MonitoringFoxxApps.md)
