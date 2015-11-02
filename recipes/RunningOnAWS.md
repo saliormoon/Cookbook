@@ -24,7 +24,11 @@ You successfully launched an ArangoDB instance on AWS.
 
 ![Launch ArangoDB](assets/RunningOnAWS/launch.png)
 
-Now you can launch your ArangoDB instance in [your Software library][3]. Click on **Access Software**, log in with the credentials `root`/`<name of your amazon instance>` and you will see the ArangoDB Web Interface:
+You now have a service running with an instance-id (here `i-de47a672`):
+
+![AWS marketplace](assets/RunningOnAWS/AWS_InstanceID.png)
+
+Now you can launch your ArangoDB instance in [your Software library][3]. Click on **Access Software**, log in with the credentials `root`/`<instance-id>` and you will see the ArangoDB Web Interface:
 
 ![Web Interface](assets/RunningOnAWS/webInterface.png)
 
