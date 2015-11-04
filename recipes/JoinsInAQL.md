@@ -421,7 +421,7 @@ arangosh> db._query(
 ]
 ```
 
-Or if you want to hiding the information stored in the edge.
+Or if you want to hide the information stored in the edge.
 
 ```json
 arangosh> db._query(

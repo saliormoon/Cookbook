@@ -41,7 +41,7 @@ If you made any changes to the ArangoDB configuration, you need to restart Arang
 service arangodb restart
 ```
 
-### Configure the proxy server
+### Configure the proxy server - Apache
 
 Now the proxy server has to be configured. This recipe assumes that Apache2 is installed.
 To make Apache proxy requests, you have to activate `mod_proxy`. This can be done by running
@@ -75,6 +75,39 @@ After that, restart Apache using this command:
 ```
 $ service apache2 restart 
 ```
+
+Making the arangodb administation interface accessible under the `/arangodb/` URL works like this:
+(choose a part of your server configuration for elevated security)
+
+```
+ProxyPass /arangodb/ http://127.0.0.1:8529/
+ProxyPassReverse /arangodb/ http://127.0.0.1:8529/
+ProxyPass /_db/ http://127.0.0.1:8529/_db/
+ProxyPassReverse /_db/ http://127.0.0.1:8529/_db/
+```
+
+Restart Apache again.
+
+###Configure the proxy server - NGINX
+Nginx doesn't offer modules in a way apache does. However, HTTP-Proxying is one of its core features.
+
+Adopting the above example for nginx may look like this (add it to a server section):
+
+        location /great-app {
+          allow all;
+          proxy_pass http://127.0.0.1:8529/_db/_system/myapp;
+        }
+
+Respectively the availability to the Managementconsole:
+
+        location /arango/ {
+          allow all;
+          proxy_pass http://127.0.0.1:8529/;
+        }
+        location /_db {
+           allow all;
+           proxy_pass http://127.0.0.1:8529/_db;
+        }
 
 ### Validate the accessibility
 
