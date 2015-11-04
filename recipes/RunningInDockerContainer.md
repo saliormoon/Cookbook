@@ -14,6 +14,16 @@ Running ArangoDB - using the ArangoDB repository - is as simple as...
 
 I've created an automated build repository on docker, so that you can easily start a docker container with the latest stable release. Thanks to frodenas, hipertracker, joaodubas, webwurst who also created dockerfiles.
 
+ArangoDB generates a random default password for the web-interface which you can copy from the shell.
+
+    Status: Downloaded newer image for arangodb/arangodb:2.7.0
+    starting ArangoDB in stand-alone mode
+    creating initial user, please wait ...
+    ========================================================================
+    ArangoDB User: "root"
+    ArangoDB Password: "X7GFlFfFn1OTpmvD"
+    ========================================================================
+
 Please note that this recipe is a general overview. There is also a recipe explaining how to install an application consisting of a node.js application and an ArangoDB database server.
 
 You can get more information about [Docker and how to use it](https://github.com/arangodb/arangodb-docker) in our Docker repository.
