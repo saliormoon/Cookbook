@@ -77,12 +77,12 @@ gitbook build . ./../cookbook
 # integrity check the html for flat markdown links
 # ################################################
 cd ..
-find cookbook/ -name \*.html -exec grep '\.md' {} \; -print |sed "s;^cookbook/\(.*\).html;\n   In file: recipes/\1.md\n\n;"> /tmp/mdlinks.txt
+find cookbook/ -name \*.html -exec grep '\.md' {} \; |grep -v data-filepath |sed "s;^cookbook/\(.*\).html;\n   In file: recipes/\1.md\n\n;"> /tmp/mdlinks.txt
 
 if test "`cat /tmp/mdlinks.txt | wc -l`" -gt 0; then
     echo "Found left over flat markdown links in the generated output: "
     echo
-    cat /tmp/mdlinks.txt
+    find cookbook/ -name \*.html -exec grep '\.md' {} \; -print |grep -v data-filepath |sed "s;^cookbook/\(.*\).html;\n   In file: recipes/\1.md\n\n;"> /tmp/mdlinks.txt
     exit 3
 fi
 
