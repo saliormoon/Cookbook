@@ -6,7 +6,9 @@ How do you make ArangoDB run in a Docker container?
 
 ##Solution
 
-Running ArangoDB is as simple as...
+ArangoDB is now available as an [official repository in the Docker Hub](https://hub.docker.com/_/arangodb/) (@see documentation there). Furthermore, it could be used from our own repository:
+
+Running ArangoDB - using the ArangoDB repository - is as simple as...
 
     docker run -p 8529:8529 arangodb/arangodb
 
