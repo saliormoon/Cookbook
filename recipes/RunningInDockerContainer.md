@@ -58,7 +58,7 @@ In order to get a list of supported options, run
 
 ###Persistent Data
 
-ArangoDB use the volume `/data` as database directory to store the collection data and the volume `/apps` as apps directory to store any extensions. These directory are marked as docker volumes.
+ArangoDB use the volume `/var/lib/arangodb` as database directory to store the collection data and the volume `/var/lib/arangodb-apps` as apps directory to store any extensions. These directory are marked as docker volumes.
 
 See `docker run -e help=1 arangodb` for all volumes.
 
@@ -66,14 +66,14 @@ You can map the container's volumes to a directory on the host, so that the data
 
     unix> mkdir /tmp/arangodb
     unix> docker run -p 8529:8529 -d \
-              -v /tmp/arangodb:/data \
+              -v /tmp/arangodb:/var/lib/arangodb \
               arangodb/arangodb
 
 This will use the `/tmp/arangodb` directory of the host as database directory for ArangoDB inside the container.
 
 Alternatively you can create a container holding the data.
 
-    unix> docker run -d --name arangodb-persist -v /data ubuntu:14.04 true
+    unix> docker run -d --name arangodb-persist -v /var/lib/arangodb ubuntu:14.04 true
 
 And use this data container in your ArangoDB container.
 
@@ -81,7 +81,7 @@ And use this data container in your ArangoDB container.
 
 If want to save a few bytes for you can alternatively use [tianon/true][3] or [progrium/busybox][4] for creating the volume only containers. For example
 
-    unix> docker run -d --name arangodb-persist -v /data tianon/true true
+    unix> docker run -d --name arangodb-persist -v /var/lib/arangodb tianon/true true
 
 ###Building an image
 
@@ -90,6 +90,15 @@ Simple clone the repository and execute the following command in the arangodb-do
     unix> docker build -t arangodb .
 
 This will create a image named arangodb.
+
+##Update note
+that we have changed the location of the data files, in order
+to be compatible with the official docker image (see
+https://github.com/docker-library/official-images/pull/728):
+
+- `/var/lib/arangodb` instead of `/data`
+- `/var/lib/arangodb-apps` instead of `/apps`
+- `/var/log/arangodb` instead of `/logs`
 
 ##Comment
 
