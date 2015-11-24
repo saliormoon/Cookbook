@@ -12,7 +12,7 @@ With Version 2.5.1 ArangoDB doesn't rely on registry entries anymore so we can d
 Open an explorer, choose a place where you want ArangoDB to be and unzip the files there. It will create its own toplevel directory with the version number in the string.
 
 #### Alter configuration
-**Optional**: Edit `etc\arangodb\arangodb.conf` if the default values don't suit your needs (e.g. the location of the database files, ports to bind and so on).
+**Optional**: Edit `etc\arangodb\arangod.conf` if the default values don't suit your needs (e.g. the location of the database files, ports to bind and so on).
 
 #### Create Runtime directories
 `arangod` leans on the existence of some directories in the **var** subdirectory, so you should create them:
