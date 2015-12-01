@@ -83,6 +83,7 @@ If want to save a few bytes for you can alternatively use [tianon/true][3] or [p
 
     unix> docker run -d --name arangodb-persist -v /var/lib/arangodb tianon/true true
 
+If you're running docker on OS X or Windows, [please read the upstream documentation howto mount persistant volumes](https://docs.docker.com/engine/userguide/dockervolumes/#mount-a-host-directory-as-a-data-volume).
 ###Building an image
 
 Simple clone the repository and execute the following command in the arangodb-docker folder
