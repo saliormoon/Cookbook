@@ -58,6 +58,8 @@ In order to get a list of supported options, run
 
 ###Persistent Data
 
+*note: if you're running a docker machine on [OS X](https://docs.docker.com/v1.8/installation/mac/) or [Windows](https://docs.docker.com/windows/step_one/), [read first about using docker inside of virtual machines](#docker-inside-of-a-virtual-machine)*
+
 ArangoDB use the volume `/var/lib/arangodb` as database directory to store the collection data and the volume `/var/lib/arangodb-apps` as apps directory to store any extensions. These directory are marked as docker volumes.
 
 See `docker run -e help=1 arangodb` for all volumes.
@@ -83,7 +85,6 @@ If want to save a few bytes for you can alternatively use [tianon/true][3] or [p
 
     unix> docker run -d --name arangodb-persist -v /var/lib/arangodb tianon/true true
 
-If you're running docker on OS X or Windows, [please read the upstream documentation howto mount persistant volumes](https://docs.docker.com/engine/userguide/dockervolumes/#mount-a-host-directory-as-a-data-volume).
 ###Building an image
 
 Simple clone the repository and execute the following command in the arangodb-docker folder
@@ -101,12 +102,19 @@ https://github.com/docker-library/official-images/pull/728):
 - `/var/lib/arangodb-apps` instead of `/apps`
 - `/var/log/arangodb` instead of `/logs`
 
+##Docker inside of a virtual machine
+There are some setups in which you may want to run a docker container inside of a virtual machine - either you want reproduceable tests for deployment, or its not directly compatible with your hosts os (aka OS X or Windows).
+If you only want to mount filesystems native to the VM as persistent volume, everything is fine. But if you need to mount filesystems from your host into the VM and then in term into the docker container, things get complicated.
+Even more if the Virtual Machine part is abstracted away from the user - if you're on OS X with `boot to docker` or on windows.
+[Please read the upstream documentation howto mount persistent volumes in this case.](https://docs.docker.com/engine/userguide/dockervolumes/#mount-a-host-directory-as-a-data-volume).
+
 ##Comment
 
 A good explanation about persistence and docker container can be found here: 
 
 * [Docker In-depth: Volumes][1]
 * [Why Docker Data Containers are Good Using host directories][2]
+
 
 **Author:** [Frank Celler](https://github.com/fceller)
 
