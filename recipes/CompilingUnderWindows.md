@@ -245,8 +245,20 @@ Alternatively use `cmake` to build the executables.
 In order to execute the binaries you need to copy the ICU datafile into the directory containing the
 executable
 
-    cp WindowsLibraries/64/icudtl.dat Build64/bin/Debug/icudt52l.dat
+    cp WindowsLibraries/64/icudtl.dat Build64/bin/Debug/icudt54l.dat
 
+
+If you intend to use the machine for development purposes, it may be more practical to copy it somewhere else:
+
+    cp WindowsLibraries/64/icudtl.dat /cygdrive/c/Windows/icudt54l.dat
+
+And configure your environment (yes this instruction remembers to the hitchhikers guide to the galaxy...) so that
+`ICU_DATA` points to `c:\\Windows`. You do that by opening the explorer,
+right click on `This PC` in the tree on the left, choose `Properties` in the opening window `Advanced system settings`,
+in the Popup `Environment Variables`, another popup opens, in the `System Variables` part you click `New`, 
+And Key: :`ICU_DATA` to value: `c:\\Windows`
+
+![HowtoSetEnv](assets/CompilingUnderWindows/SetEnvironmentVar.png)
 
 **Authors**:
 [Frank Celler](https://github.com/fceller),
