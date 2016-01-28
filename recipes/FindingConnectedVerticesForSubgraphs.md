@@ -48,6 +48,7 @@ graph.crosses.save({"_key": "F"});
 
 // Add relevant edges
 graph.edges.save("circles/A", "crosses/E", {});
+graph.edges.save("circles/A", "crosses/F", {});
 graph.edges.save("circles/B", "crosses/E", {});
 graph.edges.save("circles/C", "crosses/E", {});
 graph.edges.save("circles/D", "crosses/E", {});
@@ -127,7 +128,7 @@ The last thing to do is to put everything together:
       (
          LET circles = ["circles/A", "circles/B", "circles/C", "circles/D"]
          LET condition = {"vertexCollectionRestriction": "crosses"}
-         FOR n IN GRAPH_COMMON_NEIGHBORS("myGraph",circles, circles, condition, condition)
+         FOR n IN GRAPH_COMMON_NEIGHBORS("myGraph", circles, circles, condition, condition)
            FOR f IN VALUES(n)
              FOR s IN VALUES(f)
                FOR candidate IN s 
