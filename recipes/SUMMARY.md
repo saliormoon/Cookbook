@@ -33,7 +33,8 @@
   * [How to deploy a Foxx App](FoxxDeploy.md)
   * [Apps accessible from the Web](MakingFoxxAppAccessible.md)
   * [API-Key Management](FoxxApiKeys.md)
-  * [Binary HTTP documents](FoxxBinaryHttpPost.md)
+  * [Handling Binary HTTP documents in Foxx](FoxxBinaryFileUploads.md)
+  * [Sending Binary HTTP documents from Foxx](FoxxBinaryHttpPost.md)
   * [Foxx Testing](FoxxTesting.md)
 * Use Cases, Examples
   * [Crawling Github with Promises](CrawlingGithubPromises.md)
