@@ -1,3 +1,7 @@
 recipes/_book
 recipes/book.json
 recipes/node_modules
+/bin/
+.*.md.html
+.classpath
+.project
