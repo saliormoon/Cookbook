@@ -30,7 +30,107 @@ String string = "<recipe name=\"bread\" prep_time=\"5 mins\" cook_time=\"3 hours
 		+ "</recipe> ";
 
 JSONObject jsonObject = JSONML.toJSONObject(string);
+System.out.println(jsonObject.toString());
 ```
+
+The converted JSON string: 
+``` json
+{
+   "prep_time" : "5 mins",
+   "name" : "bread",
+   "cook_time" : "3 hours",
+   "tagName" : "recipe",
+   "childNodes" : [
+      {
+         "childNodes" : [
+            "Basic bread"
+         ],
+         "tagName" : "title"
+      },
+      {
+         "childNodes" : [
+            "Flour"
+         ],
+         "tagName" : "ingredient",
+         "amount" : 8,
+         "unit" : "dL"
+      },
+      {
+         "unit" : "grams",
+         "amount" : 10,
+         "tagName" : "ingredient",
+         "childNodes" : [
+            "Yeast"
+         ]
+      },
+      {
+         "childNodes" : [
+            "Water"
+         ],
+         "tagName" : "ingredient",
+         "amount" : 4,
+         "unit" : "dL",
+         "state" : "warm"
+      },
+      {
+         "childNodes" : [
+            "Salt"
+         ],
+         "tagName" : "ingredient",
+         "unit" : "teaspoon",
+         "amount" : 1
+      },
+      {
+         "childNodes" : [
+            {
+               "tagName" : "step",
+               "childNodes" : [
+                  "Mix all ingredients together."
+               ]
+            },
+            {
+               "tagName" : "step",
+               "childNodes" : [
+                  "Knead thoroughly."
+               ]
+            },
+            {
+               "childNodes" : [
+                  "Cover with a cloth, and leave for one hour in warm room."
+               ],
+               "tagName" : "step"
+            },
+            {
+               "tagName" : "step",
+               "childNodes" : [
+                  "Knead again."
+               ]
+            },
+            {
+               "childNodes" : [
+                  "Place in a bread baking tin."
+               ],
+               "tagName" : "step"
+            },
+            {
+               "tagName" : "step",
+               "childNodes" : [
+                  "Cover with a cloth, and leave for one hour in warm room."
+               ]
+            },
+            {
+               "tagName" : "step",
+               "childNodes" : [
+                  "Bake in the oven at 180(degrees)C for 30 minutes."
+               ]
+            }
+         ],
+         "tagName" : "instructions"
+      }
+   ]
+}
+```
+
 
 Saving the converted JSON to ArangoDB example:
 ``` java
@@ -43,8 +143,28 @@ Reading the stored JSON as a string and convert it back to XML example:
 ``` java
 String rawJsonString = arangoDriver.getDocumentRaw(documentHandle, null, null);
 String xml = JSONML.toString(rawJsonString);
-System.out.println("XML value: " + xml);
+System.out.println(xml);
 ```
+Example output:
+``` xml
+<recipe _id="RawDocument/6834407522" _key="6834407522" _rev="6834407522" cook_time="3 hours" name="bread" prep_time="5 mins">
+  <title>Basic bread</title>
+  <ingredient amount="8" unit="dL">Flour</ingredient>
+  <ingredient amount="10" unit="grams">Yeast</ingredient>
+  <ingredient amount="4" state="warm" unit="dL">Water</ingredient>
+  <ingredient amount="1" unit="teaspoon">Salt</ingredient>
+  <instructions>
+    <step>Mix all ingredients together.</step>
+    <step>Knead thoroughly.</step>
+    <step>Cover with a cloth, and leave for one hour in warm room.</step>
+    <step>Knead again.</step>
+    <step>Place in a bread baking tin.</step>
+    <step>Cover with a cloth, and leave for one hour in warm room.</step>
+    <step>Bake in the oven at 180(degrees)C for 30 minutes.</step>
+  </instructions>
+</recipe>
+```
+
 
 Query raw data example:
 ``` java
@@ -64,6 +184,6 @@ More documentation about the ArangoDB java driver is available:
  - [java driver at Github](https://github.com/arangodb/arangodb-java-driver)
  - [Raw JSON string example](https://github.com/arangodb/arangodb-java-driver/blob/master/src/test/java/com/arangodb/example/document/RawDocumentExample.java)
 
-**Author**: [a-brandt](https://github.com/a-brandt)
+**Author**: [Achim Brandt](https://github.com/a-brandt)
 
 **Tags**: #java #driver
