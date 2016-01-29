@@ -147,7 +147,8 @@ System.out.println(xml);
 ```
 Example output:
 ``` xml
-<recipe _id="RawDocument/6834407522" _key="6834407522" _rev="6834407522" cook_time="3 hours" name="bread" prep_time="5 mins">
+<recipe _id="RawDocument/6834407522" _key="6834407522" _rev="6834407522"
+         cook_time="3 hours" name="bread" prep_time="5 mins">
   <title>Basic bread</title>
   <ingredient amount="8" unit="dL">Flour</ingredient>
   <ingredient amount="10" unit="grams">Yeast</ingredient>
@@ -164,7 +165,7 @@ Example output:
   </instructions>
 </recipe>
 ```
-
+**Note:** The [fields mandatory to ArangoDB documents](https://docs.arangodb.com/Documents/index.html) are added; If they break your XML schema you have to remove them.
 
 Query raw data example:
 ``` java
