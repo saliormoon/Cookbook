@@ -6,11 +6,11 @@ You want to store XML data files into a database to have the ability to make que
 **Note**: ArangoDB > 2.6 and the javaDriver => 2.7.2 is needed.
 
 ## Solution
-Since version 2.7.2 the aragodb-java-driver supports writing (createDocumentRaw(...)), reading (getDocumentRaw(...)) and querying (executeAqlQueryRaw(...)) of raw JSON strings.
+Since version 2.7.2 the aragodb-java-driver supports writing `createDocumentRaw(...)`, reading `getDocumentRaw(...)` and querying `executeAqlQueryRaw(...)` of raw strings containing the JSON documents.
 
 With [JsonML](http://www.jsonml.org/) you can convert a XML string into a JSON string and back to XML again.
 
-Convert XML into JSON with JsonML example:
+Converting XML into JSON with JsonML example:
 ``` java
 String string = "<recipe name=\"bread\" prep_time=\"5 mins\" cook_time=\"3 hours\"> "
 		+ "<title>Basic bread</title> "
@@ -34,10 +34,12 @@ JSONObject jsonObject = JSONML.toJSONObject(string);
 
 Saving the converted JSON to ArangoDB example:
 ``` java
-DocumentEntity<String> entity = arangoDriver.createDocumentRaw("testCollection", jsonObject.toString(), true,false);
+DocumentEntity<String> entity = arangoDriver.createDocumentRaw(
+                "testCollection",
+                jsonObject.toString(), true,false);
 String documentHandle = entity.getDocumentHandle();
 ```
-Reading the stored JSON as a string and convert it back to XML example :
+Reading the stored JSON as a string and convert it back to XML example:
 ``` java
 String rawJsonString = arangoDriver.getDocumentRaw(documentHandle, null, null);
 String xml = JSONML.toString(rawJsonString);
@@ -46,7 +48,7 @@ System.out.println("XML value: " + xml);
 
 Query raw data example:
 ``` java
-String queryString = "FOR t IN " + COLLECTION_NAME + " FILTER t.cook_time == \"3 hours\" RETURN t";
+String queryString = "FOR t IN TestCollection FILTER t.cook_time == '3 hours' RETURN t";
 CursorRawResult cursor = arangoDriver.executeAqlQueryRaw(queryString, null, null);
 Iterator<String> iter = cursor.iterator();
 while (iter.hasNext()) {
