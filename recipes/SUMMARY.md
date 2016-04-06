@@ -52,6 +52,7 @@
     * [Compile on Windows](CompilingUnderWindows.md)
     * [Compile on Windows pre-2.4](CompilingUnderWindowsLegacy.md)
     * [Running Custom Build](RunningCustomBuild.md)
+    * [Compile 3.0 on Windows (devel)](CompilingUnderWindows30.md)
 * Cloud, DCOS and Docker
     * [Running on AWS](RunningOnAWS.md)
     * [Update on AWS](UpdateArangoDBOnAWS.md)
