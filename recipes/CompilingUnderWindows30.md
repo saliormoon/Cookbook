@@ -25,47 +25,46 @@ First install the choco package manager via this tiny cmdlet:
 
 Since choco currently fails to alter the environment for
 [Microsoft Visual Studio](https://www.visualstudio.com/en-us/products/visual-studio-community-vs.aspx),
-we sugest to download and install it by hand.
+we suggest to download and install Visual Studio by hand.
 Currently Visual Studio 2015 is the only supported option.
 
-Now you can simply invoke the choco package manager for unattendedly installing of the dependencies:
+Now you can invoke the choco package manager for an unattended install of the dependencies (needs to be run with Administrator privileges):
 
     choco install -y cmake nsis python2 procdump windbg wget nuget.commandline
 
-As the only external library we fetch [OpenSSL](https://openssl.org) via the nuget commandline client:
+Then we fetch the [OpenSSL](https://openssl.org) library via the nuget commandline client:
 
     nuget install openssl
 
-If you intend do run the unittests, compile from git, you also need:
+If you intend to run the unittests or compile from git, you also need (needs to be run with Administrator privileges again):
 
-    choco install -y git bison flex procdump ruby ruby-devkit
+    choco install -y git winflexbison procdump ruby ruby.devkit
 
-And manually install the requirements via the `Gemfile` fetched from the ArangoDB Git repository:
+And manually install the requirements via the `Gemfile` fetched from the ArangoDB Git repository (needs to be run with Administrator privileges):
 
     wget https://raw.githubusercontent.com/arangodb/arangodb/devel/UnitTests/HttpInterface/Gemfile
-    set PATH=%PATH%;C:\tools\DevKit2\bin;C:\tools\DevKit2\mingw\bin\n bundler
+    set PATH=%PATH%;C:\tools\DevKit\bin;C:\tools\DevKit\mingw\bin
+    gem install bundler
     bundler
 
 Note that the V8 build scripts and gyp aren't compatible with Python 3.x hence you need python2!
 
 ### Building ArangoDB
+Download and extract the release tarball from https://www.arangodb.com/download/
 
-Clone the repository
+Or clone the github repository, and checkout the branch or tag you need (devel, 3.0)
 
-    https://github.com/arangodb/arangodb.git
+    git clone https://github.com/arangodb/arangodb.git
+    cd arangodb
+    git checkout devel
 
-
-in order to build the installer file for either 32 bit or 64 bit.
-
-### Development builds
+Generate the Visual studio project files, and check back that cmake discovered all components on your system:
 
     mkdir Build64
     cd Build64
-    cmake -DPYTHON_EXECUTABLE:FILEPATH=C:/tools/python2/python.exe \
-        -DOPENSSL_ROOT_DIR=%UserProfile%/openssl.v140.windesktop.msvcstl.dyn.rt-dyn.x64.1.0.2.0 \
-        -G "Visual Studio 14 Win64"  ..
+    cmake -DOPENSSL_ROOT_DIR=%UserProfile%/openssl.v140.windesktop.msvcstl.dyn.rt-dyn.x64.1.0.2.0 -G "Visual Studio 14 Win64" ..
 
-This generates Visual Studio project files for you; you can now load these in the UI or use cmake to start the build:
+You can now load these in the Visual Studio IDE or use cmake to start the build:
 
     cmake --build . --config RelWithDebInfo
 
@@ -154,11 +153,11 @@ NodeJS:
 
 Gitbook:
 
-    npm install gitbook-cli
+    npm install -g gitbook-cli
 
 **Authors**:
 [Frank Celler](https://github.com/fceller),
 [Wilfried Goesgens](https://github.com/dothebart) and
-[CoDEmanX](https://github.com/CoDEmanX).
+[Simnran Bruchseifer](https://github.com/Simran-B).
 
 **Tags**: #windows
