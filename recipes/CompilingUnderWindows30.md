@@ -38,12 +38,12 @@ Then we fetch the [OpenSSL](https://openssl.org) library via the nuget commandli
 
 If you intend to run the unittests or compile from git, you also need (needs to be run with Administrator privileges again):
 
-    choco install -y git winflexbison procdump ruby ruby.devkit
+    choco install -y git winflexbison procdump ruby ruby2.devkit
 
 And manually install the requirements via the `Gemfile` fetched from the ArangoDB Git repository (needs to be run with Administrator privileges):
 
     wget https://raw.githubusercontent.com/arangodb/arangodb/devel/UnitTests/HttpInterface/Gemfile
-    set PATH=%PATH%;C:\tools\DevKit\bin;C:\tools\DevKit\mingw\bin
+    set PATH=%PATH%;C:\tools\DevKit2\bin;C:\tools\DevKit2\mingw\bin
     gem install bundler
     bundler
 
