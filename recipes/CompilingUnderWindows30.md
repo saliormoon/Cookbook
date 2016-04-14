@@ -64,6 +64,10 @@ Generate the Visual studio project files, and check back that cmake discovered a
     cd Build64
     cmake -G "Visual Studio 14 Win64" ..
 
+Note that in some cases cmake struggles to find the proper python interpreter (i.e. the cygwin one won't work). You can force overrule it by appending:
+
+    -DPYTHON_EXECUTABLE:FILEPATH=C:/tools/python2/python.exe
+
 You can now load these in the Visual Studio IDE or use cmake to start the build:
 
     cmake --build . --config RelWithDebInfo
