@@ -62,7 +62,7 @@ Generate the Visual studio project files, and check back that cmake discovered a
 
     mkdir Build64
     cd Build64
-    cmake -DOPENSSL_ROOT_DIR=%UserProfile%/.nuget/packages/openssl.v140.windesktop.msvcstl.dyn.rt-dyn.x64/1.0.2 -G "Visual Studio 14 Win64" ..
+    cmake -G "Visual Studio 14 Win64" ..
 
 You can now load these in the Visual Studio IDE or use cmake to start the build:
 
