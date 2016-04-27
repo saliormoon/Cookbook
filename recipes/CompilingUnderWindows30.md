@@ -26,21 +26,23 @@ First install the choco package manager via this tiny cmdlet:
 Since choco currently fails to alter the environment for
 [Microsoft Visual Studio](https://www.visualstudio.com/en-us/products/visual-studio-community-vs.aspx),
 we suggest to download and install Visual Studio by hand.
-Currently Visual Studio 2015 is the only supported option.
+Currently Visual Studio 2015 is the only supported option. You need to make sure that it installs the option "Programming Languages / C++", else cmake will fail to dectect it later on.
 
-Now you can invoke the choco package manager for an unattended install of the dependencies (needs to be run with Administrator privileges):
+Now you can invoke the choco package manager for an unattended install of the dependencies *(needs to be run with Administrator privileges; Right click start menu, **Command Prompt (Admin)**)*:
 
     choco install -y cmake nsis python2 procdump windbg wget nuget.commandline
 
-Then we fetch the [OpenSSL](https://openssl.org) library via the nuget commandline client:
+Then we fetch the [OpenSSL](https://openssl.org) library via the nuget commandline client *(doesn't need Administrator privileges)*:
 
     nuget install openssl
 
-If you intend to run the unittests or compile from git, you also need (needs to be run with Administrator privileges again):
+#### Optional
+
+If you intend to run the unittests or compile from git, you also need *(needs to be run with Administrator privileges again)*:
 
     choco install -y git winflexbison procdump ruby ruby2.devkit
 
-And manually install the requirements via the `Gemfile` fetched from the ArangoDB Git repository (needs to be run with Administrator privileges):
+And manually install the requirements via the `Gemfile` fetched from the ArangoDB Git repository *(needs to be run with Administrator privileges)*:
 
     wget https://raw.githubusercontent.com/arangodb/arangodb/devel/UnitTests/HttpInterface/Gemfile
     set PATH=%PATH%;C:\tools\DevKit2\bin;C:\tools\DevKit2\mingw\bin
@@ -54,9 +56,8 @@ Download and extract the release tarball from https://www.arangodb.com/download/
 
 Or clone the github repository, and checkout the branch or tag you need (devel, 3.0)
 
-    git clone https://github.com/arangodb/arangodb.git
+    git clone https://github.com/arangodb/arangodb.git -b devel
     cd arangodb
-    git checkout devel
 
 Generate the Visual studio project files, and check back that cmake discovered all components on your system:
 
@@ -76,6 +77,8 @@ In order to execute the binaries you need to copy the ICU datafile into the dire
 executable
 
     cp ../3rdParty/V8/V8-4.9.391/third_party/icu/source/data/in/icudtl.dat Build64/bin/Debug/icudt54l.dat
+
+#### Optional
 
 If you intend to use the machine for development purposes, it may be more practical to copy it somewhere else:
 
@@ -102,7 +105,7 @@ You can then run the unittests like that:
       --skipBoost true \
       --skipGeo true
   
-# Documentation
+# Documentation (Optional)
 The documentation still requires a [cygwin](https://www.cygwin.com/) environment. Here the hints to get it properly installed:
 
 You need at least `make` from cygwin. Cygwin also offers a `cmake`. Do **not** install this version.
