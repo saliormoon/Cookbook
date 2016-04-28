@@ -73,10 +73,8 @@ You can now load these in the Visual Studio IDE or use cmake to start the build:
 
     cmake --build . --config RelWithDebInfo
 
-In order to execute the binaries you need to copy the ICU datafile into the directory containing the
-executable
-
-    cp ../3rdParty/V8/V8-4.9.391/third_party/icu/source/data/in/icudtl.dat Build64/bin/Debug/icudt54l.dat
+The binaries need the ICU datafile `icudt54l.dat`, which is automatically copied into the directory containing the
+executable.
 
 #### Optional
 
