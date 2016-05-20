@@ -18,19 +18,25 @@ to do unattended installions of some software on windows - the cool thing linux 
 
 ### Ingredients
 
-First install the choco package manager via this tiny cmdlet:
+First install the choco package manager by pasting this tiny cmdlet into a command window *(needs to be run with Administrator privileges; Right click start menu, **Command Prompt (Admin)**)*:
 
     @powershell -NoProfile -ExecutionPolicy Bypass -Command "iex ((new-object net.webclient).DownloadString('https://chocolatey.org/install.ps1'))" && SET PATH=%PATH%;%ALLUSERSPROFILE%\chocolatey\bin
 
+#### Visual Studio and its Compiler
 
 Since choco currently fails to alter the environment for
 [Microsoft Visual Studio](https://www.visualstudio.com/en-us/products/visual-studio-community-vs.aspx),
 we suggest to download and install Visual Studio by hand.
-Currently Visual Studio 2015 is the only supported option. You need to make sure that it installs the option "Programming Languages / C++", else cmake will fail to dectect it later on.
+Currently Visual Studio 2015 is the only supported option.
 
-Now you can invoke the choco package manager for an unattended install of the dependencies *(needs to be run with Administrator privileges; Right click start menu, **Command Prompt (Admin)**)*:
+**You need to make sure that it installs the option "Programming Languages / C++", else cmake will fail to dectect it later on.**
 
-    choco install -y cmake nsis python2 procdump windbg wget nuget.commandline
+After it successfully installed, start it once, so it can finish its setup.
+
+#### More dependencies
+Now you can invoke the choco package manager for an unattended install of the dependencies *(needs to be run with Administrator privileges again)*:
+
+    choco install -y cmake.portable nsis python2 procdump windbg wget nuget.commandline
 
 Then we fetch the [OpenSSL](https://openssl.org) library via the nuget commandline client *(doesn't need Administrator privileges)*:
 
@@ -40,7 +46,11 @@ Then we fetch the [OpenSSL](https://openssl.org) library via the nuget commandli
 
 If you intend to run the unittests or compile from git, you also need *(needs to be run with Administrator privileges again)*:
 
-    choco install -y git winflexbison procdump ruby ruby2.devkit
+    choco install -y git winflexbison ruby
+
+Close and reopen the Administrator command window in order to continue with the ruby devkit:
+
+    choco install -y ruby2.devkit
 
 And manually install the requirements via the `Gemfile` fetched from the ArangoDB Git repository *(needs to be run with Administrator privileges)*:
 
@@ -76,13 +86,13 @@ You can now load these in the Visual Studio IDE or use cmake to start the build:
 In order to execute the binaries you need to copy the ICU datafile into the directory containing the
 executable
 
-    cp ../3rdParty/V8/V8-4.9.391/third_party/icu/source/data/in/icudtl.dat Build64/bin/Debug/icudt54l.dat
+    cp ../3rdParty/V8/V8-5.0.71.39/third_party/icu/source/data/in/icudtl.dat Build64/bin/Debug/icudt54l.dat
 
 #### Optional
 
 If you intend to use the machine for development purposes, it may be more practical to copy it somewhere else:
 
-    cp ../3rdParty/V8/V8-4.9.391/third_party/icu/source/data/in/icudtl.dat /cygdrive/c/Windows/icudt54l.dat
+    cp ../3rdParty/V8/V8-5.0.71.39/third_party/icu/source/data/in/icudtl.dat /cygdrive/c/Windows/icudt54l.dat
 
 And configure your environment (yes this instruction remembers to the hitchhikers guide to the galaxy...) so that
 `ICU_DATA` points to `c:\\Windows`. You do that by opening the explorer,
