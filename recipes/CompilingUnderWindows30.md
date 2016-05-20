@@ -86,37 +86,11 @@ You can now load these in the Visual Studio IDE or use cmake to start the build:
 The binaries need the ICU datafile `icudt54l.dat`, which is automatically copied into the directory containing the
 executable.
 
-#### Optional
+# For development, unittests and documentation: Cygwin (Optional)
 
-If you intend to use the machine for development purposes, it may be more practical to copy it somewhere else:
+The documentation and unittests still require a [cygwin](https://www.cygwin.com/) environment. Here the hints how to get it properly installed:
 
-    cp ../3rdParty/V8/V8-5.0.71.39/third_party/icu/source/data/in/icudtl.dat /cygdrive/c/Windows/icudt54l.dat
-
-And configure your environment (yes this instruction remembers to the hitchhikers guide to the galaxy...) so that
-`ICU_DATA` points to `c:\\Windows`. You do that by opening the explorer,
-right click on `This PC` in the tree on the left, choose `Properties` in the opening window `Advanced system settings`,
-in the Popup `Environment Variables`, another popup opens, in the `System Variables` part you click `New`, 
-And Key: :`ICU_DATA` to value: `c:\\Windows`
-
-![HowtoSetEnv](assets/CompilingUnderWindows/SetEnvironmentVar.png)
-
-You can then run the unittests like that:
-
-    build64/bin/RelWithDebInfo/arangosh.exe \
-      ./scripts/unittest \
-      all \
-      --ruby c:/tools/ruby22/bin/ruby \
-      --rspec c:/tools/ruby22/bin/rspec \
-      --buildType ${CONFIGURATION} \
-      --skipNondeterministic true \
-      --skipTimeCritical true
-      --skipBoost true \
-      --skipGeo true
-  
-# Documentation (Optional)
-The documentation still requires a [cygwin](https://www.cygwin.com/) environment. Here the hints to get it properly installed:
-
-You need at least `make` from cygwin. Cygwin also offers a `cmake`. Do **not** install this version.
+You need at least `make` from cygwin. Cygwin also offers a `cmake`. Do **not** install the cygwin cmake.
 
 You should also issue these commands to generate user informations for the cygwin commands:
 
@@ -162,7 +136,40 @@ And in Cygwin:
 
     ln -s source target
 
-NodeJS:
+## Making the ICU database pulically available
+If you intend to use the machine for development purposes, it may be more practical to copy it to a common place:
+
+    cp 3rdParty/V8/V8-5.0.71.39/third_party/icu/source/data/in/icudtl.dat /cygdrive/c/Windows/icudt54l.dat
+
+And configure your environment (yes this instruction remembers to the hitchhikers guide to the galaxy...) so that
+`ICU_DATA` points to `c:\\Windows`. You do that by opening the explorer,
+right click on `This PC` in the tree on the left, choose `Properties` in the opening window `Advanced system settings`,
+in the Popup `Environment Variables`, another popup opens, in the `System Variables` part you click `New`, 
+And variable name: `ICU_DATA` to the value: `c:\\Windows`
+
+![HowtoSetEnv](assets/CompilingUnderWindows/SetEnvironmentVar.png)
+
+## Running Unitests (Optional)
+You can then run the unittests in the cygwin shell like that:
+
+    build64/bin/RelWithDebInfo/arangosh.exe \
+    -c etc/relative/arangosh.conf \
+    --log.level warning \
+    --server.endpoint tcp://127.0.0.1:1024 \
+    --javascript.execute UnitTests/unittest.js \
+      -- \
+      all \
+      --ruby c:/tools/ruby22/bin/ruby \
+      --rspec c:/tools/ruby22/bin/rspec \
+      --buildType RelWithDebInfo \
+      --skipNondeterministic true \
+      --skipTimeCritical true
+      --skipBoost true \
+      --skipGeo true
+
+# Documentation (Optional)
+
+NodeJS *(needs to be run with Administrator privileges again)*:
 
     choco install -y nodejs
 
