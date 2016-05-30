@@ -1,3 +1,4 @@
+cookbook
 recipes/_book
 recipes/book.json
 recipes/node_modules
@@ -5,3 +6,4 @@ recipes/node_modules
 .*.md.html
 .classpath
 .project
+Thumbs.db
