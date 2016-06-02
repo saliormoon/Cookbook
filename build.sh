@@ -73,6 +73,8 @@ fi
 gitbook install
 gitbook build . ./../cookbook
 
+cd ./../cookbook & rm -f HEADER.html
+
 
 # integrity check the html for flat markdown links
 # ################################################
@@ -87,4 +89,4 @@ if test "`cat /tmp/mdlinks.txt | wc -l`" -gt 0; then
 fi
 
 
-sed -i -e "s;VERSION_NUMBER;;" cookbook/styles/header.css cookbook/styles/header.js
+sed -i -e "s;VERSION_NUMBER;;" cookbook/styles/header.js
