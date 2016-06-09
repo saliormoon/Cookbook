@@ -34,7 +34,7 @@ cd recipes
 # #################
 
 if test -f book.json; then
-    echo "using pregerenarted book.json"
+    echo "using pregenerated book.json"
 else
     cat > book.json <<EOF
 {
