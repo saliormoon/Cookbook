@@ -6,6 +6,16 @@ With the release of 3.0 all GRAPH functions have been dropped from AQL in favor 
 native integration of graph features into the query language. I have used the old graph
 functions and want to upgrade to 3.0.
 
+Graph functions covered in this recipe:
+
+* GRAPH_COMMON_NEIGHBORS
+* GRAPH_COMMON_PROPERTIES
+* GRAPH_DISTANCE_TO
+* GRAPH_EDGES
+* GRAPH_NEIGHBORS
+* GRAPH_SHORTEST_PATH
+* GRAPH_PATHS
+* GRAPH_VERTICES
 
 ## Solution 1 Quick and Dirty (not recommended)
 
@@ -29,9 +39,9 @@ var graphs = require("@arangodb/general-graph");
 graphs._registerCompatibilityFunctions();
 ```
 
-### Modify the application code
-
 These have registered all old `GRAPH_*` functions as user-defined functions again, with the prefix `arangodb::`.
+
+### Modify the application code
 
 Next we have to go through our application code and replace all calls to `GRAPH_*` by `arangodb::GRAPH_*`.
 Now run a testrun of our application and check if it worked.
@@ -505,3 +515,31 @@ RETURN { // We rebuild the old format
   distance: SUM(p[*].weight) // We have to recompute the distance if we need it
 }
 ```
+
+
+### GRAPH_DISTANCE_TO
+
+Graph distance to only differs by the result format from `GRAPH_SHORTEST_PATH`.
+So we follow the transformation for `GRAPH_SHORTEST_PATH`, remove some unnecessary parts,
+and change the return format
+
+// OLD
+FOR p IN GRAPH_DISTANCE_TO(@graphName, @startId, @targetId, {direction : 'outbound'}) RETURN p
+
+// NEW
+LET p = ( // Run one shortest Path
+  FOR v, e IN OUTBOUND SHORTEST_PATH @startId TO @targetId GRAPH @graphName
+  // DIFFERENCE we only return the weight for each edge on the path
+  RETURN IS_NULL(e) ? 0 : 1} 
+)
+FILTER LENGTH(p) > 0 // We only want shortest paths that actually exist
+RETURN { // We rebuild the old format
+  startVertex: @startId,
+  vertex: @targetId,
+  distance: SUM(p[*].weight)
+}
+```
+
+**Author:** [Michael Hackstein](https://github.com/mchacki)
+
+**Tags**: #howto #aql #migration
