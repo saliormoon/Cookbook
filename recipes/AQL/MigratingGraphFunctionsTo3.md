@@ -74,6 +74,72 @@ FOR start GRAPH_VERTICES(@graph, @myExample)
 
 All non GRAPH_VERTICES functions will only explain the transformation for a single input document's `_id`.
 
+### Options used everywhere
+
+#### Option edgeCollectionRestriction
+
+In order to use edge Collection restriction we just use the feature that the traverser
+can walk over a list of edge collections directly. So the edgeCollectionRestrictions
+just form this list (exampleGraphEdges):
+
+```
+// OLD
+[..] FOR e IN GRAPH_EDGES(@graphName, @startId, {edgeCollectionRestriction: [edges1, edges2]}) RETURN e
+
+// NEW
+[..] FOR v, e IN ANY @startId edges1, edges2 RETURN DISTINCT e._id
+```
+
+Note: The `@graphName` bindParameter is not used anymore and probably has to be removed from the query.
+
+#### Option includeData
+
+If we use the option includeData we simply return the object directly instead of only the _id
+
+Example GRAPH_EDGES:
+
+```
+// OLD
+[..] FOR e IN GRAPH_EDGES(@graphName, @startId, {includeData: true}) RETURN e
+
+// NEW
+[..] FOR v, e IN ANY @startId GRAPH @graphName RETURN DISTINCT e
+```
+
+#### Option direction
+
+The direction has to be placed before the start id.
+Note here: The direction has to be placed as Word it cannot be handed in via a bindParameter
+anymore:
+
+```
+// OLD
+[..] FOR e IN GRAPH_EDGES(@graphName, @startId, {direction: 'inbound'}) RETURN e
+
+// NEW
+[..] FOR v, e IN INBOUND @startId GRAPH @graphName RETURN DISTINCT e._id
+```
+
+#### Options minDepth, maxDepth
+
+If we use the options minDepth and maxDepth (both default 1 if not set) we can simply
+put them in front of the direction part in the Traversal statement.
+
+Example GRAPH_EDGES:
+
+```
+// OLD
+[..] FOR e IN GRAPH_EDGES(@graphName, @startId, {minDepth: 2, maxDepth: 4}) RETURN e
+
+// NEW
+[..] FOR v, e IN 2..4 ANY @startId GRAPH @graphName RETURN DISTINCT e._id
+```
+
+#### Option maxIteration
+
+The option `maxIterations` is removed without replacement.
+Your queries are now bound by main memory not by an arbitrary number of iterations.
+
 ### GRAPH_VERTICES
 
 First we have to branch on the example.
@@ -187,7 +253,6 @@ For each element in the array we create the filter conditions and than we
 ### GRAPH_EDGES
 
 The GRAPH_EDGES can be simply replaced by a call to the AQL traversal.
-The option `maxIterations` is removed without replacement.
 
 #### No options
 
@@ -202,63 +267,241 @@ Also it did just return the edges `_id` value.
 [..] FOR v, e IN ANY @startId GRAPH @graphName RETURN DISTINCT e._id
 ```
 
-#### Option direction
-
-The direction has to be placed before the start id.
-Note here: The direction has to be placed as Word it cannot be handed in via a bindParameter
-anymore:
-
-```
-// OLD
-[..] FOR e IN GRAPH_EDGES(@graphName, @startId, {direction: 'inbound'}) RETURN e
-
-// NEW
-[..] FOR v, e IN INBOUND @startId GRAPH @graphName RETURN DISTINCT e._id
-```
-
-#### Options minDepth, maxDepth
-
-If we use the options minDepth and maxDepth (both default 1 if not set) we can simply
-put them in front of the direction part in the Traversal statement:
-
-```
-// OLD
-[..] FOR e IN GRAPH_EDGES(@graphName, @startId, {minDepth: 2, maxDepth: 4}) RETURN e
-
-// NEW
-[..] FOR v, e IN 2..4 ANY @startId GRAPH @graphName RETURN DISTINCT e._id
-```
-
-#### Option includeData
-
-If we use the option includeData we simply return the edge directly instead of only the _id:
-
-```
-// OLD
-[..] FOR e IN GRAPH_EDGES(@graphName, @startId, {includeData: true}) RETURN e
-
-// NEW
-[..] FOR v, e IN ANY @startId GRAPH @graphName RETURN DISTINCT e
-```
-
-#### Option edgeCollectionRestriction
-
-In order to use edge Collection restriction we just use the feature that the traverser
-can walk over a list of edge collections directly. So the edgeCollectionRestrictions
-just form this list:
-
-```
-// OLD
-[..] FOR e IN GRAPH_EDGES(@graphName, @startId, {edgeCollectionRestriction: [edges1, edges2]}) RETURN e
-
-// NEW
-[..] FOR v, e IN ANY @startId edges1, edges2 RETURN DISTINCT e._id
-```
-
-Note: The `@graphName` bindParameter is not used anymore and probably has to be removed from the query.
-
 #### Option edgeExamples.
 
 See `GRAPH_VERTICES` on how to transform examples to AQL FILTER. Apply the filter on the edge variable `e`.
 
 ### GRAPH_NEIGHBORS
+
+The GRAPH_NEIGHBORS is a breadth-first-search on the graph with a global unique check for vertices. So we can replace it by a an AQL traversal with these options.
+
+#### No options
+
+The default options did use a direction `ANY` and returned a distinct result of the neighbors.
+Also it did just return the neighbors `_id` value.
+
+```
+// OLD
+[..] FOR n IN GRAPH_NEIGHBORS(@graphName, @startId) RETURN e
+
+// NEW
+[..] FOR n IN ANY @startId GRAPH @graphName OPTIONS {bfs: true, uniqueVertices: 'global'} RETURN n
+```
+
+#### Option neighborExamples
+
+See `GRAPH_VERTICES` on how to transform examples to AQL FILTER. Apply the filter on the neighbor variable `n`.
+
+#### Option edgeExamples
+
+See `GRAPH_VERTICES` on how to transform examples to AQL FILTER. Apply the filter on the edge variable `e`.
+
+However this is a bit more complicated as it interferes with the global uniqueness check.
+For edgeExamples it is sufficent when any edge pointing to the neighbor matches the filter. Using `{uniqueVertices: 'global'}` first picks any edge randomly. Than it checks against this edge only.
+If we know there are no vertex pairs with multiple edges between them we can use the simple variant which is save:
+
+```
+// OLD
+[..] FOR n IN GRAPH_NEIGHBORS(@graphName, @startId, {edgeExample: {label: 'friend'}}) RETURN e
+
+// NEW
+[..] FOR n, e IN ANY @startId GRAPH @graphName OPTIONS {bfs: true, uniqueVertices: 'global'} FILTER e.label == 'friend' RETURN n._id
+```
+
+If there may be multiple edges between the same pair of vertices we have to make the distinct check ourselfes and cannot rely on the traverser doing it correctly for us:
+
+```
+// OLD
+[..] FOR n IN GRAPH_NEIGHBORS(@graphName, @startId, {edgeExample: {label: 'friend'}}) RETURN e
+
+// NEW
+[..] FOR n, e IN ANY @startId GRAPH @graphName OPTIONS {bfs: true} FILTER e.label == 'friend' RETURN DISTINCT n._id
+```
+
+#### Option vertexCollectionRestriction
+
+If we use the vertexCollectionRestriction we have to postFilter the neighbors based on their collection. Therefore we can make use of the function `IS_SAME_COLLECTION`:
+
+```
+// OLD
+[..] FOR n IN GRAPH_NEIGHBORS(@graphName, @startId, {vertexCollectionRestriction: ['vertices1', 'vertices2']}) RETURN e
+
+// NEW
+[..] FOR n IN ANY @startId GRAPH @graphName OPTIONS {bfs: true, uniqueVertices: true} FILTER IS_SAME_COLLECTION(vertices1, n) OR IS_SAME_COLLECTION(vertices2, n) RETURN DISTINCT n._id
+```
+
+### GRAPH_COMMON_NEIGHBORS
+
+`GRAPH_COMMON_NEIGHBORS` is defined as two `GRAPH_NEIGHBORS` queries and than forming the `INTERSECTION` of both queries.
+How to translate the options please refer to `GRAPH_NEIGHBORS`.
+Finally we have to build the old result format `{left, right, neighbors}`.
+If you just need parts of the result you can adapt this query to your specific needs.
+
+```
+// OLD
+FOR v IN GRAPH_COMMON_NEIGHBORS(@graphName, 'vertices/1' , 'vertices/2',  {direction : 'any'}) RETURN v
+
+// NEW
+LET n1 = ( // Neighbors for vertex1Example
+  FOR n IN ANY 'vertices/1' GRAPH 'graph' OPTIONS {bfs: true, uniqueVertices: "global"} RETURN n._id
+  )
+LET n2 = ( // Neighbors for vertex2Example
+  FOR n IN ANY 'vertices/2' GRAPH 'graph' OPTIONS {bfs: true, uniqueVertices: "global"} RETURN n._id
+  )
+LET common = INTERSECTION(n1, n2) // Get the intersection
+RETURN { // Produce the original result
+  left: 'vertices/1',
+  right: 'vertices/2,
+  neighbors: common
+}
+```
+
+NOTE: If you are using examples instead of `_ids` you have to add a filter to make sure that the left is not equal to the right start vertex.
+To give you an example with a single vertex collection `vertices`, the replacement would look like this:
+
+```
+// OLD
+FOR v IN GRAPH_COMMON_NEIGHBORS(@graphName, {name: "Alice"}, {name: "Bob"}) RETURN v
+
+// NEW
+FOR left IN vertices
+  FILTER left.name == "Alice"
+  LET n1 = (FOR n IN ANY left GRAPH 'graph' OPTIONS {bfs: true, uniqueVertices: "global"} RETURN n._id)
+  FOR right IN vertices
+    FILTER right.name == "Bob"
+    FILTER right != left // Make sure left is not identical to right
+    LET n2 = (FOR n IN ANY right GRAPH 'graph' OPTIONS {bfs: true, uniqueVertices: "global"} RETURN n._id)
+    LET neighbors = INTERSECTION(n1, n2)
+    FILTER LENGTH(neighbors) > 0 // Only pairs with shared neighbors should be returned
+    RETURN {left: left._id, right: right._id, neighbors: neighbors}
+```
+
+### GRAPH_PATHS
+
+This function computes all paths of the entire graph (with a given minDepth and maxDepth) as you can imagine this feature is extremely expensive and should never be used.
+However paths can again be replaced by AQL traversal.
+Assume we only have one vertex collection `vertices` again.
+
+#### No options
+By default paths of length 0 to 10 are returned. And circles are not followed.
+
+```
+// OLD
+RETURN GRAPH_PATHS('graph')
+
+// NEW
+FOR start IN vertices
+FOR v, e, p IN 0..10 OUTBOUND start GRAPH 'graph' RETURN {source: start, destination: v, edges: p.edges, vertices: p.vertices}
+```
+
+#### followCycles
+
+If this option is set we have to modify the options of the traversal by modifying the `uniqueEdges` property:
+
+```
+// OLD
+RETURN GRAPH_PATHS('graph', {followCycles: true})
+
+// NEW
+FOR start IN vertices
+FOR v, e, p IN 0..10 OUTBOUND start GRAPH 'graph' OPTIONS {uniqueEdges: 'none'} RETURN {source: start, destination: v, edges: p.edges, vertices: p.vertices}
+```
+
+### GRAPH_COMMON_PROPERTIES
+
+This feature involves several full-collection scans and therefore is extremely expensive.
+If you really need it you can transform it with the help of `ATTRIBUTES`, `KEEP` and `ZIP`.
+
+#### Start with single _id
+
+```
+// OLD
+RETURN GRAPH_COMMON_PROPERTIES('graph', "vertices/1", "vertices/2")
+
+// NEW
+LET left = DOCUMENT("vertices/1") // get one document
+LET right = DOCUMENT("vertices/2") // get the other one
+LET shared = (FOR a IN ATTRIBUTES(left) // find all shared attributes
+               FILTER left[a] == right[a]
+                 OR a == '_id' // always include _id
+                 RETURN a)
+FILTER LENGTH(shared) > 1 // Return them only if they share an attribute
+RETURN ZIP([left._id], [KEEP(right, shared)]) // Build the result
+```
+
+#### Start with vertexExamples
+
+Again we assume we only have a single collection `vertices`.
+We have to transform the examples into filters. Iterate
+over vertices to find all left documents.
+For each left document iterate over vertices again
+to find matching right documents.
+And return the shared attributes as above:
+
+```
+// OLD
+RETURN GRAPH_COMMON_PROPERTIES('graph', {answer: 42}, {foo: "bar"})
+
+// NEW
+FOR left IN vertices
+  FILTER left.answer == 42
+  LET commons = (
+    FOR right IN vertices
+      FILTER right.foo == "bar"
+      FILTER left != right
+      LET shared = (FOR a IN ATTRIBUTES(left) 
+                     FILTER left[a] == right[a]
+                     OR a == '_id'
+                       RETURN a)
+      FILTER LENGTH(shared) > 1
+      RETURN KEEP(right, shared))
+  FILTER LENGTH(commons) > 0
+  RETURN ZIP([left._id], [commons])
+```
+
+
+### GRAPH_SHORTEST_PATH
+
+A shortest path computation is now done via the new SHORTEST_PATH AQL statement.
+
+#### No options
+
+```
+// OLD
+FOR p IN GRAPH_SHORTEST_PATH(@graphName, @startId, @targetId, {direction : 'outbound'}) RETURN p
+
+// NEW
+LET p = ( // Run one shortest Path
+  FOR v, e IN OUTBOUND SHORTEST_PATH @startId TO @targetId GRAPH @graphName
+  // We return objects with vertex, edge and weight for each vertex on the path
+  RETURN {vertex: v, edge: e, weight: (IS_NULL(e) ? 0 : 1)}
+)
+FILTER LENGTH(p) > 0 // We only want shortest paths that actually exist
+RETURN { // We rebuild the old format
+  vertices: p[*].vertex,
+  edges: p[* FILTER CURRENT.e != null].edge,
+  distance: SUM(p[*].weight)
+}
+```
+
+#### Options weight and defaultWeight
+
+The new AQL SHORTEST_PATH offers the options `weightAttribute` and `defaultWeight`.
+
+```
+// OLD
+FOR p IN GRAPH_SHORTEST_PATH(@graphName, @startId, @targetId, {direction : 'outbound', weight: "weight", defaultWeight: 80}) RETURN p
+
+// NEW
+LET p = ( // Run one shortest Path
+  FOR v, e IN OUTBOUND SHORTEST_PATH @startId TO @targetId GRAPH @graphName
+  // We return objects with vertex, edge and weight for each vertex on the path
+  RETURN {vertex: v, edge: e, weight: (IS_NULL(e) ? 0 : (IS_NUMBER(e.weight) ? e.weight : 80))}
+)
+FILTER LENGTH(p) > 0 // We only want shortest paths that actually exist
+RETURN { // We rebuild the old format
+  vertices: p[*].vertex,
+  edges: p[* FILTER CURRENT.e != null].edge,
+  distance: SUM(p[*].weight) // We have to recompute the distance if we need it
+}
+```
