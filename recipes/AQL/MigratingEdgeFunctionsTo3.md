@@ -36,7 +36,7 @@ The syntax is slightly different but mapping should be simple:
 
 Examples have to be transformed into AQL filter statements.
 How to do this please read the GRAPH_VERTICES section
-in [Migrating GRAPH_* Functions from 2.8 or earlier to 3.0](https://example.com).
+in [Migrating GRAPH_* Functions from 2.8 or earlier to 3.0](MigratingGraphFunctionsTo3.html).
 Apply these filters on the edge variable `e`.
 
 #### Option incluceVertices
@@ -77,7 +77,7 @@ NOTE: The direction cannot be given as a bindParameter any more it has to be har
 
 Examples have to be transformed into AQL filter statements.
 How to do this please read the GRAPH_VERTICES section
-in [Migrating GRAPH_* Functions from 2.8 or earlier to 3.0](https://example.com).
+in [Migrating GRAPH_* Functions from 2.8 or earlier to 3.0](MigratingGraphFunctionsTo3.html).
 Apply these filters on the edge variable `e` which is the second return variable of the traversal statement.
 
 However this is a bit more complicated as it interferes with the global uniqueness check.
@@ -165,7 +165,7 @@ RETURN {source: start, destination: v, edges: p.edges, vertices: p.vertices}
 ### TRAVERSAL and TRAVERSAL_TREE
 
 These have been removed and should be replaced by the
-[native AQL traversal](https://docs.arangodb.com/Aql/GraphTraversals.html).
+[native AQL traversal](https://docs.arangodb.com/3/Manual/Graphs/Traversals/index.html).
 As they are way to complex for a cookbook please read the native traversal documentation.
 If you need further help with this please contact us via our social channels.
 

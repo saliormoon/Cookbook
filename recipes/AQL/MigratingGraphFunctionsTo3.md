@@ -13,6 +13,8 @@ Graph functions covered in this recipe:
 * GRAPH_DISTANCE_TO
 * GRAPH_EDGES
 * GRAPH_NEIGHBORS
+* GRAPH_TRAVERSAL
+* GRAPH_TRAVERSAL_TREE
 * GRAPH_SHORTEST_PATH
 * GRAPH_PATHS
 * GRAPH_VERTICES
@@ -543,7 +545,7 @@ RETURN { // We rebuild the old format
 ### GRAPH_TRAVERSAL and GRAPH_TRAVERSAL_TREE
 
 These have been removed and should be replaced by the
-[native AQL traversal](https://docs.arangodb.com/Aql/GraphTraversals.html).
+[native AQL traversal]https://docs.arangodb.com/3/Manual/Graphs/Traversals/index.html).
 As they are way to complex for a cookbook please read the native traversal documentation.
 If you need further help with this please contact us via our social channels.
 
