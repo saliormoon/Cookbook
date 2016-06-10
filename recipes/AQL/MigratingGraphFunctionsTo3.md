@@ -292,7 +292,7 @@ Also it did just return the neighbors `_id` value.
 
 ```
 // OLD
-[..] FOR n IN GRAPH_NEIGHBORS(@graphName, @startId) RETURN e
+[..] FOR n IN GRAPH_NEIGHBORS(@graphName, @startId) RETURN n
 
 // NEW
 [..] FOR n IN ANY @startId GRAPH @graphName OPTIONS {bfs: true, uniqueVertices: 'global'} RETURN n
@@ -539,6 +539,13 @@ RETURN { // We rebuild the old format
   distance: SUM(p[*].weight)
 }
 ```
+
+### GRAPH_TRAVERSAL and GRAPH_TRAVERSAL_TREE
+
+These have been removed and should be replaced by the
+[native AQL traversal](https://docs.arangodb.com/Aql/GraphTraversals.html).
+As they are way to complex for a cookbook please read the native traversal documentation.
+If you need further help with this please contact us via our social channels.
 
 **Author:** [Michael Hackstein](https://github.com/mchacki)
 
