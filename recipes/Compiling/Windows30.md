@@ -186,6 +186,6 @@ Markdown-pp:
 **Authors**:
 [Frank Celler](https://github.com/fceller),
 [Wilfried Goesgens](https://github.com/dothebart) and
-[Simnran Bruchseifer](https://github.com/Simran-B).
+[Simran Brucherseifer](https://github.com/Simran-B).
 
 **Tags**: #windows

@@ -94,4 +94,4 @@ Alternatively use `cmake` to build the executables.
 
 **Author**: [Frank Celler](https://github.com/fceller)
 
-**Tags**: #windows
+**Tags**: #windows #build

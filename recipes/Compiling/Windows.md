@@ -265,4 +265,4 @@ And Key: :`ICU_DATA` to value: `c:\\Windows`
 [Wilfried Goesgens](https://github.com/dothebart) and
 [Simran Brucherseifer](https://github.com/Simran-B).
 
-**Tags**: #windows
+**Tags**: #windows #build
