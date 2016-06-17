@@ -136,7 +136,7 @@ And in Cygwin:
 
     ln -s source target
 
-## Making the ICU database pulically available
+## Making the ICU database publically available
 If you intend to use the machine for development purposes, it may be more practical to copy it to a common place:
 
     cp 3rdParty/V8/V8-5.0.71.39/third_party/icu/source/data/in/icudtl.dat /cygdrive/c/Windows/icudt54l.dat
