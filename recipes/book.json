@@ -1,5 +1,5 @@
 {
-  "gitbook": ">=2.0.0",
+  "gitbook": "^2.6.7",
   "title": "ArangoDB Cookbook",
   "author": "ArangoDB GmbH",
   "description": "Recipes for ArangoDB - the multi-model NoSQL database",
