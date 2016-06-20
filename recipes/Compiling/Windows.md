@@ -4,8 +4,9 @@
 
 I want to compile ArangoDB under Windows.
 
-**Note:** For this recipe you need at least ArangoDB 2.4; it also works for 2.5 and above.
-For ArangoDB version before 2.4 look at the [old Compiling ArangoDB under Windows](WindowsLegacy.md).
+**Note:** For this recipe you need at least ArangoDB 2.4; it also works for 2.5 and above, up to 2.8.
+For ArangoDB version before 2.4 look at [Compile on Windows (pre-2.4)](WindowsLegacy.md).
+For version 3.0 and above see [Compile on Windows (3.x)](Windows30.md).
 
 ## Solution
 
