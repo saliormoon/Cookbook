@@ -38,7 +38,7 @@ if test -f book.json; then
 else
     cat > book.json <<EOF
 {
-  "gitbook": ">=2.0.0",
+  "gitbook": "^2.6.7",
   "title": "ArangoDB Cookbook",
   "author": "ArangoDB GmbH",
   "description": "Cookbook for ArangoDB solutions - the multi-model NoSQL database",
@@ -73,7 +73,7 @@ fi
 gitbook install
 gitbook build . ./../cookbook
 
-cd ./../cookbook & rm -f HEADER.html
+rm -f ./../cookbook/HEADER.html
 
 
 # integrity check the html for flat markdown links
