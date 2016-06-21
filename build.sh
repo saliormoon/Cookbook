@@ -88,5 +88,27 @@ if test "`cat /tmp/mdlinks.txt | wc -l`" -gt 0; then
     exit 3
 fi
 
+find cookbook/ -name \*.html -exec grep '```' {} \; -print  |sed "s;^cookbook/\(.*\).html;\n   In file: recipes/\1.md\n\n;"> /tmp/mdlinks.txt
+
+if test "`cat /tmp/mdlinks.txt | wc -l`" -gt 0; then
+    echo "Found left over flat markdown code section in the generated output: "
+    echo
+    cat /tmp/mdlinks.txt
+    exit 3
+fi
+
+
+
+find cookbook/ -name \*.html -exec grep '\]<a href' {} \; -print  |sed "s;^cookbook/\(.*\).html;\n   In file: recipes/\1.md\n\n;"> /tmp/mdlinks.txt
+
+if test "`cat /tmp/mdlinks.txt | wc -l`" -gt 0; then
+    echo "Found left over markdown links in the generated output: "
+    echo
+    cat /tmp/mdlinks.txt
+    exit 3
+fi
+
+
+
 
 sed -i -e "s;VERSION_NUMBER;;" cookbook/styles/header.js
