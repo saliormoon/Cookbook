@@ -8,7 +8,7 @@ I want to use ArangoDB in the Giant Swarm with Docker containers.
 
 Giant Swarm allows you to describe and deploy your application by providing a simple JSON
 description. The
-[current weather app](http://docs.giantswarm.io/guides/your-first-application/nodejs/) is a good
+[current weather app](https://docs.giantswarm.io/guides/your-first-service/nodejs/)is a good
 example on how to install an application which uses two components, namely `node` and `redis`.
 
 My colleague Max has written a guesser game with various front-ends and ArangoDB as

@@ -19,7 +19,7 @@ For this recipe, you need to install the following programs under Windows:
 
   You need at least `make` from cygwin. Cygwin also offers a `cmake` do not install this version. 
 
-* [cmake](http://www.cmake.org/)
+* [cmake](https://www.cmake.org/)
 
   Either version 2.8.12 or 3.0.2 should work. Make sure to download the 64bit version.
 
