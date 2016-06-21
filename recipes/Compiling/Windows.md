@@ -41,7 +41,7 @@ For this recipe you need to install the following programs under Windows:
         C:/cygwin64      /          ntfs      override,binary,auto,noacl  0  0
         none             /cygdrive  cygdrive  binary,posix=0,user,noacl   0  0
 
-* [cmake](http://www.cmake.org/)
+* [cmake](https://www.cmake.org/)
 
   Either version 2.8.12, 3.0.2 or 3.1.2 should work. Attention - pitfall: the cygwin version doesn't work.
 
