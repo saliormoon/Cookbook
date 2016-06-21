@@ -525,6 +525,7 @@ Graph distance to only differs by the result format from `GRAPH_SHORTEST_PATH`.
 So we follow the transformation for `GRAPH_SHORTEST_PATH`, remove some unnecessary parts,
 and change the return format
 
+```
 // OLD
 FOR p IN GRAPH_DISTANCE_TO(@graphName, @startId, @targetId, {direction : 'outbound'}) RETURN p
 
@@ -545,7 +546,7 @@ RETURN { // We rebuild the old format
 ### GRAPH_TRAVERSAL and GRAPH_TRAVERSAL_TREE
 
 These have been removed and should be replaced by the
-[native AQL traversal]https://docs.arangodb.com/3/Manual/Graphs/Traversals/index.html).
+[native AQL traversal](https://docs.arangodb.com/3/Manual/Graphs/Traversals/index.html).
 As they are way to complex for a cookbook please read the native traversal documentation.
 If you need further help with this please contact us via our social channels.
 
