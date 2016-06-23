@@ -69,7 +69,7 @@ CursorEntity<MyEdge> cursor = arangoDriver.graphGetEdgesByExampleObject("myGraph
 
 ## Other resources
 More documentation about the ArangoDB java driver is available:
- - [Arango DB Java in ten minutes](https://www.arangodb.com/tutorial-java/)
+ - [Arango DB Java in ten minutes](https://www.arangodb.com/tutorials/tutorial-java/)
  - [java driver Readme at Github](https://github.com/arangodb/arangodb-java-driver), [especially the graph example](https://github.com/arangodb/arangodb-java-driver/blob/master/src/test/java/com/arangodb/example/GraphQueryExample.java)
  - [Example source in java](https://github.com/arangodb/arangodb-java-driver/tree/master/src/test/java/com/arangodb/example)
  - [Unittests](https://github.com/arangodb/arangodb-java-driver/tree/master/src/test/java/com/arangodb)
