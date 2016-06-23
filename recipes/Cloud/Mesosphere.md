@@ -7,7 +7,7 @@ I want to use ArangoDB in Apache Mesos with Docker containers.
 ## Solution
 
 Mesos in its newest version makes it very easy to use ArangoDB, because
-[Mesos](https://mesosphere.com/docs/tutorials/launch-docker-container-on-mesosphere/)
+[Mesos](https://docs.mesosphere.com/tutorials/launch-docker-container-on-mesosphere/)
 has added support for docker containers. Together with Marathon to start the
 front-end and back-end parts of an application, installation is straight
 forward.
