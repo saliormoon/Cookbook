@@ -43,7 +43,7 @@ DocumentEntity<BaseDocument> myObject = driver.getDocument(myDocument.getDocumen
 
 ## Other resources
 More documentation about the ArangoDB java driver is available:
- - [Arango DB Java in ten minutes](https://www.arangodb.com/tutorial-java/)
+ - [Arango DB Java in ten minutes](https://www.arangodb.com/tutorials/tutorial-java/)
  - [java driver Readme at Github](https://github.com/arangodb/arangodb-java-driver)
  - [Example source in java](https://github.com/arangodb/arangodb-java-driver/tree/master/src/test/java/com/arangodb/example)
  - [Unittests](https://github.com/arangodb/arangodb-java-driver/tree/master/src/test/java/com/arangodb)
