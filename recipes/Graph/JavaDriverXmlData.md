@@ -181,7 +181,7 @@ while (iter.hasNext()) {
 
 ## Other resources
 More documentation about the ArangoDB java driver is available:
- - [Arango DB Java in ten minutes](https://www.arangodb.com/tutorial-java/)
+ - [Arango DB Java in ten minutes](https://www.arangodb.com/tutorials/tutorial-java/)
  - [java driver at Github](https://github.com/arangodb/arangodb-java-driver)
  - [Raw JSON string example](https://github.com/arangodb/arangodb-java-driver/blob/master/src/test/java/com/arangodb/example/document/RawDocumentExample.java)
 
