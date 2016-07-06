@@ -32,6 +32,7 @@
   * [Importing Data](Administration/ImportingData.md)
   * [Replicating Data](Administration/ReplicatingData.md)
   * [XCopy Install Windows](Administration/XCopyInstallWindows.md)
+  * [Migrating 2.8 -> 3.0](Administration/Migrate2.8to3.0.md)
 * [Compiling / Build](Compiling/README.md)
   * [Compile on Debian](Compiling/Debian.md)
   * [Compile on Windows (3.x)](Compiling/Windows30.md)
