@@ -10,19 +10,16 @@ ArangoDB is now available as an [official repository in the Docker Hub](https://
 
 Running ArangoDB - using the ArangoDB repository - is as simple as...
 
-    docker run -p 8529:8529 arangodb/arangodb
+    docker run -e ARANGO_RANDOM_ROOT_PASSWORD=1 -p 8529:8529 arangodb/arangodb
 
 I've created an automated build repository on docker, so that you can easily start a docker container with the latest stable release. Thanks to frodenas, hipertracker, joaodubas, webwurst who also created dockerfiles.
 
 ArangoDB generates a random default password for the web-interface which you can copy from the shell.
 
-    Status: Downloaded newer image for arangodb/arangodb:2.7.0
-    starting ArangoDB in stand-alone mode
-    creating initial user, please wait ...
-    ========================================================================
-    ArangoDB User: "root"
-    ArangoDB Password: "X7GFlFfFn1OTpmvD"
-    ========================================================================
+    ===========================================
+    GENERATED ROOT PASSWORD: ZaTo6J8PMC21g1HG
+    ===========================================
+
 
 Please note that this recipe is a general overview. There is also a recipe explaining how to install an application consisting of a node.js application and an ArangoDB database server.
 
@@ -60,7 +57,7 @@ In order to get a list of supported options, run
 
 *note: if you're running a docker machine on [OS X](https://docs.docker.com/v1.8/installation/mac/) or [Windows](https://docs.docker.com/windows/step_one/), [read first about using docker inside of virtual machines](#docker-inside-of-a-virtual-machine)*
 
-ArangoDB use the volume `/var/lib/arangodb` as database directory to store the collection data and the volume `/var/lib/arangodb-apps` as apps directory to store any extensions. These directory are marked as docker volumes.
+ArangoDB use the volume `/var/lib/arangodb3` as database directory to store the collection data and the volume `/var/lib/arangodb3-apps` as apps directory to store any extensions. These directory are marked as docker volumes.
 
 See `docker run -e help=1 arangodb` for all volumes.
 
@@ -68,14 +65,14 @@ You can map the container's volumes to a directory on the host, so that the data
 
     unix> mkdir /tmp/arangodb
     unix> docker run -p 8529:8529 -d \
-              -v /tmp/arangodb:/var/lib/arangodb \
+              -v /tmp/arangodb:/var/lib/arangodb3 \
               arangodb/arangodb
 
 This will use the `/tmp/arangodb` directory of the host as database directory for ArangoDB inside the container.
 
 Alternatively you can create a container holding the data.
 
-    unix> docker run -d --name arangodb-persist -v /var/lib/arangodb ubuntu:14.04 true
+    unix> docker run -d --name arangodb-persist -v /var/lib/arangodb3 ubuntu:14.04 true
 
 And use this data container in your ArangoDB container.
 
@@ -83,7 +80,7 @@ And use this data container in your ArangoDB container.
 
 If want to save a few bytes for you can alternatively use [tianon/true][3] or [progrium/busybox][4] for creating the volume only containers. For example
 
-    unix> docker run -d --name arangodb-persist -v /var/lib/arangodb tianon/true true
+    unix> docker run -d --name arangodb-persist -v /var/lib/arangodb3 tianon/true true
 
 ###Building an image
 
@@ -96,11 +93,11 @@ This will create a image named arangodb.
 ##Update note
 that we have changed the location of the data files, in order
 to be compatible with the official docker image (see
-https://github.com/docker-library/official-images/pull/728):
+https://github.com/arangodb/arangodb/commit/03079b2b672df2cb95b351be9b1710c0791dbc47 and https://github.com/arangodb/arangodb/blob/03079b2b672df2cb95b351be9b1710c0791dbc47/Installation/debian/arangodb.dirs):
 
-- `/var/lib/arangodb` instead of `/data`
-- `/var/lib/arangodb-apps` instead of `/apps`
-- `/var/log/arangodb` instead of `/logs`
+- `/var/lib/arangodb3` instead of `/var/lib/arangodb`
+- `/var/lib/arangodb3-apps` instead of `/var/lib/arangodb-apps`
+- `/var/log/arangodb3` instead of `/var/log/arangodb`
 
 ##Docker inside of a virtual machine
 There are some setups in which you may want to run a docker container inside of a virtual machine - either you want reproduceable tests for deployment, or its not directly compatible with your hosts os (aka OS X or Windows).
