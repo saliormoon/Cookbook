@@ -547,8 +547,113 @@ RETURN { // We rebuild the old format
 
 These have been removed and should be replaced by the
 [native AQL traversal](https://docs.arangodb.com/3/Manual/Graphs/Traversals/index.html).
-As they are way to complex for a cookbook please read the native traversal documentation.
-If you need further help with this please contact us via our social channels.
+There are many potential solutions using the new syntax, but they largely depend
+on what exactly you are trying to achieve and would go beyond the scope of this
+cookbook. Here is one example how to do the transition, using the
+[world graph](https://docs.arangodb.com/3/Manual/Graphs/index.html#the-world-graph)
+as data:
+
+In 2.8, it was possible to use `GRAPH_TRAVERSAL()` together with a custom visitor
+function to find leaf nodes in a graph. Leaf nodes are vertices that have inbound
+edges, but no outbound edges. The visitor function code looked like this:
+
+```js
+var aqlfunctions = require("org/arangodb/aql/functions");
+
+aqlfunctions.register("myfunctions::leafNodeVisitor", function (config, result, vertex, path, connected) {
+  if (connected && connected.length === 0) {
+    return vertex.name + " (" + vertex.type + ")";
+  }
+});
+```
+
+And the AQL query to make use of it:
+
+```js
+LET params = {
+  order: "preorder-expander",
+  visitor: "myfunctions::leafNodeVisitor",
+  visitorReturnsResults: true
+}
+FOR result IN GRAPH_TRAVERSAL("worldCountry", "worldVertices/world", "inbound", params)
+  RETURN result
+```
+
+To traverse the graph starting at vertex `worldVertices/world` using native
+AQL traversal and a named graph, we can simply do:
+
+```js
+FOR v IN 0..10 INBOUND "worldVertices/world" GRAPH "worldCountry"
+  RETURN v
+```
+
+It will give us all vertex documents including the start vertex (because the
+minimum depth is set to *0*). The maximum depth is set to *10*, which is enough
+to follow all edges and reach the leaf nodes in this graph.
+
+The query can be modified to return a formatted path from first to last node:
+
+```js
+FOR v, e, p IN 0..10 INBOUND "worldVertices/world" GRAPH "worldCountry"
+  RETURN CONCAT_SEPARATOR(" -> ", p.vertices[*].name)
+```
+
+The result looks like this (shortened):
+
+```json
+[
+  "World",
+  "World -> Africa",
+  "World -> Africa -> Cote d'Ivoire",
+  "World -> Africa -> Cote d'Ivoire -> Yamoussoukro",
+  "World -> Africa -> Angola",
+  "World -> Africa -> Angola -> Luanda",
+  "World -> Africa -> Chad",
+  "World -> Africa -> Chad -> N'Djamena",
+  ...
+]
+```
+
+As we can see, all possible paths of varying lengths are returned. We are not
+really interested in them, but we still have to do the traversal to go from
+*World* all the way to the leaf nodes (e.g. *Yamoussoukro*). To determine
+if a vertex is really the last on the path in the sense of being a leaf node,
+we can use another traversal of depth 1 to check if there is at least one
+outgoing edge - which means the vertex is not a leaf node, otherwise it is:
+
+```js
+FOR v IN 0..10 INBOUND "worldVertices/world" GRAPH "worldCountry"
+  FILTER LENGTH(FOR vv IN INBOUND v GRAPH "worldCountry" LIMIT 1 RETURN 1) == 0
+  RETURN CONCAT(v.name, " (", v.type, ")")
+```
+
+Using the current vertex `v` as starting point, the second traversal is
+performed. It can return early after one edge was followed (`LIMIT 1`),
+because we don't need to know the exact count and it is faster this way.
+We also don't need the actual vertex, so we can just `RETURN 1` as dummy
+value as an optimization. The traversal (which is a sub-query) will
+return an empty array in case of a leaf node, and `[ 1 ]` otherwise.
+Since we only want the leaf nodes, we `FILTER` out all non-empty arrays
+and what is left are the leaf nodes only. The attributes `name` and
+`type` are formatted the way they were like in the original JavaScript
+code, but now with AQL. The final result is a list of all capitals:
+
+```json
+[
+  "Yamoussoukro (capital)",
+  "Luanda (capital)",
+  "N'Djamena (capital)",
+  "Algiers (capital)",
+  "Yaounde (capital)",
+  "Ouagadougou (capital)",
+  "Gaborone (capital)",
+  "Asmara (capital)",
+  "Cairo (capital)",
+  ...
+]
+```
+
+Contact us via our social channels if you need further help.
 
 **Author:** [Michael Hackstein](https://github.com/mchacki)
 
