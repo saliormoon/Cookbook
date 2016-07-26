@@ -212,7 +212,7 @@ Say we want to find all actors who acted in "TheMatrix" OR "TheDevilsAdvocate":
 First lets try to get all actors for one movie:
 
 ```js
-db._query("RETURN NEIGHBORS(movies, actsIn, 'TheMatrix', 'any')").toArray();
+db._query("FOR x IN ANY 'movies/TheMatrix' actsIn OPTIONS {bfs: true, uniqueVertices: 'global'} RETURN x._id").toArray();
 ```
 
 Result:
@@ -231,7 +231,7 @@ Result:
 Now we continue to form a UNION_DISTINCT of two NEIGHBORS queries which will be the solution:
 
 ```js
-db._query("RETURN UNION_DISTINCT(NEIGHBORS(movies, actsIn, 'TheDevilsAdvocate', 'any'), NEIGHBORS(movies, actsIn, 'TheMatrix', 'any'))").toArray();
+db._query("FOR x IN UNION_DISTINCT ((FOR y IN ANY 'movies/TheMatrix' actsIn OPTIONS {bfs: true, uniqueVertices: 'global'} RETURN y._id), (FOR y IN ANY 'movies/TheDevilsAdvocate' actsIn OPTIONS {bfs: true, uniqueVertices: 'global'} RETURN y._id)) RETURN x").toArray();
 ```
 
 ```json
@@ -254,7 +254,7 @@ This is almost identical to the question above.
 But this time we are not intrested in a UNION but in a INTERSECTION:
 
 ```js
-db._query("RETURN INTERSECTION(NEIGHBORS(movies, actsIn, 'TheDevilsAdvocate', 'any'), NEIGHBORS(movies, actsIn, 'TheMatrix', 'any'))").toArray();
+db._query("FOR x IN INTERSECTION ((FOR y IN ANY 'movies/TheMatrix' actsIn OPTIONS {bfs: true, uniqueVertices: 'global'} RETURN y._id), (FOR y IN ANY 'movies/TheDevilsAdvocate' actsIn OPTIONS {bfs: true, uniqueVertices: 'global'} RETURN y._id)) RETURN x").toArray();
 ```
 
 ```json
@@ -272,7 +272,7 @@ We just have to change the starting vertices.
 As an example let's find all movies where Hugo Weaving ("Hugo") and Keanu Reeves are co-starring:
 
 ```js
-db._query("RETURN INTERSECTION(NEIGHBORS(actors, actsIn, 'Hugo', 'any'), NEIGHBORS(actors, actsIn, 'Keanu', 'any'))").toArray();
+db._query("FOR x IN INTERSECTION ((FOR y IN ANY 'actors/Hugo' actsIn OPTIONS {bfs: true, uniqueVertices: 'global'} RETURN y._id), (FOR y IN ANY 'actors/Keanu' actsIn OPTIONS {bfs: true, uniqueVertices: 'global'} RETURN y._id)) RETURN x").toArray();
 ```
 
 ```json
