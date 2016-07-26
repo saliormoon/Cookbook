@@ -46,7 +46,7 @@ public class MyEdge {
 
 To retrieve all edges from vertices with a given name (e. g. "Bob") and arbitrary age the method   
 ``` java
-arangoDriver.graphGetEdgesByExampleObject("myGraph", MyEdge.class, myVertexExample)
+arangoDriver.graphGetEdgeCursorByExample("myGraph", MyEdge.class, myVertexExample)
 ```
 can not be used, because primitive datatypes (like 'int') can not be set to null (all attributes that are not null will be used as filter criteria). 
 
@@ -57,14 +57,14 @@ There is a solution, but it's not that satisfying, because you need to know the 
 ```java
 Map<String, Object> exampleVertex = new HashMap<String, Object>();
 exampleVertex.put("name", "Bob");
-CursorEntity<MyEdge> cursor = arangoDriver.graphGetEdgesByExampleMap("myGraph", MyEdge.class, exampleVertex);
+CursorEntity<MyEdge> cursor = arangoDriver.graphGetEdgeCursorByExample("myGraph", MyEdge.class, exampleVertex);
 ```
 
 Vice versa it's no problem to retrieve all edges of vertices that have been set to a certain age (e. g. 42):
 
 ``` java
 MyObject myVertexExample = new MyObject(null, 42);
-CursorEntity<MyEdge> cursor = arangoDriver.graphGetEdgesByExampleObject("myGraph", MyEdge.class, myVertexExample)
+CursorEntity<MyEdge> cursor = arangoDriver.graphGetEdgeCursorByExample("myGraph", MyEdge.class, myVertexExample)
 ```
 
 ## Other resources

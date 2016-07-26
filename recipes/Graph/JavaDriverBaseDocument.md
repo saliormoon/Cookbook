@@ -26,14 +26,14 @@ The first three attributes are the system attributes `_rev`, `_id` and `_key`. T
 
 The map can contain values of the following types:
 
-* HashMap `<String, Object>`
-* ArrayList `<Object>`
+* Map `<String, Object>`
+* List `<Object>`
 * Boolean
-* Double
+* Number
 * String
 * null
 
-**Note**: `HashMap` and ArrayList contain objects, which are of the same types as listed above.
+**Note**: `Map` and List contain objects, which are of the same types as listed above.
 
 To retrieve a document is similar to the known procedure, except that you use `_BaseDocument_` as type.
  
