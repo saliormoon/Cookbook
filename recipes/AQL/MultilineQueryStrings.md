@@ -93,18 +93,20 @@ Please note that when using ES6 template strings for your queries, you should st
 bind parameters (as done above with `@what`) and not insert user input values into the
 query string without sanitation.
 
-Since ArangoDB 2.7, there is a convenience function `aqlQuery` which can be used to safely
+There is a convenience function `aql` which can be used to safely
 and easily build an AQL query with substitutions from arbitrary JavaScript values and
 expressions. It can be invoked like this:
 
 ```js
+const aql = require("@arangodb").aql; // not needed in arangosh
+
 var what = "some input value";
-var query = aqlQuery`FOR doc IN collection 
+var query = aql`FOR doc IN collection 
                      FILTER doc.value == ${what} 
                      RETURN doc`; 
 ```
 
-The template string variant that uses `aqlQuery` is both convenient and safe. Internally, it
+The template string variant that uses `aql` is both convenient and safe. Internally, it
 will turn the substituted values into bind parameters. The query string and the bind parameter
 values will be returned separately, so the result of `query` above will be something like:
 
