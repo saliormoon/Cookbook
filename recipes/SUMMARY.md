@@ -43,6 +43,7 @@
   * [Docker with NodeJS App](Cloud/NodeJsDocker.md)
   * [In the GiantSwarm](Cloud/GiantSwarm.md)
   * [ArangoDB in Mesos](Cloud/Mesosphere.md)
+  * [DC/OS: Full example](Cloud/DcosFullExample.md)
 * [Monitoring](Monitoring/Collectd.md)
   * [Collectd - Replication Slaves](Monitoring/SlaveStatus.md)
   * [Collectd - Network usage](Monitoring/TrafficWithIPAccounting.md)
