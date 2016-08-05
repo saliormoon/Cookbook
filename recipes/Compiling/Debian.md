@@ -14,7 +14,7 @@ This solution was made using a fresh Debian Testing machine on Amazon EC2. For c
 
 Login to your AWS account and launch an instance of Debian Testing. I used an 'm3.xlarge' since that has a bunch of cores, more than enough memory, optimized network and the instance store is on SSDs which can be switched to provisioned IOPs.
 
-The Current AMI ID's can be found in the Debian Wiki: https://wiki.debian.org/Cloud/AmazonEC2Image/Wheezy
+The Current AMI ID's can be found in the Debian Wiki: https://wiki.debian.org/Cloud/AmazonEC2Image/Jessie
 
 ### Upgrade to the very latest version
 
@@ -33,9 +33,10 @@ echo "deb-src http://http.debian.net/debian testing main contrib" >> /etc/apt/so
 Update and upgrade the system. Make sure you don't have any broken/unconfigured packages. Sometimes you need to run safe/full upgrade more than once. When you're done, reboot.
 
 ```bash
-aptitude update
-aptitude safe-upgrade
-aptitude full-upgrade
+apt-get install aptitude
+aptitude -y update
+aptitude -y safe-upgrade
+aptitude -y full-upgrade
 reboot
 ```
 
@@ -43,20 +44,17 @@ reboot
 
 *Mandatory*
 
-Before you can build ArangoDB, you need a few packages pre-installed on your system. ArangoDB also bundles a few libraries, which can be enabled/used by using the "all-in-one" switches during the configuration state.
-
-More information on the dependencies is available in the official documentation: https://docs.arangodb.com/2.8/Installing/Compiling.html
+Before you can build ArangoDB, you need a few packages pre-installed on your system.
 
 Login again and install them.
 
 ```bash
-sudo aptitude install git-core \
+sudo aptitude -y install git-core \
     build-essential \
-    autoconf automake \
-    libssl-dev libreadline-dev libboost-test-dev \
+    libssl-dev \
+    libjemalloc-dev \
     cmake \
     python2.7 \
-    golang-go
 ```
 
 ### 
@@ -78,7 +76,7 @@ any changes, you can speed up cloning substantially by using the *--single-branc
 
 Switch into the ArangoDB directory
 
-    unix> cd ArangoDB
+    unix> cd arangodb
     unix> mkdir build
     unix> cd build
 
@@ -234,6 +232,12 @@ The database will be installed in
 The ArangoShell will be installed in
 
     /usr/local/bin/arangosh
+
+You should add an arangodb user and group (as root), plus make shure it owns these directories:
+
+    useradd -g arangodb arangodb
+    chown -R arangodb:arangodb /usr/local/var/lib/arangodb3-apps/
+    chown -R arangodb:arangodb /tmp/database-dir/
 
 **Note:** The installation directory will be different if you use one of the
 `precompiled` packages. Please check the default locations of your operating
