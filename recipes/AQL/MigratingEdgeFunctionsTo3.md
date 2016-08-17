@@ -272,6 +272,119 @@ code, but now with AQL. The final result is a list of all capitals:
 ]
 ```
 
+There is no direct substitute for the `TRAVERSAL_TREE()` function.
+The advantage of this function was that its (possibly highly nested) result
+data structure inherently represented the "longest" possible paths only.
+With native AQL traversal, all paths from minimum to maximum traversal depth
+are returned, including the "short" paths as well:
+
+```js
+FOR v, e, p IN 1..2 INBOUND "worldVertices/continent-north-america" worldEdges
+  RETURN CONCAT_SEPARATOR(" <- ", p.vertices[*]._key)
+```
+
+```json
+[
+  "continent-north-america <- country-antigua-and-barbuda",
+  "continent-north-america <- country-antigua-and-barbuda <- capital-saint-john-s",
+  "continent-north-america <- country-barbados",
+  "continent-north-america <- country-barbados <- capital-bridgetown",
+  "continent-north-america <- country-canada",
+  "continent-north-america <- country-canada <- capital-ottawa",
+  "continent-north-america <- country-bahamas",
+  "continent-north-america <- country-bahamas <- capital-nassau"
+]
+```
+
+A second traversal with depth = 1 can be used to check if we reached a leaf node
+(no more incoming edges). Based on this information, the "short" paths can be
+filtered out. Note that a second condition is required: it is possible that the
+last node in a traversal is not a leaf node if the maximum traversal depth is
+exceeded. Thus, we need to also let paths through, which contain as many edges
+as hops we do in the traversal (here: 2).
+
+```js
+FOR v, e, p IN 1..2 INBOUND "worldVertices/continent-north-america" worldEdges
+  LET other = (
+    FOR vv, ee IN INBOUND v worldEdges
+      //FILTER ee != e // needed if traversing edges in ANY direction
+      LIMIT 1
+      RETURN 1
+  )
+  FILTER LENGTH(other) == 0 || LENGTH(p.edges) == 2
+  RETURN CONCAT_SEPARATOR(" <- ", p.vertices[*]._key)
+```
+
+```json
+[
+  "continent-north-america <- country-antigua-and-barbuda <- capital-saint-john-s",
+  "continent-north-america <- country-barbados <- capital-bridgetown",
+  "continent-north-america <- country-canada <- capital-ottawa",
+  "continent-north-america <- country-bahamas <- capital-nassau"
+]
+```
+
+The full paths can be returned, but it is not in a tree-like structure as 
+with `TRAVERSAL_TREE()`. Such a data structure can be constructed on
+client-side if really needed.
+
+```js
+FOR v, e, p IN 1..2 INBOUND "worldVertices/continent-north-america" worldEdges
+  LET other = (FOR vv, ee IN INBOUND v worldEdges LIMIT 1 RETURN 1)
+  FILTER LENGTH(other) == 0 || LENGTH(p.edges) == 2
+  RETURN p
+```
+
+Path data (shortened):
+
+```json
+[
+  {
+    "edges": [
+      {
+        "_id": "worldEdges/57585025",
+        "_from": "worldVertices/country-antigua-and-barbuda",
+        "_to": "worldVertices/continent-north-america",
+        "type": "is-in"
+      },
+      {
+        "_id": "worldEdges/57585231",
+        "_from": "worldVertices/capital-saint-john-s",
+        "_to": "worldVertices/country-antigua-and-barbuda",
+        "type": "is-in"
+      }
+    ],
+    "vertices": [
+      {
+        "_id": "worldVertices/continent-north-america",
+        "name": "North America",
+        "type": "continent"
+      },
+      {
+        "_id": "worldVertices/country-antigua-and-barbuda",
+        "code": "ATG",
+        "name": "Antigua and Barbuda",
+        "type": "country"
+      },
+      {
+        "_id": "worldVertices/capital-saint-john-s",
+        "name": "Saint John's",
+        "type": "capital"
+      }
+    ]
+  },
+  {
+    ...
+  }
+]
+```
+
+The first and second vertex of the nth path are connected by the first edge
+(`p[n].vertices[0]` ⟝ `p[n].edges[0]` → `p[n].vertices[1]`) and so on. This
+structure might actually be more convenient to process compared to a tree-like
+structure. Note that the edge documents are also included, in constrast to the
+removed graph traversal function.
+
 Contact us via our social channels if you need further help.
 
 **Author:** [Michael Hackstein](https://github.com/mchacki)
