@@ -1,40 +1,48 @@
-![ArangoDB-Logo](https://www.arangodb.com/logo/arangodb_logo_c400@2.png)
+![ArangoDB-Logo](https://docs.arangodb.com/assets/arangodb_logo_2016_inverted.png)
 
+In this cookbook you can find some recipes for specific problems regarding ArangoDB.
 
-The cookbook is still in progress.
-
-
-In the ArangoDB cookbook you will find some recipes for specific problems regarding ArangoDB. 
+The cookbook is always work in progress.
 
 ##How to contribute
 
-Do you have recipes for the ArangoDB Cookbook?  <br>
-Write them down and we will add them to the Cookbook.
+Do you have recipes for the ArangoDB cookbook?  <br>
+Write them down and we will add them!
 
-It's pretty easy. You write a markdown file in the recipes folder. At the end of your recipe you can add your name and some tags so other users can find your recipe faster. The tags should be written in lower case.  
-
-An Example:
+It's pretty easy. You write a markdown file in the recipes folder. At the end
+of your recipe you can add your name and some tags so other users can find your
+recipe faster. The tags should be written in lower case:
 
 **Author**: [yourName](https://github.com/yourName)
 
 **Tags**: #arangodb #cookbook #aql
 
-After that you edit `SUMMARY.md` and simply add a title and the file name to the end of it. 
+After that you edit `SUMMARY.md` and simply add a title and the file name to
+the end of it. Then make a pull request.
 
-Now make a pull request and we will add your recipe as soon as possible.
+For legal reasons, we require contributors to sign a contributor license
+agreement (CLA). We are using a Apache 2 CLA for ArangoDB, which can be found
+here: https://www.arangodb.com/documents/cla.pdf
 
-##How to use a local Cookbook
+Please fill out and sign the CLA, then scan and email it to cla (at) arangodb.com -
+we will add your recipe as soon as possible after receiving it.
 
-If you want to create a local Cookbook perform the following steps:
+##How to build the cookbook locally
 
-* Install the [Gitbook][1]:
+If you want to build and test the cookbook on your local computer, perform the
+following steps (in a terminal / command line):
 
-```
-$ npm install gitbook -g
-```
+- Install [Node.js][1], if you don't have it already
+- Install [Gitbook][2]:
 
-* Go into the recipes folder
-* Use `gitbook build`
-* open 'recipes/_book/index.html
+  ```
+  $ npm install gitbook -g
+  ```
 
-[1]: https://github.com/GitbookIO/gitbook
+- Go to the `recipes` folder
+- Run `gitbook install` to install the required Gitbook plugins
+- Run `gitbook build` to generate the cookbook
+- Open `recipes/_book/index.html` with your browser
+
+[1]: https://nodejs.org/
+[2]: https://github.com/GitbookIO/gitbook
