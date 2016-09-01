@@ -183,6 +183,10 @@ Markdown-pp:
     cd markdown-pp
     python setup.py install
 
+Ditaa:
+
+    Download and install: http://ditaa.sourceforge.net/#download 
+
 **Authors**:
 [Frank Celler](https://github.com/fceller),
 [Wilfried Goesgens](https://github.com/dothebart) and
