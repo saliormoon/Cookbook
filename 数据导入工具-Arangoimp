@@ -1,0 +1,101 @@
+
+简介：
+ArangoDB数据导入工具Arangoimp，用于大量数据导入。
+可以通过arangoimp命令行来导入数据。它允许把一个文件中的数据记录导入到一个已有的数据库中。
+导入文档的keys用_key属性；导入边的集合时，它强制性地为导入的文档添加_from和_to属性，而且它们包含有效的引用。
+支持json、csv、tsv等文件格式。
+举例使用
+我们假设想要把user记录导入到服务器中的一个已经存在的集合users中。
+1.	导入JSON-encoded 数据
+data.json文档
+{ "name" : { "first" : "John", "last" : "Connor" }, "active" : true, "age" : 25, "likes" : [ "swimming"] }
+{ "name" : { "first" : "Jim", "last" : "O'Brady" }, "age" : 19, "likes" : [ "hiking", "singing" ] }
+{ "name" : { "first" : "Lisa", "last" : "Jones" }, "dob" : "1981-04-09", "likes" : [ "running" ] }
+使用命令：
+unix> arangoimp --file "data.json" --type json --collection "users
+这会将数据移动到服务器中，导入数据记录，并打印状态总结。为了显示导入过程中间的进度，可以在命令行中添加--progress。这个选项会显示数据导入到服务器中的百分比，这仅对导入的大文档有用。
+命令行为：
+unix> cat data.json | arangoimp --file - --type json --collection users
+也可以用另外一个命令的输出作为arangoimp的输入。用于管道数据的从cat process到arangoimp的命令行：
+unix> cat data.json | arangoimp --file - --type json --collection users
+如果你想使用另外一个命令作为arangoimp的输入，注意需要用--file -。当输入的大小将是未知的，没有progress会提示对于这样的输入对于arangoimp来说。
+默认使用的endpoint为tcp://127.0.0.1:8529，如果你想使用一个不同的endpoint，可以使用--server.endpoint选项。若你想使用一个特定的数据库的user和password，可以用选项--server.username和--server.password。如果你没有指定一个password，系统会提示你生成一个。
+如下命令行，注意到collection（users），必须存在，否则导入会失败。如果你想用导入数据生成一个新的collection，需要指定--create-collection选项。注意用--create-collection标志只可能产生一个document collection，没有边的collection。
+unix> arangoimp --server.endpoint tcp://127.0.0.1:8529 --server.username root --file "data.json" --type json --collection "users"
+unix> arangoimp --file "data.json" --type json --collection "users" --create-collection true
+当导入数据到一个已经存在的collection时，对于第一次从collection中移除所有的数据然后开始导入通常是方便的。通过传递一个--overwrite参数到arangoimp可以实现导入重复数据。如果它被设置为true，集合中的任何现有数据将在导入之前删除。注意任何已经存在的索引定义对于collection将会被保存即使--overwrite被设置为true。
+unix> arangoimp --file "data.json" --type json --collection "users" --overwrite true
+由于导入的文件中已经包含了JSON格式的数据，属性名和数据类型都完全保留。在示例数据中可看到，所有的数据记录没有必要有相同的属性名和类型，数据记录可以是不同类型的。
+请注意默认地，arangoimp将会导入数据到指定的数据库_system中的指体的集合collection中。想指定一个不同的数据库，当借助arangoimp时可以使用—server.database选项。
+一个arangoimp的导入运行会打印出最终的结果在命令行中。默认地，它显示文档生成的数量、警告的数量或发生在服务器上的错误的数量，以及总的输入documents（行）的数目。此外，arangoimp会打印发生的具体的警告和错误信息，如果有的话。
+如：
+created:          2
+warnings/errors:  0
+total:            2
+注意：arangoimp支持两种格式当从一个文档导入JSON数据时。第一种格式要求输入数据在每一行都包含一个JSON document。如：
+{ "_key": "one", "value": 1 }
+{ "_key": "two", "value": 2 }
+{ "_key": "foo", "value": "bar" }
+...
+以上格式会被arangoimp顺序地导入。它会从输入的文件中以卡盘夹头的形式读数据，然后以batch的形式发送它到服务器。每一个batch大约将会和指定的命令行参数--batch-size一样大。
+一个可采用的方法是放一个大的json document到输入的文件中，像这样：
+[
+  { "_key": "one", "value": 1 },
+  { "_key": "two", "value": 2 },
+  { "_key": "foo", "value": "bar" },
+  ...
+]
+这种格式允许换行符作为需要包含在输入文档中。不足之处是整个输入文件将需要被arangoimp阅读，才可以发送第一批。如果输入文件很大时这可能是一个问题。默认情况下，arangoimp允许导入的文件大小不超过16MB。如果你想让你的arangoimp实例去使用更多内存，你需要通过命令选项--batch-size增加最大的文件大小。例如，设置batch批大小为32MB，用如下命令行：
+unix> arangoimp --file "data.json" --type json --collection "users" --batch-size 33554432
+请注意你需要增加--batch-size的值如果在输入文档中的单个document比--batch-size的值大时。
+2.	导入CSV数据
+Arangoimp也提供从CSV文件中导入数据的方式。便于已经存在的CSV数据不用再转换为JSON格式。
+从一个CSV文件中导入数据要确保文件在第一行包含属性名称。所有剩下的行在文件中会被翻译为数据记录然后被导入。
+CSV导入要求数据有一个均匀的结构。所有的数据记录必须有确切的相同的列数来作为开头。
+单元格值可以有不同的数据类型。如果一个单元没有任何值，它可以在文件中被留下空白。这些值不会被导入所以属性将不会存在于生成的document中。用引号括起来的值将会被导入为字符串，所以对于重要的数字型的值、布尔值或者空值没有用引号括起来的价值。
+我们将会为CSV导入运用以下的导入：
+csv文件：
+"first","last","age","active","dob"
+"John","Connor",25,true,
+"Jim","O'Brady",19,,
+"Lisa","Jones",,,"1981-04-09"
+Hans,dos Santos,0123,,
+Wayne,Brewer,,false,
+用命令行执行导入为：
+unix> arangoimp --file "data.csv" --type csv --collection "users"
+以上的数据将会导入到5个documents，这些documents如下：
+{ "first" : "John", "last" : "Connor", "active" : true, "age" : 25 } 
+{ "first" : "Jim", "last" : "O'Brady", "age" : 19 }
+{ "first" : "Lisa", "last" : "Jones", "dob" : "1981-04-09" } 
+{ "first" : "Hans", "last" : "dos Santos", "age" : 123 } 
+{ "first" : "Wayne", "last" : "Brewer", "active" : false }
+可以看到，值留在输入文件完全为空的将会被看做不存在。没有用引号括起来的数值将会被看做数字。注意，起首零位在数值里将会被移除。为了导入有先行零的数字，请用字符串。文字true和false会被看做布尔值，如果他们不加括号的话。没有用引号括起来的其他的值将会被看做字符串。用引号括起来的任何值也会被看做字符串。
+包含引号字符或分隔符字符必须用引号括起来。在一个字符串里的引号字符本身必须与另外一个引号字符转义（或用反斜杠如果--backslash逃逸选项时使用）。
+注意到引号和分隔符字符将会通过--quote和--separator参数调用arangoimp进行调整。引用字符默认为双引号“”。为了转义引号字符使用反斜杠。请设置选项--backslash-escape为true。
+impoter支持Windows（CRLF）和Unix（LF）换行，换行符也可能出现在被包围在引号字符内的值里。
+在values里用价值观文字引号和换行符的例子：
+"name","password"
+"Foo","r4ndom""123!"
+"Bar","wow!
+this is a
+multine password!"
+"Bartholomew ""Bart"" Simpson","Milhouse"
+在每一行末尾的额外空白将会被忽略。在行的开始或在字段值之间的空白是不容忽视的，所以请确保在values之前或在它们之间没有额外的空格。
+3.	导入TSV格式的数据
+你也可以从一个文件中导入tab分割的values（TSV）。这种形式很简单：在文件中的每一行代表一个数据记录。没有引用或转义。这也意味着分隔字符（默认为tab）必须不被用在实际数据的任何地方。
+正如CSV，在TSV文件的第一行必须包含属性名称，所有行必须有一个同一values的数量。
+执行TSV导入的命令行为：
+unix> arangoimp --file "data.tsv" --type tsv --collection "users" 
+4.	导入边的集合
+arangoimp也可以被用作导入数据到已存在的边的集合中。导入的数据，对于每一个要导入的边，必须至少包含_from和_to属性。这些暗示哪些其它两个documents的边应该连接。有必要为所有的数据记录设置这些属性，并且指出在现行集合中的有效的document ids
+例如：
+{ "_from" : "users/1234", "_to" : "users/4321", "desc" : "1234 is connected to 4321" }
+当导入开始时，边的集合必须已经存在。用--create-collection标志不会工作因为如果目标的collection不存在的话，arangoimp会总是试图创照一个document collection。
+5.	属性名和特殊的属性
+用下划线开始名称的属性被ArangoDB用一个特定的方式对待。
+_key属性包含文档的key。如果指定的话，value必须是正规有效的。此外，key值必须是独一无二的在运行的导入的集合里。、
+_from：当导入一个边的集合，这个属性包含被边连接的documents的一个id。_from的值必须是在语句构成上有效的document id并且被参考的集合必须存在。
+_to：当导入一个边的集合时，这个属性包含了被边关联的其他document的id。_to的值必须是一个在句法构成上有效的document id并且所引用的集合必须存在。
+_rev：这个属性包含一个document的修订数量。然而，修订数量被ArangoDB所管理并且不能指定导入。因此任何一个value在这个属性里在导入时是被忽视的。
+如果你导入values到_key时，你需要确保它们是有效的并且独一无二的。
+当导入数据到一个边的集合时，你应该确保所有导入的documents可以_from和_to并且它们的values指向已经存在的documents。
